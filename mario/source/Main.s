@@ -24,7 +24,7 @@ main:
 	bic	r0, #0x80
 	msr	cpsr_c, r0
     bl 	_InitAll
-    //bl 	_StartScreen
+    bl 	_StartScreen
 nG: bl 	initialscreen
 
 cycle:
@@ -51,7 +51,7 @@ Quit:
 //	mov		sp, #0x8000000
 //	bx		lr
 
-
+.globl hang
 hang:
 	b hang
 

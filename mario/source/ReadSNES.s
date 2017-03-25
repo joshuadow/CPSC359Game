@@ -7,8 +7,15 @@ _ReadSNES:
 
 ReadSNES:
 	push {r4-r10,lr}            //stores contents of registers
+    ldr r10, =playingstatus
+    ldr r10, [r10]
+    mov r9, #1
+    cmp r10, r9
+    bne skipUpdate
+    bl updateMonsters
+skipUpdate:
     mov r1, #1                  //load bit to write to clock
-    bl _WriteClock              
+    bl _WriteClock
     mov r1, #1                  //load bit to write to latch
     bl _WriteLatch
     mov r0, #12
@@ -23,7 +30,7 @@ pulseLoop:
     bl _Wait                    //wait 6 microseconds
     mov r1, #0                  //load bit to write to clock
     bl _WriteClock
-    mov r0, #6              
+    mov r0, #6
     bl _Wait                     //wait 6 microseconds
     bl _ReadData                //read a bit from the data pin
     ldr r5, =buttons            //loads address of buffer into r5

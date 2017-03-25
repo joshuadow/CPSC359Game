@@ -71,57 +71,7 @@ RB:
 	beq RBPress
 
 
-EnemyUpdate:
-
-  @ldr r5, =screenNumber
-  @ldr r5, [r5]
-  @
-  @mov r6, #1
-  @cmp r5, r6
-  @bleq updateShell
-  @
-  @mov r6, #2
-  @cmp r5, r6
-  @bleq updateDragon
-  @
-  @mov r6, #3
-  @cmp r5, r6
-  @bleq updateBowser
-
-	beq blockUpdate
-
-@updateShell:
-@    push {r4-r10,lr}
-@    ldr r8, =shellEnemy
-@    ldr r4, [r5]
-@    sub r6, r4, #5
-@    cmp r6, #0
-@    bgt drawL
-@    b donel
-@drawL:
-@    bl clearShell
-@    str r6, [r5]
-@    bl drawShell
-@donel:
-@    pop {r4-r10, lr}
-@    bx lr
-@
-@updateDragon:
-@    push {r4-r10,lr}
-@    ldr r8, =dragonEnemy
-@    ldr r4, [r5]
-@    sub r6, r4, #5
-@    cmp r6, #0
-@    bgt drawL
-@    b donel
-@drawL:
-@    bl clearDragon
-@    str r6, [r5]
-@    bl drawDragon
-@donel:
-@    pop {r4-r10, lr}
-@    bx lr
-
+  beq blockUpdate
 
 blockUpdate:
 	pop {r4-r10, lr}

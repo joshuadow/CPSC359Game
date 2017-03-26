@@ -21,31 +21,7 @@ SelPress:
 .globl STPress
 STPress:
     push {r4-r10,lr}
-    mov r8, #0
-    mov r7, #0
-    //bl _gameMenu
-stread:
-    bl _ReadSNES
-stloop:
-    cmp r5, #15
-    bgt stread
-    ldr r5, =buttons            //load the address of the buffer into r5
-    ldrb r4, [r5, #4]           //load a byte from the buffer
-    cmp r4, #0
-    beq stdone
-    ldrb r4, [r5, #5]           //load a byte from the buffer
-    cmp r4, #0
-    beq upOpt
-    ldrb r4, [r5, #6]           //load a byte from the buffer
-    cmp r4, #0
-    beq downOpt
-    ldrb r4, [r5, #9]
-    cmp r4, #0
-    //beq restart
-    b stread
-
-stdone:
-    //bl clearmenu
+    bl PauseMenu
     pop {r4-r10,lr}
     bx lr
 upOpt:
@@ -137,7 +113,7 @@ UpRightPress:
     push {r4-r10, lr}
     ldr r5, =mario
     ldr r4, [r5]
-    
+
     ldr r7, =0x40b
     add r6, r4, #8
     cmp r6, r7
@@ -219,7 +195,7 @@ JPRPress:
     push {r4-r10, lr}
     ldr r5, =mario
     ldr r4, [r5]
-    
+
     ldr r7, =0x40b
     add r6, r4, #15
     cmp r6, r7

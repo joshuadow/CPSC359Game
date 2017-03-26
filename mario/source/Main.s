@@ -25,6 +25,7 @@ main:
 	msr	cpsr_c, r0
     bl 	_InitAll
     bl 	_StartScreen
+.globl nG
 nG: bl 	initialscreen
 
 cycle:

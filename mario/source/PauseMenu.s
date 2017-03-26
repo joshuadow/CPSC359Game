@@ -72,7 +72,7 @@ PauseMenu:
 
                           b PauseScreenLoop
 
-
+          .globl restart
           restart:
                 //reset all variables
                 ldr r1, =mario

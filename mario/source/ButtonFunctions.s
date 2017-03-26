@@ -58,9 +58,9 @@ JPUPress:
     ldr r4, [r5]
     ldr r7, [r5,#4]
     mov r6, r7
-    sub r8, r7, #180 //max jump height
+    sub r8, r7, #216 //max jump height
 jumpup:
-    sub r6, r6, #15  //jump height per frame
+    sub r6, r6, #12  //jump height per frame
     bl clearMario
     str r6, [r5,#4]
     bl drawMario
@@ -68,10 +68,14 @@ jumpup:
     ldr r1, [r1]
     cmp r1, #1
     bl Detect1
-    cmp r0, #0
-    beq downex
+    cmp r0, #13
+    beq jumpdown
+    //ldr r1, =screenNumber
+    //ldr r1, [r1]
     //cmp r1, #2
     //bl Detect2
+    //ldr r1, =screenNumber
+    //ldr r1, [r1]
     //cmp r1, #3
     //bl Detect3
     bl _ReadSNES
@@ -86,12 +90,20 @@ jumpup:
     cmp r6, r8
     bge jumpup
 jumpdown:
-    add r6, r6, #15
+    ldr r0, =js1
+    ldr r0, [r0]
+    cmp r0, #1
+    beq downex
+    add r6, r6, #12
     bl clearMario
     str r6, [r5,#4]
     bl drawMario
+    ldr r1, =screenNumber
+    ldr r1, [r1]
     cmp r1, #1
     bl Detect1
+    cmp r0, #13
+    beq jumpdown
     //cmp r1, #2
     //bl Detect2
     //cmp r1, #3
@@ -115,7 +127,7 @@ UpRightPress:
     ldr r4, [r5]
 
     ldr r7, =0x40b
-    add r6, r4, #8
+    add r6, r4, #10
     cmp r6, r7
     blt UdrawR
     beq UscreenR
@@ -128,6 +140,9 @@ UpRightPress:
 UdrawR:
     bl clearMario
     str r6, [r5]
+    ldr r1, =screenNumber
+    ldr r1, [r1]
+    cmp r1, #1
     bl Detect1
     //cmp r1, #2
     //bl Detect2
@@ -150,13 +165,16 @@ UpLeftPress:
     push {r4-r10,lr}
     ldr r5, =mario
     ldr r4, [r5]
-    sub r6, r4, #8
+    sub r6, r4, #10
     cmp r6, #0
     bgt UdrawL
     b Udonel
 UdrawL:
     bl clearMario
     str r6, [r5]
+    ldr r1, =screenNumber
+    ldr r1, [r1]
+    cmp r1, #1
     bl Detect1
     //cmp r1, #2
     //bl Detect2
@@ -180,7 +198,12 @@ JPLPress:
 drawL:
     bl clearMario
     str r6, [r5]
-    //bl _DetectCollisions
+    ldr r1, =screenNumber
+    ldr r1, [r1]
+    cmp r1, #1
+    bl Detect1
+    cmp r0, #13
+    beq jumpdown
     //cmp r0, #1
     //beq donel
     //cmp r0, #2
@@ -210,11 +233,12 @@ JPRPress:
 drawR:
     bl clearMario
     str r6, [r5]
-    //bl _DetectCollisions
-    //cmp r0, #1
-    //beq doneR
-    //cmp r0, #2
-    //beq lifelost
+    ldr r1, =screenNumber
+    ldr r1, [r1]
+    cmp r1, #1
+    bl Detect1
+    cmp r0, #13
+    beq jumpdown
     bl drawMario
     cmp r1, #1
     bl Detect1

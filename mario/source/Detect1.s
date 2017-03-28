@@ -1,226 +1,278 @@
 .section        .init
-.globl  Detect1
 
+.globl  Detect1
 
 .section        .text
 
 Detect1:
-        push {r4-r10, lr}
-        ldr r0, =mario
-        ldr r4, [r0]
-        ldr r5, [r0,#4]
-        add r6, r4, #41
-        add r7, r5, #70
+
+    push {r4-r10, lr}
+    ldr r0, =mario
+    ldr r4, [r0]
+    ldr r5, [r0,#4]
+    add r6, r4, #41
+    add r7, r5, #70
+                                        //THIS IS JUST A NOTE THIS SAVE IS GOOD FOR NOW
+                                        //MARIO DISAPPEARS ON TOP OF BLOCKS, MUST FIX
+
+Enemy:
+	ldr r0, =shellEnemy
+	ldr r8, [r0]
+	ldr r9, [r0,#4]
+	add r9, r9, #2
+	add r1, r8, #31
+	add r2, r9, #50 
+	cmp r6, r8
+	ble Above
+	cmp r4, r1
+	bge Above
+	cmp r7, r9
+	ble MK
+	ldr r1, =lives
+	ldr r0, [r1]
+	sub r0, r0, #1
+	str r0, [r1]
+	b restart
+
+MK:
+	cmp r7, r9
+	blt Above
+    ldr r0, =shelllife
+    mov r1, #1
+    str r1, [r0]
+	ldr r0, =shellEnemy
+	ldr r1, [r0, #4]
+	ldr r0, [r0]
+	bl clearShell
+	ldr r1, =score
+	ldr r0, [r1]
+	add r0, r0, #100
+	str r0, [r1]
+	pop {r4-r10, lr}
+	mov pc, lr
+
+Above:
+	ldr r0, =mario
+    ldr r4, [r0]
+    ldr r5, [r0,#4]
+    add r6, r4, #41
+    add r7, r5, #70
+    ldr r0, =0x14B
+	cmp r5, r0
+	bgt Under
+	ldr r0, =0x253 //Was 262
+	cmp r6, r0
+	blt Under
+	ldr r0, =0x2F8 //was 2E9
+	cmp r4, r0
+	bgt Under
+	ldr r0, =0x10F
+    mov r9, r5
+	cmp r5, r0
+	beq AboveDown
+    ldr r0, =0x14B
+    cmp r5, r0
+    bl drawMario
+    ldr r0, =js1
+    mov r1, #1
+    str r1, [r0]
+    pop {r4-r10, lr}
+    mov r0, #13
+    mov pc, lr
+	
+
+AboveDown:
+
+	add r9, r9, #12
+	bl clearMario
+	ldr r0, =mario
+	str r9, [r0,#4]
+	bl drawMario
+	ldr r0, =0x14B
+	cmp r9, r0
+	blt AboveDown
+    ldr r0, =js1
+    mov r1, #1
+    str r1, [r0]
+    pop {r4-r10, lr}
+    mov r0, #13
+    mov pc, lr
+
+AboveDone:
+	ldr r0, =js1
+	ldr r1, [r0]
+	mov r1, #1
+	str r1, [r0]
+	pop {r4-r10, lr}
+	mov r0, #13
+	mov pc, lr
+	
+Under:
+	ldr r0, =mario
+    ldr r4, [r0]
+    ldr r5, [r0,#4]
+    add r6, r4, #41
+    add r7, r5, #70
+    ldr r0, =0x14B
+	cmp r5, r0
+	bgt UnderBlock1
+    mov r9, r5
+UnderDown:
+	add r9, r9, #12
+	bl clearMario
+	ldr r0, =mario
+	str r9, [r0,#4]
+	bl drawMario
+	ldr r0, =0x1E7
+	cmp r9, r0
+	blt UnderDown
+    ldr r0, =js1
+    mov r1, #1
+    str r1, [r0]
+    pop {r4-r10, lr}
+    mov r0, #13
+    mov pc, lr
+UnderBlock1:
+	ldr r0, =mario
+    ldr r4, [r0]
+    ldr r5, [r0,#4]
+    add r6, r4, #41
+    add r7, r5, #70
+    add r10, r4, #20
+    ldr r0, =0x262
+	cmp r10, r0 //middlex = marioleft + marioright / 2
+	blt UnderDone
+	ldr r0, =0x28F
+	cmp r10, r0
+	bgt UnderBlock2
+	ldr r0, =0x1C3
+	cmp r5, r0
+	bgt UnderDone
+    ldr r0, =block1state
+    ldr r0, [r0]
+    cmp r0, #1
+    beq UnderDone
+	ldr r0, =0x262
+	ldr r1, =0x190
+	bl clearBox
+BP123:
+    ldr r0, =block1state
+    mov r1, #1
+    str r1, [r0]
+	ldr r0, =score
+	ldr r1, [r0]
+	add r1, r1, #50
+	str r1, [r0]
+    mov r9, r5
+Block1Loop:
+	add r9, r9, #12
+	bl clearMario
+	ldr r0, =mario
+	str r9, [r0,#4]
+	bl drawMario
+	ldr r0, =0x1E7
+	cmp r9, r0
+	blt Block1Loop
+    ldr r0, =js1
+    mov r1, #1
+    str r1, [r0]
+    pop {r4-r10, lr}
+    mov r0, #13
+    mov pc, lr
+
+UnderBlock2:
+	ldr r0, =mario
+    ldr r4, [r0]
+    ldr r5, [r0,#4]
+    add r6, r4, #41
+    add r7, r5, #70
+    add r10, r4, #20
+    ldr r0, =0x28F
+	cmp r10, r0 //middlex = marioleft + marioright / 2
+	blt UnderBlock1
+	ldr r0, =0x2BC
+	cmp r10, r0
+	bgt UnderBlock3
+	ldr r0, =0x1C3 //was 1B7
+	cmp r5, r0
+	bne UnderDone
+	ldr r0, =0x28F
+	ldr r1, =0x190
+	bl drawBlock
+	ldr r0, =score
+	ldr r1, [r0]
+	add r1, r1, #50
+	str r1, [r0]
+    mov r9, r5
+Block2Loop:
+	add r9, r9, #12
+	bl clearMario
+	ldr r0, =mario
+	str r9, [r0,#4]
+	bl drawMario
+	ldr r0, =0x1E7
+	cmp r9, r0
+	blt Block2Loop
+    ldr r0, =js1
+    mov r1, #1
+    str r1, [r0]
+    pop {r4-r10, lr}
+    mov r0, #13
+    mov pc, lr
+
+UnderBlock3:
+	ldr r0, =mario
+    ldr r4, [r0]
+    ldr r5, [r0,#4]
+    add r6, r4, #41
+    add r7, r5, #70
+    add r10, r4, #20
+    ldr r0, =0x2BC
+	cmp r10, r0 //middlex = marioleft + marioright / 2
+	blt UnderBlock2
+	ldr r0, =0x2E9
+	cmp r10, r0
+	bgt UnderDone
+	ldr r0, =0x1C3
+	cmp r5, r0
+	bne UnderDone
+	ldr r0, =0x2BC
+	ldr r1, =0x190
+	bl clearBox
+	ldr r0, =score
+	ldr r1, [r0]
+	add r1, r1, #50
+	str r1, [r0]
+    mov r9, r5
+Block3Loop:
+	add r9, r9, #12
+	bl clearMario
+	ldr r0, =mario
+	str r9, [r0,#4]
+	bl drawMario
+	ldr r0, =0x1E7
+	cmp r9, r0
+	blt Block3Loop
+    ldr r0, =js1
+    mov r1, #1
+    str r1, [r0]
+    pop {r4-r10, lr}
+    mov r0, #13
+    mov pc, lr
+	
+UnderDone:
+	pop {r4-r10, lr}
+	ldr r0, =js1
+	ldr r1, [r0]
+	mov r1, #0
+	str r1, [r0]
+	mov r0, #0
+	mov pc, lr
+
+.section .data
+.align 2
 
 
-LS1:
-        ldr r0, =block1
-        ldr r8, [r0]
-        ldr r9, [r0,#4]
-        add r1, r8, #45
-        add r2, r9, #45
-        cmp r6, r8
-        bne RS1
-        cmp r5, r2
-        bgt RS1
-        cmp r7, r9
-        blt RS1
-        pop {r4-r10, lr}
-        mov r0, #13
-        mov pc, lr
- 
-RS1:  
-        ldr r0, =block2
-        ldr r8, [r0]
-        ldr r9, [r0,#4]
-        add r1, r8, #45
-        add r2, r9, #45
-        cmp r4, r1
-        bne JU1
-        cmp r5, r2
-        bgt JU1
-        cmp r7, r9
-        blt JU1
-        pop {r4-r10, lr}
-        mov r0, #13
-        mov pc, lr
+block1state:    .int 0
 
-JU1:
-        ldr r0, =0x262
-        cmp r6, r0
-        blt JD1
-        ldr r0, =0x2E9
-        cmp r4, r0
-        bgt JD1
-        ldr r0, =0x14B
-        cmp r5, r0
-        blt D1D
-        ldr r0, =0x14B
-        cmp r5, r0
-        bgt BD1
-        ldr r0, =mario
-        ldr r1, =0x14B
-        bl clearMario
-        str r1, [r0,#4]
-        bl drawMario
-        ldr r0, =js1
-        mov r1, #1
-        str r1, [r0]
-JD1:
-        ldr r0, =0x262
-        cmp r6, r0
-        bge JD11
-        ldr r0, =0x2E9
-        cmp r4, r0
-        ble JD11
-        ldr r0, =0x1E7
-        mov r10, r0
-        cmp r5, r0
-        beq BD1
-        bl clearMario
-        ldr r0, =mario
-        ldr r2, =0x1E7
-        mov r5, r2
-        str r5, [r0,#4]
-        bl drawMario
-JD11:
-        pop {r4-r10, lr}
-        mov r0, #0
-        mov pc, lr
-BD1:
-        bl clearMario
-        bl drawMario
-        ldr r0, =block1
-        ldr r8, [r0]
-        ldr r9, [r0,#4]
-        add r1, r8, #45
-        add r2, r9, #45
-        add r10, r4, #21
-        ldr r1, =0x14B
-        cmp r5, r1
-        ble D1D
-        cmp r10, r8
-        blt EK1
-        cmp r10, r1
-        bgt CD1
-        ldr r0, =0x1C3
-        cmp r5, r0
-        bgt EK1
-        ldr r0, =block1
-        ldr r0, [r0]
-        ldr r1, =block1
-        ldr r1, [r1, #4]
-        bl clearBox
-        pop {r4-r10, lr}
-        mov r0, #13
-        mov pc, lr
-
-CD1:
-        ldr r0, =cblock
-        ldr r8, [r0]
-        ldr r9, [r0,#4]
-        add r1, r8, #45
-        add r2, r9, #45
-        add r10, r4, #21
-        cmp r10, r8
-        blt BD1
-        cmp r10, r1
-        bgt BD2
-        ldr r0, =0x1C3
-        cmp r5, r0
-        bgt EK1
-        ldr r0, =cblock
-        ldr r0, [r0]
-        ldr r1, =cblock
-        ldr r1, [r1, #4]
-        bl drawBlock
-        ldr r0, =coins
-        ldr r1, [r0]
-        add r1, r1, #1
-        str r1, [r0]
-        ldr r0, =score
-        ldr r1, [r0]
-        add r1, r1, #50
-        str r1, [r0]
-        pop {r4-r10, lr}
-        mov r0, #13
-        mov pc, lr
-BD2:
-        ldr r0, =block2
-        ldr r8, [r0]
-        ldr r9, [r0,#4]
-        add r1, r8, #45
-        add r2, r9, #45
-        add r10, r4, #21
-        cmp r10, r8
-        blt CD1
-        cmp r10, r1
-        bgt D1D
-        ldr r0, =0x1C3
-        cmp r5, r0
-        bgt EK1
-        ldr r0, =block2
-        ldr r0, [r0]
-        ldr r1, =block2
-        ldr r1, [r1, #4]
-        bl clearBox
-        pop {r4-r10, lr}
-        mov r0, #13
-        mov pc, lr
-EK1:
-        ldr r0, =shellEnemy
-        ldr r8, [r0]
-        ldr r9, [r0, #4]
-        add r1, r8, #31
-        add r2, r9, #50
-        cmp r4, r1
-        bgt D1D
-        cmp r6, r8
-        blt D1D
-        ldr r1, =0x1FD
-        cmp r7, r9
-        ble MK1
-        ldr r0, =mario
-        ldr r1, [r0, #8]
-        sub r1, r1, #1
-        str r1, [r0, #8]
-        //do check for game over, then display main screen 
-        b restart
-
-MK1:
-        ldr r1, =0x1FD
-        cmp r7, r1
-        bne D1D
-        ldr r8, =shellEnemy
-        ldr r0, [r8]
-        ldr r1, [r8, #4]
-        bl clearShell
-        ldr r0, =score
-        ldr r1, [r0]
-        add r1, r1, #100       
-        str r1, [r0]
-
-D1D:
-        ldr r0, =js1
-        mov r1, #0
-        str r1, [r0]
-        pop {r4-r10, lr}
-        mov pc, lr
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+block2state:    .int 0

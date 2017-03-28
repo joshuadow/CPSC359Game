@@ -108,19 +108,23 @@ jumpdown:
     //bl Detect2
     //cmp r1, #3
     //bl Detect3
+    bl _ReadSNES
+    ldr r9, =buttons
+    ldrb r10, [r9, #7]
+    cmp r10, #0
+    bleq UpRightPress
+    ldr r9, =buttons
+    ldrb r10, [r9, #6]
+    cmp r10, #0
+    bleq UpLeftPress
     cmp r6, r7
     blt jumpdown
-    b downex
-    bl Detect1
-    //cmp r1, #2
-    //bl Detect2
-    //cmp r1, #3
-    //bl Detect3
+
 .globl downex
  downex:
     pop {r4-r10,lr}
     bx lr
-
+.globl UpRightPress
 UpRightPress:
     push {r4-r10, lr}
     ldr r5, =mario
@@ -160,7 +164,7 @@ UscreenR:
 UdoneR:
     pop {r4-r10,lr}
     mov pc, lr
-
+.globl UpLeftPress
 UpLeftPress:
     push {r4-r10,lr}
     ldr r5, =mario

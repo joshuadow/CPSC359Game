@@ -89,12 +89,13 @@ jumpup:
     bleq UpLeftPress
     cmp r6, r8
     bge jumpup
+.globl jumpdown
 jumpdown:
     ldr r0, =js1
     ldr r0, [r0]
     cmp r0, #1
     beq downex
-    add r6, r6, #3
+    add r6, r6, #24
     bl clearMario
     str r6, [r5,#4]
     bl drawMario
@@ -117,7 +118,8 @@ jumpdown:
     ldrb r10, [r9, #6]
     cmp r10, #0
     bleq UpLeftPress
-    cmp r6, r7
+    ldr r0, =0x1E7
+    cmp r6, r0
     blt jumpdown
 
 .globl downex
@@ -218,6 +220,10 @@ drawL:
     bl clearMario
     str r6, [r5]
     bl drawMario
+    cmp r1, #1
+    bl Detect1
+    cmp r0, #13
+    beq jumpdown
     b donel
 screenL:
     bl updateScreenLeft
@@ -258,12 +264,6 @@ drawR:
     cmp r0, #13
     beq jumpdown
     bl drawMario
-    cmp r1, #1
-    bl Detect1
-    //cmp r1, #2
-    //bl Detect2
-    //cmp r1, #3
-    //bl Detect3
     b doneR
 screenR:
     bl updateScreenRight

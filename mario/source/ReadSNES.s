@@ -13,6 +13,7 @@ ReadSNES:
     cmp r10, r9
     bne skipUpdate
     bl updateMonsters
+    //bl marioFallDown
 skipUpdate:
     mov r1, #1                  //load bit to write to clock
     bl _WriteClock

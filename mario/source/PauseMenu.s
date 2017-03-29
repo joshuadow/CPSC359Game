@@ -92,6 +92,8 @@ PauseMenu:
                 str r2, [r1]
                 ldr r2, =0x1fb
                 str r2, [r1, #4]
+                mov r3, #0
+                str r3, [r1,#8]
 
                 ldr r1, =screenNumber
                 mov r2, #1
@@ -177,6 +179,10 @@ PauseMenu:
 
                 ldr r1, =score
                 mov r2, #0
+                str r2, [r1]
+
+                ldr r1, =state1
+                mov r2, #1
                 str r2, [r1]
 
         select1:

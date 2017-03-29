@@ -60,7 +60,7 @@ JPUPress:
     mov r6, r7
     sub r8, r7, #216 //max jump height
 jumpup:
-    sub r6, r6, #12  //jump height per frame
+    sub r6, r6, #24  //jump height per frame
     bl clearMario
     str r6, [r5,#4]
     bl drawMario
@@ -94,7 +94,7 @@ jumpdown:
     ldr r0, [r0]
     cmp r0, #1
     beq downex
-    add r6, r6, #12
+    add r6, r6, #3
     bl clearMario
     str r6, [r5,#4]
     bl drawMario
@@ -130,11 +130,11 @@ UpRightPress:
     ldr r5, =mario
     ldr r4, [r5]
 
-    ldr r7, =0x40b
+    ldr r7, =0x3D4
     add r6, r4, #10
     cmp r6, r7
     blt UdrawR
-    beq UscreenR
+    bge UscreenR
 
     ldr r7, =0x807
     cmp r6, r7
@@ -155,12 +155,14 @@ UdrawR:
     bl drawMario
     b UdoneR
 UscreenR:
-    bl updateScreen
-    bl clearMario
-    str r6, [r5]
-
-    //bl updateScreen
-    bl drawMario
+          bl updateScreenRight
+          bl clearMario
+          ldr r5, =mario
+          mov r4, #75
+          ldr r6, = 0x1e7
+          str r4, [r5]
+          str r6, [r5, #4]
+          bl drawMario
 UdoneR:
     pop {r4-r10,lr}
     mov pc, lr
@@ -169,10 +171,12 @@ UpLeftPress:
     push {r4-r10,lr}
     ldr r5, =mario
     ldr r4, [r5]
+
+    ldr r7, =0x4B
     sub r6, r4, #10
     cmp r6, #0
     bgt UdrawL
-    b Udonel
+    ble UscreenL
 UdrawL:
     bl clearMario
     str r6, [r5]
@@ -186,6 +190,15 @@ UdrawL:
     //bl Detect3
     bl drawMario
     b Udonel
+UscreenL:
+        bl updateScreenLeft
+        bl clearMario
+        ldr r5, =mario
+        ldr r4, = 0x3B5 //#949
+        ldr r6, = 0x1e7
+        str r4, [r5]
+        str r6, [r5, #4]
+        bl drawMario
 Udonel:
     pop {r4-r10, lr}
     mov pc, lr
@@ -195,24 +208,25 @@ JPLPress:
     push {r4-r10,lr}
     ldr r5, =mario
     ldr r4, [r5]
+
+    ldr r7, =0x4B
     sub r6, r4, #15
     cmp r6, #0
     bgt drawL
-    b donel
+    ble screenL
 drawL:
     bl clearMario
     str r6, [r5]
-    ldr r1, =screenNumber
-    ldr r1, [r1]
-    cmp r1, #1
-    bl Detect1
-    cmp r0, #13
-    beq jumpdown
-    //cmp r0, #1
-    //beq donel
-    //cmp r0, #2
-    //beq lifelost
-
+    bl drawMario
+    b donel
+screenL:
+    bl updateScreenLeft
+    bl clearMario
+    ldr r5, =mario
+    ldr r4, = 0x3B5 //#949
+    ldr r6, = 0x1e7
+    str r4, [r5]
+    str r6, [r5, #4]
     bl drawMario
 donel:
     pop {r4-r10, lr}
@@ -223,11 +237,11 @@ JPRPress:
     ldr r5, =mario
     ldr r4, [r5]
 
-    ldr r7, =0x40b
+    ldr r7, =0x3D4
     add r6, r4, #15
     cmp r6, r7
     blt drawR
-    beq screenR
+    bge screenR
 
     ldr r7, =0x807
     cmp r6, r7
@@ -252,11 +266,13 @@ drawR:
     //bl Detect3
     b doneR
 screenR:
-    bl updateScreen
+    bl updateScreenRight
     bl clearMario
-    str r6, [r5]
-
-    //bl updateScreen
+    ldr r5, =mario
+    mov r4, #75
+    ldr r6, = 0x1e7
+    str r4, [r5]
+    str r6, [r5, #4]
     bl drawMario
 doneR:
     pop {r4-r10,lr}

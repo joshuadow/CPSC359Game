@@ -5,7 +5,7 @@ PauseMenu:
           push {r5, r6, r7, r8, r9, r10, lr}
 
           ldr r9, =playingstatus
-          mov r10, #0
+          mov r10, #1
           str r10, [r9]
 
           ldr r1, =currentSelectionPause
@@ -189,7 +189,7 @@ PauseMenu:
                 cmp r5, r6
                 beq nG
                 ldr r1, =playingstatus
-                mov r2, #0
+                mov r2, #1
                 str r2, [r1]
                 b _start  //back to stary menu, need to reset all values
 
@@ -265,7 +265,7 @@ PauseMenu:
                           bl clearselectCoin
 
                           ldr r1, =playingstatus
-                          mov r2, #1
+                          mov r2, #0
                           str r2, [r1]
 
                           pop {r7, r8, lr}

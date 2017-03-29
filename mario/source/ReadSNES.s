@@ -9,7 +9,7 @@ ReadSNES:
 	push {r4-r10,lr}            //stores contents of registers
     ldr r10, =playingstatus
     ldr r10, [r10]
-    mov r9, #1
+    mov r9, #0
     cmp r10, r9
     bne skipUpdate
     bl updateMonsters

@@ -58,18 +58,24 @@ JPUPress:
     ldr r4, [r5]
     ldr r7, [r5,#4]
     mov r6, r7
-    sub r8, r7, #216 //max jump height
+    sub r8, r7, #180 //max jump height
+    ldr r0, =gravflag
+    mov r1, #0
+    str r1, [r0]
 jumpup:
-    sub r6, r6, #24  //jump height per frame
+    ldr r0, =gravflag
+    ldrb r0, [r0]
+    cmp r0, #1
+    beq jumpdone
+    sub r6, r6, #30  //jump height per frame
     bl clearMario
     str r6, [r5,#4]
-    bl drawMario
     ldr r1, =screenNumber
     ldr r1, [r1]
     cmp r1, #1
     bl Detect1
-    cmp r0, #13
-    beq jumpdown
+    bl drawMario
+
     //ldr r1, =screenNumber
     //ldr r1, [r1]
     //cmp r1, #2
@@ -89,43 +95,12 @@ jumpup:
     bleq UpLeftPress
     cmp r6, r8
     bge jumpup
-.globl jumpdown
-jumpdown:
-    ldr r0, =js1
-    ldr r0, [r0]
-    cmp r0, #1
-    beq downex
-    add r6, r6, #24
-    bl clearMario
-    str r6, [r5,#4]
-    bl drawMario
-    ldr r1, =screenNumber
-    ldr r1, [r1]
-    cmp r1, #1
-    bl Detect1
-    cmp r0, #13
-    beq jumpdown
-    //cmp r1, #2
-    //bl Detect2
-    //cmp r1, #3
-    //bl Detect3
-    bl _ReadSNES
-    ldr r9, =buttons
-    ldrb r10, [r9, #7]
-    cmp r10, #0
-    bleq UpRightPress
-    ldr r9, =buttons
-    ldrb r10, [r9, #6]
-    cmp r10, #0
-    bleq UpLeftPress
-    ldr r0, =0x1E7
-    cmp r6, r0
-    blt jumpdown
-
-.globl downex
- downex:
-    pop {r4-r10,lr}
-    bx lr
+jumpdone:
+    ldr r0, =gravflag
+    mov r1, #1
+    str r1, [r0]
+    pop {r4-r10, lr}
+    mov pc, lr
 .globl UpRightPress
 UpRightPress:
     push {r4-r10, lr}
@@ -219,11 +194,11 @@ JPLPress:
 drawL:
     bl clearMario
     str r6, [r5]
-    bl drawMario
+    ldr r1, =screenNumber
+    ldr r1, [r1]
     cmp r1, #1
     bl Detect1
-    cmp r0, #13
-    beq jumpdown
+    bl drawMario
     b donel
 screenL:
     bl updateScreenLeft
@@ -261,8 +236,6 @@ drawR:
     ldr r1, [r1]
     cmp r1, #1
     bl Detect1
-    cmp r0, #13
-    beq jumpdown
     bl drawMario
     b doneR
 screenR:

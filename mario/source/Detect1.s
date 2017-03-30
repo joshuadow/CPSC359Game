@@ -62,7 +62,7 @@ Block1:
     add r10, r4, #20
     ldr r0, =0x262 //Left side of block
     cmp r6, r0      
-    blt s1done //
+    blt Block1down //
     ldr r0, =0x28F
     cmp r4, r0
     bgt Block2
@@ -74,26 +74,23 @@ Block1:
     cmp r5, r0
     bge Block1Under
     b Block1Above
-
+Block1down:
+    ldr r0, =floor
+    ldr r1, =0x1E7
+    str r1, [r0]
+    b s1done
 Block1Above:
     bl drawMario
     ldr r0, =state1
     ldrb r0, [r0]
     cmp r0, #1
     bne BlockGround
-    ldr r0, =0x10F
-    cmp r5, r0
-    beq BlockBlock
     ldr r0, =0x14B
     cmp r5, r0
     blt s1done
     
 B1EQ:
-    ldr r0, =js1
-    mov r1, #1
-    str r1, [r0]
     pop {r4-r10, lr}
-    mov r0, #13
     mov pc, lr    
     
 
@@ -107,11 +104,7 @@ Block1Under:
     ldr r0, =0x1B7
     cmp r5, r0
     beq undernext
-    ldr r0, =js1
-    mov r1, #1
-    str r1, [r0]
     pop {r4-r10, lr}
-    mov r0, #0
     mov pc, lr       
 
 undernext:
@@ -155,9 +148,6 @@ Block2Above:
     ldrb r0, [r0]
     cmp r0, #1
     bne BlockGround
-    ldr r0, =0x11B
-    cmp r5, r0
-    beq BlockBlock
 B2Al:
     ldr r0, =mario
     ldr r4, [r0]
@@ -182,11 +172,7 @@ B2ALoop:
     ldr r0, =0x13F
     cmp r9, r0
     blt B2ALoop
-    ldr r0, =js1
-    mov r1, #1
-    str r1, [r0]
     pop {r4-r10, lr}
-    mov r0, #13
     mov pc, lr    
     
 
@@ -200,11 +186,7 @@ Block2Under:
     ldr r0, =0x1B7
     cmp r5, r0
     beq undernext2
-    ldr r0, =js1
-    mov r1, #1
-    str r1, [r0]
     pop {r4-r10, lr}
-    mov r0, #0
     mov pc, lr       
 
 undernext2:
@@ -220,48 +202,13 @@ undernext2:
     str r1, [r0]
     b BlockGround   
 
-BlockBlock:
-    ldr r0, =mario
-    ldr r4, [r0]
-    ldr r5, [r0,#4]
-    mov r9, r5
-B1BLoop:
-    add r9, r9, #24
-    bl clearMario
-    ldr r0, =mario
-    str r9, [r0,#4]
-    bl drawMario
-    bl _ReadSNES
-    ldr r0, =buttons
-    ldrb r1, [r0, #7]
-    cmp r1, #0
-    bleq UpRightPress
-    ldr r0, =buttons
-    ldrb r1, [r0, #6]
-    cmp r1, #0
-    bleq UpLeftPress
-    bl Detect1
-    ldr r0, =0x14B
-    cmp r9, r0
-    blt B1BLoop
-    ldr r0, =js1
-    mov r1, #1
-    str r1, [r0]
-    pop {r4-r10, lr}
-    mov r0, #13
-    mov pc, lr    
-
 
 BlockGround:
     ldr r0, =mario
     ldr r4, [r0]
     ldr r5, [r0,#4]
     mov r9, r5
-    ldr r0, =js1
-    mov r1, #0
-    str r1, [r0]
     pop {r4-r10, lr}
-    mov r0, #13
     mov pc, lr
 
 
@@ -269,11 +216,7 @@ BlockGround:
 
 
 s1done:
-    ldr r0, =js1
-    mov r1, #0
-    str r1, [r0]
     pop {r4-r10, lr}
-    mov r0, #0
     mov pc, lr       
 .section .data
 .align 4
@@ -284,3 +227,5 @@ state1: .int 1
 state2: .int 1
 .globl state3
 state3: .int 1
+.globl floor
+floor:  .int 487

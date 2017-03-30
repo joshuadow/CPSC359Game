@@ -8,16 +8,16 @@ Disassembly of section .init:
     8000:	ea0fe436 	b	4010e0 <main>
 
 00008004 <_StartScreen>:
-    8004:	ea0fe864 	b	40219c <StartScreen>
+    8004:	ea0fe868 	b	4021ac <StartScreen>
 
 00008008 <_UpdateSprites>:
-    8008:	ea0fe8bd 	b	402304 <UpdateSprites>
+    8008:	ea0fe8c1 	b	402314 <UpdateSprites>
 
 0000800c <_ButtonFunctions>:
-    800c:	ea0feb01 	b	402c18 <BPress>
+    800c:	ea0feb05 	b	402c28 <BPress>
 
 00008010 <_GameLoop>:
-    8010:	ea0febb4 	b	402ee8 <GameLoop>
+    8010:	ea0febb8 	b	402ef8 <GameLoop>
 
 Disassembly of section .text:
 
@@ -38,7 +38,7 @@ Disassembly of section .text:
   401114:	e10f0000 	mrs	r0, CPSR
   401118:	e3c00080 	bic	r0, r0, #128	; 0x80
   40111c:	e121f000 	msr	CPSR_c, r0
-  401120:	eb000400 	bl	402128 <_InitAll>
+  401120:	eb000404 	bl	402138 <_InitAll>
   401124:	ebf01bb6 	bl	8004 <_StartScreen>
 
 00401128 <nG>:
@@ -189,7 +189,7 @@ Disassembly of section .text:
   4012f0:	e5910000 	ldr	r0, [r1]
   4012f4:	e2400001 	sub	r0, r0, #1
   4012f8:	e5810000 	str	r0, [r1]
-  4012fc:	ea0004c5 	b	402618 <restart>
+  4012fc:	ea0004c9 	b	402628 <restart>
 
 00401300 <MK>:
   401300:	e59f03cc 	ldr	r0, [pc, #972]	; 4016d4 <s1done+0x8>
@@ -600,7 +600,7 @@ Disassembly of section .text:
   40185c:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
   401860:	eb000022 	bl	4018f0 <initializeBackground>
   401864:	eb000030 	bl	40192c <drawMario>
-  401868:	e59f17fc 	ldr	r1, [pc, #2044]	; 40206c <clear2draw1+0xcc>
+  401868:	e59f180c 	ldr	r1, [pc, #2060]	; 40207c <c2d1n+0x14>
   40186c:	e3a02000 	mov	r2, #0
   401870:	e5812000 	str	r2, [r1]
   401874:	e3a00064 	mov	r0, #100	; 0x64
@@ -609,27 +609,27 @@ Disassembly of section .text:
   401880:	e3a00f69 	mov	r0, #420	; 0x1a4
   401884:	e3a01014 	mov	r1, #20
   401888:	eb00004b 	bl	4019bc <drawCloud>
-  40188c:	e59f07dc 	ldr	r0, [pc, #2012]	; 402070 <clear2draw1+0xd0>
+  40188c:	e59f07ec 	ldr	r0, [pc, #2028]	; 402080 <c2d1n+0x18>
   401890:	e3a0101e 	mov	r1, #30
   401894:	eb000048 	bl	4019bc <drawCloud>
-  401898:	e59f07d4 	ldr	r0, [pc, #2004]	; 402074 <clear2draw1+0xd4>
+  401898:	e59f07e4 	ldr	r0, [pc, #2020]	; 402084 <c2d1n+0x1c>
   40189c:	e5900000 	ldr	r0, [r0]
-  4018a0:	e59f17cc 	ldr	r1, [pc, #1996]	; 402074 <clear2draw1+0xd4>
+  4018a0:	e59f17dc 	ldr	r1, [pc, #2012]	; 402084 <c2d1n+0x1c>
   4018a4:	e5911004 	ldr	r1, [r1, #4]
   4018a8:	eb00004c 	bl	4019e0 <drawBlock>
-  4018ac:	e59f07c4 	ldr	r0, [pc, #1988]	; 402078 <clear2draw1+0xd8>
+  4018ac:	e59f07d4 	ldr	r0, [pc, #2004]	; 402088 <c2d1n+0x20>
   4018b0:	e5900000 	ldr	r0, [r0]
-  4018b4:	e59f17bc 	ldr	r1, [pc, #1980]	; 402078 <clear2draw1+0xd8>
+  4018b4:	e59f17cc 	ldr	r1, [pc, #1996]	; 402088 <c2d1n+0x20>
   4018b8:	e5911004 	ldr	r1, [r1, #4]
   4018bc:	eb000050 	bl	401a04 <drawCoinBlock>
-  4018c0:	e59f07b4 	ldr	r0, [pc, #1972]	; 40207c <clear2draw1+0xdc>
+  4018c0:	e59f07c4 	ldr	r0, [pc, #1988]	; 40208c <c2d1n+0x24>
   4018c4:	e5900000 	ldr	r0, [r0]
-  4018c8:	e59f17ac 	ldr	r1, [pc, #1964]	; 40207c <clear2draw1+0xdc>
+  4018c8:	e59f17bc 	ldr	r1, [pc, #1980]	; 40208c <c2d1n+0x24>
   4018cc:	e5911004 	ldr	r1, [r1, #4]
   4018d0:	eb000042 	bl	4019e0 <drawBlock>
-  4018d4:	e59f07a4 	ldr	r0, [pc, #1956]	; 402080 <clear2draw1+0xe0>
+  4018d4:	e59f07b4 	ldr	r0, [pc, #1972]	; 402090 <c2d1n+0x28>
   4018d8:	e5900000 	ldr	r0, [r0]
-  4018dc:	e59f179c 	ldr	r1, [pc, #1948]	; 402080 <clear2draw1+0xe0>
+  4018dc:	e59f17ac 	ldr	r1, [pc, #1964]	; 402090 <c2d1n+0x28>
   4018e0:	e5911004 	ldr	r1, [r1, #4]
   4018e4:	eb000061 	bl	401a70 <drawShell>
   4018e8:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
@@ -639,13 +639,13 @@ Disassembly of section .text:
   4018f0:	e92d4180 	push	{r7, r8, lr}
   4018f4:	e3a00000 	mov	r0, #0
   4018f8:	e3a01000 	mov	r1, #0
-  4018fc:	e59f2780 	ldr	r2, [pc, #1920]	; 402084 <clear2draw1+0xe4>
+  4018fc:	e59f2790 	ldr	r2, [pc, #1936]	; 402094 <c2d1n+0x2c>
   401900:	e3a07b01 	mov	r7, #1024	; 0x400
   401904:	e3a08c03 	mov	r8, #768	; 0x300
   401908:	eb0000df 	bl	401c8c <drawPicture>
   40190c:	e3a00000 	mov	r0, #0
-  401910:	e59f1770 	ldr	r1, [pc, #1904]	; 402088 <clear2draw1+0xe8>
-  401914:	e59f2770 	ldr	r2, [pc, #1904]	; 40208c <clear2draw1+0xec>
+  401910:	e59f1780 	ldr	r1, [pc, #1920]	; 402098 <c2d1n+0x30>
+  401914:	e59f2780 	ldr	r2, [pc, #1920]	; 40209c <c2d1n+0x34>
   401918:	e3a07b01 	mov	r7, #1024	; 0x400
   40191c:	e3a08c03 	mov	r8, #768	; 0x300
   401920:	eb0000d9 	bl	401c8c <drawPicture>
@@ -654,24 +654,24 @@ Disassembly of section .text:
 
 0040192c <drawMario>:
   40192c:	e92d4780 	push	{r7, r8, r9, sl, lr}
-  401930:	e59f0758 	ldr	r0, [pc, #1880]	; 402090 <clear2draw1+0xf0>
+  401930:	e59f0768 	ldr	r0, [pc, #1896]	; 4020a0 <c2d1n+0x38>
   401934:	e5900000 	ldr	r0, [r0]
-  401938:	e59f1750 	ldr	r1, [pc, #1872]	; 402090 <clear2draw1+0xf0>
+  401938:	e59f1760 	ldr	r1, [pc, #1888]	; 4020a0 <c2d1n+0x38>
   40193c:	e5911004 	ldr	r1, [r1, #4]
-  401940:	e59f9748 	ldr	r9, [pc, #1864]	; 402090 <clear2draw1+0xf0>
+  401940:	e59f9758 	ldr	r9, [pc, #1880]	; 4020a0 <c2d1n+0x38>
   401944:	e5999008 	ldr	r9, [r9, #8]
   401948:	e3590001 	cmp	r9, #1
   40194c:	0a000002 	beq	40195c <running2>
-  401950:	e59f273c 	ldr	r2, [pc, #1852]	; 402094 <clear2draw1+0xf4>
+  401950:	e59f274c 	ldr	r2, [pc, #1868]	; 4020a4 <c2d1n+0x3c>
   401954:	e3a0a001 	mov	sl, #1
   401958:	ea000001 	b	401964 <SkipOtherMario>
 
 0040195c <running2>:
-  40195c:	e59f2734 	ldr	r2, [pc, #1844]	; 402098 <clear2draw1+0xf8>
+  40195c:	e59f2744 	ldr	r2, [pc, #1860]	; 4020a8 <c2d1n+0x40>
   401960:	e3a0a000 	mov	sl, #0
 
 00401964 <SkipOtherMario>:
-  401964:	e59f9724 	ldr	r9, [pc, #1828]	; 402090 <clear2draw1+0xf0>
+  401964:	e59f9734 	ldr	r9, [pc, #1844]	; 4020a0 <c2d1n+0x38>
   401968:	e589a008 	str	sl, [r9, #8]
   40196c:	e3a07029 	mov	r7, #41	; 0x29
   401970:	e0877000 	add	r7, r7, r0
@@ -683,11 +683,11 @@ Disassembly of section .text:
 
 00401988 <clearMario>:
   401988:	e92d4180 	push	{r7, r8, lr}
-  40198c:	e59f06fc 	ldr	r0, [pc, #1788]	; 402090 <clear2draw1+0xf0>
+  40198c:	e59f070c 	ldr	r0, [pc, #1804]	; 4020a0 <c2d1n+0x38>
   401990:	e5900000 	ldr	r0, [r0]
-  401994:	e59f16f4 	ldr	r1, [pc, #1780]	; 402090 <clear2draw1+0xf0>
+  401994:	e59f1704 	ldr	r1, [pc, #1796]	; 4020a0 <c2d1n+0x38>
   401998:	e5911004 	ldr	r1, [r1, #4]
-  40199c:	e59f26f8 	ldr	r2, [pc, #1784]	; 40209c <clear2draw1+0xfc>
+  40199c:	e59f2708 	ldr	r2, [pc, #1800]	; 4020ac <c2d1n+0x44>
   4019a0:	e3a07029 	mov	r7, #41	; 0x29
   4019a4:	e0877000 	add	r7, r7, r0
   4019a8:	e3a08046 	mov	r8, #70	; 0x46
@@ -698,7 +698,7 @@ Disassembly of section .text:
 
 004019bc <drawCloud>:
   4019bc:	e92d4180 	push	{r7, r8, lr}
-  4019c0:	e59f26d8 	ldr	r2, [pc, #1752]	; 4020a0 <clear2draw1+0x100>
+  4019c0:	e59f26e8 	ldr	r2, [pc, #1768]	; 4020b0 <c2d1n+0x48>
   4019c4:	e3a07086 	mov	r7, #134	; 0x86
   4019c8:	e0877000 	add	r7, r7, r0
   4019cc:	e3a08064 	mov	r8, #100	; 0x64
@@ -709,7 +709,7 @@ Disassembly of section .text:
 
 004019e0 <drawBlock>:
   4019e0:	e92d4180 	push	{r7, r8, lr}
-  4019e4:	e59f26b8 	ldr	r2, [pc, #1720]	; 4020a4 <clear2draw1+0x104>
+  4019e4:	e59f26c8 	ldr	r2, [pc, #1736]	; 4020b4 <c2d1n+0x4c>
   4019e8:	e3a0702d 	mov	r7, #45	; 0x2d
   4019ec:	e0877000 	add	r7, r7, r0
   4019f0:	e3a0802d 	mov	r8, #45	; 0x2d
@@ -720,7 +720,7 @@ Disassembly of section .text:
 
 00401a04 <drawCoinBlock>:
   401a04:	e92d4180 	push	{r7, r8, lr}
-  401a08:	e59f2698 	ldr	r2, [pc, #1688]	; 4020a8 <clear2draw1+0x108>
+  401a08:	e59f26a8 	ldr	r2, [pc, #1704]	; 4020b8 <c2d1n+0x50>
   401a0c:	e3a0702d 	mov	r7, #45	; 0x2d
   401a10:	e0877000 	add	r7, r7, r0
   401a14:	e3a0802d 	mov	r8, #45	; 0x2d
@@ -731,7 +731,7 @@ Disassembly of section .text:
 
 00401a28 <drawPipe>:
   401a28:	e92d4180 	push	{r7, r8, lr}
-  401a2c:	e59f2678 	ldr	r2, [pc, #1656]	; 4020ac <clear2draw1+0x10c>
+  401a2c:	e59f2688 	ldr	r2, [pc, #1672]	; 4020bc <c2d1n+0x54>
   401a30:	e3a07053 	mov	r7, #83	; 0x53
   401a34:	e0877000 	add	r7, r7, r0
   401a38:	e3a08055 	mov	r8, #85	; 0x55
@@ -742,7 +742,7 @@ Disassembly of section .text:
 
 00401a4c <drawDragon>:
   401a4c:	e92d4180 	push	{r7, r8, lr}
-  401a50:	e59f2658 	ldr	r2, [pc, #1624]	; 4020b0 <clear2draw1+0x110>
+  401a50:	e59f2668 	ldr	r2, [pc, #1640]	; 4020c0 <c2d1n+0x58>
   401a54:	e3a07027 	mov	r7, #39	; 0x27
   401a58:	e0877000 	add	r7, r7, r0
   401a5c:	e3a0803c 	mov	r8, #60	; 0x3c
@@ -753,7 +753,7 @@ Disassembly of section .text:
 
 00401a70 <drawShell>:
   401a70:	e92d4180 	push	{r7, r8, lr}
-  401a74:	e59f2638 	ldr	r2, [pc, #1592]	; 4020b4 <clear2draw1+0x114>
+  401a74:	e59f2648 	ldr	r2, [pc, #1608]	; 4020c4 <c2d1n+0x5c>
   401a78:	e3a0701f 	mov	r7, #31
   401a7c:	e0877000 	add	r7, r7, r0
   401a80:	e3a08032 	mov	r8, #50	; 0x32
@@ -764,10 +764,10 @@ Disassembly of section .text:
 
 00401a94 <drawCastle>:
   401a94:	e92d4180 	push	{r7, r8, lr}
-  401a98:	e59f2618 	ldr	r2, [pc, #1560]	; 4020b8 <clear2draw1+0x118>
-  401a9c:	e59f7618 	ldr	r7, [pc, #1560]	; 4020bc <clear2draw1+0x11c>
+  401a98:	e59f2628 	ldr	r2, [pc, #1576]	; 4020c8 <c2d1n+0x60>
+  401a9c:	e59f7628 	ldr	r7, [pc, #1576]	; 4020cc <c2d1n+0x64>
   401aa0:	e0877000 	add	r7, r7, r0
-  401aa4:	e59f8610 	ldr	r8, [pc, #1552]	; 4020bc <clear2draw1+0x11c>
+  401aa4:	e59f8620 	ldr	r8, [pc, #1568]	; 4020cc <c2d1n+0x64>
   401aa8:	e0888001 	add	r8, r8, r1
   401aac:	eb000076 	bl	401c8c <drawPicture>
   401ab0:	e8bd4180 	pop	{r7, r8, lr}
@@ -775,7 +775,7 @@ Disassembly of section .text:
 
 00401ab8 <drawPit>:
   401ab8:	e92d4180 	push	{r7, r8, lr}
-  401abc:	e59f25fc 	ldr	r2, [pc, #1532]	; 4020c0 <clear2draw1+0x120>
+  401abc:	e59f260c 	ldr	r2, [pc, #1548]	; 4020d0 <c2d1n+0x68>
   401ac0:	e3a0707e 	mov	r7, #126	; 0x7e
   401ac4:	e0877000 	add	r7, r7, r0
   401ac8:	e3a080d3 	mov	r8, #211	; 0xd3
@@ -786,7 +786,7 @@ Disassembly of section .text:
 
 00401adc <drawBowser>:
   401adc:	e92d4180 	push	{r7, r8, lr}
-  401ae0:	e59f25dc 	ldr	r2, [pc, #1500]	; 4020c4 <clear2draw1+0x124>
+  401ae0:	e59f25ec 	ldr	r2, [pc, #1516]	; 4020d4 <c2d1n+0x6c>
   401ae4:	e3a07045 	mov	r7, #69	; 0x45
   401ae8:	e0877000 	add	r7, r7, r0
   401aec:	e3a08068 	mov	r8, #104	; 0x68
@@ -797,7 +797,7 @@ Disassembly of section .text:
 
 00401b00 <clearBowser>:
   401b00:	e92d4180 	push	{r7, r8, lr}
-  401b04:	e59f25bc 	ldr	r2, [pc, #1468]	; 4020c8 <clear2draw1+0x128>
+  401b04:	e59f25cc 	ldr	r2, [pc, #1484]	; 4020d8 <c2d1n+0x70>
   401b08:	e3a07045 	mov	r7, #69	; 0x45
   401b0c:	e0877000 	add	r7, r7, r0
   401b10:	e3a08068 	mov	r8, #104	; 0x68
@@ -808,7 +808,7 @@ Disassembly of section .text:
 
 00401b24 <clearCastle>:
   401b24:	e92d4180 	push	{r7, r8, lr}
-  401b28:	e59f259c 	ldr	r2, [pc, #1436]	; 4020cc <clear2draw1+0x12c>
+  401b28:	e59f25ac 	ldr	r2, [pc, #1452]	; 4020dc <c2d1n+0x74>
   401b2c:	e3a07045 	mov	r7, #69	; 0x45
   401b30:	e0877000 	add	r7, r7, r0
   401b34:	e3a08068 	mov	r8, #104	; 0x68
@@ -819,7 +819,7 @@ Disassembly of section .text:
 
 00401b48 <clearBox>:
   401b48:	e92d4180 	push	{r7, r8, lr}
-  401b4c:	e59f257c 	ldr	r2, [pc, #1404]	; 4020d0 <clear2draw1+0x130>
+  401b4c:	e59f258c 	ldr	r2, [pc, #1420]	; 4020e0 <c2d1n+0x78>
   401b50:	e3a0702d 	mov	r7, #45	; 0x2d
   401b54:	e0877000 	add	r7, r7, r0
   401b58:	e3a0802d 	mov	r8, #45	; 0x2d
@@ -830,7 +830,7 @@ Disassembly of section .text:
 
 00401b6c <clearDragon>:
   401b6c:	e92d4180 	push	{r7, r8, lr}
-  401b70:	e59f255c 	ldr	r2, [pc, #1372]	; 4020d4 <clear2draw1+0x134>
+  401b70:	e59f256c 	ldr	r2, [pc, #1388]	; 4020e4 <c2d1n+0x7c>
   401b74:	e3a07027 	mov	r7, #39	; 0x27
   401b78:	e0877000 	add	r7, r7, r0
   401b7c:	e3a0803c 	mov	r8, #60	; 0x3c
@@ -841,7 +841,7 @@ Disassembly of section .text:
 
 00401b90 <clearPipe>:
   401b90:	e92d4180 	push	{r7, r8, lr}
-  401b94:	e59f253c 	ldr	r2, [pc, #1340]	; 4020d8 <clear2draw1+0x138>
+  401b94:	e59f254c 	ldr	r2, [pc, #1356]	; 4020e8 <c2d1n+0x80>
   401b98:	e3a07053 	mov	r7, #83	; 0x53
   401b9c:	e0877000 	add	r7, r7, r0
   401ba0:	e3a08055 	mov	r8, #85	; 0x55
@@ -852,7 +852,7 @@ Disassembly of section .text:
 
 00401bb4 <clearShell>:
   401bb4:	e92d4180 	push	{r7, r8, lr}
-  401bb8:	e59f251c 	ldr	r2, [pc, #1308]	; 4020dc <clear2draw1+0x13c>
+  401bb8:	e59f252c 	ldr	r2, [pc, #1324]	; 4020ec <c2d1n+0x84>
   401bbc:	e3a0701f 	mov	r7, #31
   401bc0:	e0877000 	add	r7, r7, r0
   401bc4:	e3a08032 	mov	r8, #50	; 0x32
@@ -863,7 +863,7 @@ Disassembly of section .text:
 
 00401bd8 <drawselectCoin>:
   401bd8:	e92d4180 	push	{r7, r8, lr}
-  401bdc:	e59f24fc 	ldr	r2, [pc, #1276]	; 4020e0 <clear2draw1+0x140>
+  401bdc:	e59f250c 	ldr	r2, [pc, #1292]	; 4020f0 <c2d1n+0x88>
   401be0:	e3a07029 	mov	r7, #41	; 0x29
   401be4:	e0877000 	add	r7, r7, r0
   401be8:	e3a0803f 	mov	r8, #63	; 0x3f
@@ -874,7 +874,7 @@ Disassembly of section .text:
 
 00401bfc <clearselectCoin>:
   401bfc:	e92d4180 	push	{r7, r8, lr}
-  401c00:	e59f24dc 	ldr	r2, [pc, #1244]	; 4020e4 <clear2draw1+0x144>
+  401c00:	e59f24ec 	ldr	r2, [pc, #1260]	; 4020f4 <c2d1n+0x8c>
   401c04:	e3a07029 	mov	r7, #41	; 0x29
   401c08:	e0877000 	add	r7, r7, r0
   401c0c:	e3a0803f 	mov	r8, #63	; 0x3f
@@ -885,7 +885,7 @@ Disassembly of section .text:
 
 00401c20 <drawPauseSelectCoin>:
   401c20:	e92d4180 	push	{r7, r8, lr}
-  401c24:	e59f24bc 	ldr	r2, [pc, #1212]	; 4020e8 <clear2draw1+0x148>
+  401c24:	e59f24cc 	ldr	r2, [pc, #1228]	; 4020f8 <c2d1n+0x90>
   401c28:	e3a07012 	mov	r7, #18
   401c2c:	e0877000 	add	r7, r7, r0
   401c30:	e3a0801c 	mov	r8, #28
@@ -896,7 +896,7 @@ Disassembly of section .text:
 
 00401c44 <clearPauseSelectCoinGreen>:
   401c44:	e92d4180 	push	{r7, r8, lr}
-  401c48:	e59f249c 	ldr	r2, [pc, #1180]	; 4020ec <clear2draw1+0x14c>
+  401c48:	e59f24ac 	ldr	r2, [pc, #1196]	; 4020fc <c2d1n+0x94>
   401c4c:	e3a07012 	mov	r7, #18
   401c50:	e0877000 	add	r7, r7, r0
   401c54:	e3a0801c 	mov	r8, #28
@@ -907,7 +907,7 @@ Disassembly of section .text:
 
 00401c68 <clearPauseSelectCoinBlue>:
   401c68:	e92d4180 	push	{r7, r8, lr}
-  401c6c:	e59f247c 	ldr	r2, [pc, #1148]	; 4020f0 <clear2draw1+0x150>
+  401c6c:	e59f248c 	ldr	r2, [pc, #1164]	; 402100 <c2d1n+0x98>
   401c70:	e3a07012 	mov	r7, #18
   401c74:	e0877000 	add	r7, r7, r0
   401c78:	e3a0801c 	mov	r8, #28
@@ -929,7 +929,7 @@ Disassembly of section .text:
   401ca8:	e1a00004 	mov	r0, r4
   401cac:	e1a01005 	mov	r1, r5
   401cb0:	e0d620b2 	ldrh	r2, [r6], #2
-  401cb4:	e59f9438 	ldr	r9, [pc, #1080]	; 4020f4 <clear2draw1+0x154>
+  401cb4:	e59f9448 	ldr	r9, [pc, #1096]	; 402104 <c2d1n+0x9c>
   401cb8:	e1520009 	cmp	r2, r9
   401cbc:	0a000000 	beq	401cc4 <skip>
   401cc0:	eb000008 	bl	401ce8 <DrawPixel>
@@ -949,7 +949,7 @@ Disassembly of section .text:
   401ce8:	e52d4004 	push	{r4}		; (str r4, [sp, #-4]!)
   401cec:	e0804501 	add	r4, r0, r1, lsl #10
   401cf0:	e1a04084 	lsl	r4, r4, #1
-  401cf4:	e59f03fc 	ldr	r0, [pc, #1020]	; 4020f8 <clear2draw1+0x158>
+  401cf4:	e59f040c 	ldr	r0, [pc, #1036]	; 402108 <c2d1n+0xa0>
   401cf8:	e5900000 	ldr	r0, [r0]
   401cfc:	e18020b4 	strh	r2, [r0, r4]
   401d00:	e49d4004 	pop	{r4}		; (ldr r4, [sp], #4)
@@ -957,7 +957,7 @@ Disassembly of section .text:
 
 00401d08 <updateScreenRight>:
   401d08:	e92d4070 	push	{r4, r5, r6, lr}
-  401d0c:	e59f43e8 	ldr	r4, [pc, #1000]	; 4020fc <clear2draw1+0x15c>
+  401d0c:	e59f43f8 	ldr	r4, [pc, #1016]	; 40210c <c2d1n+0xa4>
   401d10:	e5944000 	ldr	r4, [r4]
   401d14:	e3540001 	cmp	r4, #1
   401d18:	0b00000c 	bleq	401d50 <clear1draw2>
@@ -968,7 +968,7 @@ Disassembly of section .text:
 
 00401d2c <updateScreenLeft>:
   401d2c:	e92d4070 	push	{r4, r5, r6, lr}
-  401d30:	e59f43c4 	ldr	r4, [pc, #964]	; 4020fc <clear2draw1+0x15c>
+  401d30:	e59f43d4 	ldr	r4, [pc, #980]	; 40210c <c2d1n+0xa4>
   401d34:	e5944000 	ldr	r4, [r4]
   401d38:	e3540003 	cmp	r4, #3
   401d3c:	0b000076 	bleq	401f1c <clear3draw2>
@@ -979,28 +979,28 @@ Disassembly of section .text:
 
 00401d50 <clear1draw2>:
   401d50:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-  401d54:	e59f0318 	ldr	r0, [pc, #792]	; 402074 <clear2draw1+0xd4>
+  401d54:	e59f0328 	ldr	r0, [pc, #808]	; 402084 <c2d1n+0x1c>
   401d58:	e5900000 	ldr	r0, [r0]
-  401d5c:	e59f1310 	ldr	r1, [pc, #784]	; 402074 <clear2draw1+0xd4>
+  401d5c:	e59f1320 	ldr	r1, [pc, #800]	; 402084 <c2d1n+0x1c>
   401d60:	e5911004 	ldr	r1, [r1, #4]
   401d64:	ebffff77 	bl	401b48 <clearBox>
-  401d68:	e59f0308 	ldr	r0, [pc, #776]	; 402078 <clear2draw1+0xd8>
+  401d68:	e59f0318 	ldr	r0, [pc, #792]	; 402088 <c2d1n+0x20>
   401d6c:	e5900000 	ldr	r0, [r0]
-  401d70:	e59f1300 	ldr	r1, [pc, #768]	; 402078 <clear2draw1+0xd8>
+  401d70:	e59f1310 	ldr	r1, [pc, #784]	; 402088 <c2d1n+0x20>
   401d74:	e5911004 	ldr	r1, [r1, #4]
   401d78:	ebffff72 	bl	401b48 <clearBox>
-  401d7c:	e59f02f8 	ldr	r0, [pc, #760]	; 40207c <clear2draw1+0xdc>
+  401d7c:	e59f0308 	ldr	r0, [pc, #776]	; 40208c <c2d1n+0x24>
   401d80:	e5900000 	ldr	r0, [r0]
-  401d84:	e59f12f0 	ldr	r1, [pc, #752]	; 40207c <clear2draw1+0xdc>
+  401d84:	e59f1300 	ldr	r1, [pc, #768]	; 40208c <c2d1n+0x24>
   401d88:	e5911004 	ldr	r1, [r1, #4]
   401d8c:	ebffff6d 	bl	401b48 <clearBox>
-  401d90:	e59f02e8 	ldr	r0, [pc, #744]	; 402080 <clear2draw1+0xe0>
+  401d90:	e59f02f8 	ldr	r0, [pc, #760]	; 402090 <c2d1n+0x28>
   401d94:	e5900000 	ldr	r0, [r0]
-  401d98:	e59f12e0 	ldr	r1, [pc, #736]	; 402080 <clear2draw1+0xe0>
+  401d98:	e59f12f0 	ldr	r1, [pc, #752]	; 402090 <c2d1n+0x28>
   401d9c:	e5911004 	ldr	r1, [r1, #4]
   401da0:	ebffff83 	bl	401bb4 <clearShell>
   401da4:	e3a02002 	mov	r2, #2
-  401da8:	e59f334c 	ldr	r3, [pc, #844]	; 4020fc <clear2draw1+0x15c>
+  401da8:	e59f335c 	ldr	r3, [pc, #860]	; 40210c <c2d1n+0xa4>
   401dac:	e5832000 	str	r2, [r3]
   401db0:	eb000021 	bl	401e3c <initializeScreenTwo>
   401db4:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
@@ -1008,33 +1008,33 @@ Disassembly of section .text:
 
 00401dbc <clear2draw3>:
   401dbc:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-  401dc0:	e59f0338 	ldr	r0, [pc, #824]	; 402100 <clear2draw1+0x160>
+  401dc0:	e59f0348 	ldr	r0, [pc, #840]	; 402110 <c2d1n+0xa8>
   401dc4:	e5900000 	ldr	r0, [r0]
-  401dc8:	e59f1330 	ldr	r1, [pc, #816]	; 402100 <clear2draw1+0x160>
+  401dc8:	e59f1340 	ldr	r1, [pc, #832]	; 402110 <c2d1n+0xa8>
   401dcc:	e5911004 	ldr	r1, [r1, #4]
   401dd0:	ebffff6e 	bl	401b90 <clearPipe>
-  401dd4:	e59f0328 	ldr	r0, [pc, #808]	; 402104 <clear2draw1+0x164>
+  401dd4:	e59f0338 	ldr	r0, [pc, #824]	; 402114 <c2d1n+0xac>
   401dd8:	e5900000 	ldr	r0, [r0]
-  401ddc:	e59f1320 	ldr	r1, [pc, #800]	; 402104 <clear2draw1+0x164>
+  401ddc:	e59f1330 	ldr	r1, [pc, #816]	; 402114 <c2d1n+0xac>
   401de0:	e5911004 	ldr	r1, [r1, #4]
   401de4:	ebffff69 	bl	401b90 <clearPipe>
-  401de8:	e59f0318 	ldr	r0, [pc, #792]	; 402108 <clear2draw1+0x168>
+  401de8:	e59f0328 	ldr	r0, [pc, #808]	; 402118 <c2d1n+0xb0>
   401dec:	e5900000 	ldr	r0, [r0]
-  401df0:	e59f1310 	ldr	r1, [pc, #784]	; 402108 <clear2draw1+0x168>
+  401df0:	e59f1320 	ldr	r1, [pc, #800]	; 402118 <c2d1n+0xb0>
   401df4:	e5911004 	ldr	r1, [r1, #4]
   401df8:	ebffff5b 	bl	401b6c <clearDragon>
-  401dfc:	e59f0308 	ldr	r0, [pc, #776]	; 40210c <clear2draw1+0x16c>
+  401dfc:	e59f0318 	ldr	r0, [pc, #792]	; 40211c <c2d1n+0xb4>
   401e00:	e5900000 	ldr	r0, [r0]
-  401e04:	e59f1300 	ldr	r1, [pc, #768]	; 40210c <clear2draw1+0x16c>
+  401e04:	e59f1310 	ldr	r1, [pc, #784]	; 40211c <c2d1n+0xb4>
   401e08:	e5911004 	ldr	r1, [r1, #4]
   401e0c:	ebffff4d 	bl	401b48 <clearBox>
-  401e10:	e59f02f8 	ldr	r0, [pc, #760]	; 402110 <clear2draw1+0x170>
+  401e10:	e59f0308 	ldr	r0, [pc, #776]	; 402120 <c2d1n+0xb8>
   401e14:	e5900000 	ldr	r0, [r0]
-  401e18:	e59f12f0 	ldr	r1, [pc, #752]	; 402110 <clear2draw1+0x170>
+  401e18:	e59f1300 	ldr	r1, [pc, #768]	; 402120 <c2d1n+0xb8>
   401e1c:	e5911004 	ldr	r1, [r1, #4]
   401e20:	ebffff48 	bl	401b48 <clearBox>
   401e24:	e3a02003 	mov	r2, #3
-  401e28:	e59f32cc 	ldr	r3, [pc, #716]	; 4020fc <clear2draw1+0x15c>
+  401e28:	e59f32dc 	ldr	r3, [pc, #732]	; 40210c <c2d1n+0xa4>
   401e2c:	e5832000 	str	r2, [r3]
   401e30:	eb00001d 	bl	401eac <initializeScreenThree>
   401e34:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
@@ -1042,29 +1042,29 @@ Disassembly of section .text:
 
 00401e3c <initializeScreenTwo>:
   401e3c:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-  401e40:	e59f02b8 	ldr	r0, [pc, #696]	; 402100 <clear2draw1+0x160>
+  401e40:	e59f02c8 	ldr	r0, [pc, #712]	; 402110 <c2d1n+0xa8>
   401e44:	e5900000 	ldr	r0, [r0]
-  401e48:	e59f12b0 	ldr	r1, [pc, #688]	; 402100 <clear2draw1+0x160>
+  401e48:	e59f12c0 	ldr	r1, [pc, #704]	; 402110 <c2d1n+0xa8>
   401e4c:	e5911004 	ldr	r1, [r1, #4]
   401e50:	ebfffef4 	bl	401a28 <drawPipe>
-  401e54:	e59f02a8 	ldr	r0, [pc, #680]	; 402104 <clear2draw1+0x164>
+  401e54:	e59f02b8 	ldr	r0, [pc, #696]	; 402114 <c2d1n+0xac>
   401e58:	e5900000 	ldr	r0, [r0]
-  401e5c:	e59f12a0 	ldr	r1, [pc, #672]	; 402104 <clear2draw1+0x164>
+  401e5c:	e59f12b0 	ldr	r1, [pc, #688]	; 402114 <c2d1n+0xac>
   401e60:	e5911004 	ldr	r1, [r1, #4]
   401e64:	ebfffeef 	bl	401a28 <drawPipe>
-  401e68:	e59f0298 	ldr	r0, [pc, #664]	; 402108 <clear2draw1+0x168>
+  401e68:	e59f02a8 	ldr	r0, [pc, #680]	; 402118 <c2d1n+0xb0>
   401e6c:	e5900000 	ldr	r0, [r0]
-  401e70:	e59f1290 	ldr	r1, [pc, #656]	; 402108 <clear2draw1+0x168>
+  401e70:	e59f12a0 	ldr	r1, [pc, #672]	; 402118 <c2d1n+0xb0>
   401e74:	e5911004 	ldr	r1, [r1, #4]
   401e78:	ebfffef3 	bl	401a4c <drawDragon>
-  401e7c:	e59f0288 	ldr	r0, [pc, #648]	; 40210c <clear2draw1+0x16c>
+  401e7c:	e59f0298 	ldr	r0, [pc, #664]	; 40211c <c2d1n+0xb4>
   401e80:	e5900000 	ldr	r0, [r0]
-  401e84:	e59f1280 	ldr	r1, [pc, #640]	; 40210c <clear2draw1+0x16c>
+  401e84:	e59f1290 	ldr	r1, [pc, #656]	; 40211c <c2d1n+0xb4>
   401e88:	e5911004 	ldr	r1, [r1, #4]
   401e8c:	ebfffedc 	bl	401a04 <drawCoinBlock>
-  401e90:	e59f0278 	ldr	r0, [pc, #632]	; 402110 <clear2draw1+0x170>
+  401e90:	e59f0288 	ldr	r0, [pc, #648]	; 402120 <c2d1n+0xb8>
   401e94:	e5900000 	ldr	r0, [r0]
-  401e98:	e59f1270 	ldr	r1, [pc, #624]	; 402110 <clear2draw1+0x170>
+  401e98:	e59f1280 	ldr	r1, [pc, #640]	; 402120 <c2d1n+0xb8>
   401e9c:	e5911004 	ldr	r1, [r1, #4]
   401ea0:	ebfffed7 	bl	401a04 <drawCoinBlock>
   401ea4:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
@@ -1072,29 +1072,29 @@ Disassembly of section .text:
 
 00401eac <initializeScreenThree>:
   401eac:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-  401eb0:	e59f025c 	ldr	r0, [pc, #604]	; 402114 <clear2draw1+0x174>
+  401eb0:	e59f026c 	ldr	r0, [pc, #620]	; 402124 <c2d1n+0xbc>
   401eb4:	e5900000 	ldr	r0, [r0]
-  401eb8:	e59f1254 	ldr	r1, [pc, #596]	; 402114 <clear2draw1+0x174>
+  401eb8:	e59f1264 	ldr	r1, [pc, #612]	; 402124 <c2d1n+0xbc>
   401ebc:	e5911004 	ldr	r1, [r1, #4]
   401ec0:	ebfffef3 	bl	401a94 <drawCastle>
-  401ec4:	e59f024c 	ldr	r0, [pc, #588]	; 402118 <clear2draw1+0x178>
+  401ec4:	e59f025c 	ldr	r0, [pc, #604]	; 402128 <c2d1n+0xc0>
   401ec8:	e5900000 	ldr	r0, [r0]
-  401ecc:	e59f1244 	ldr	r1, [pc, #580]	; 402118 <clear2draw1+0x178>
+  401ecc:	e59f1254 	ldr	r1, [pc, #596]	; 402128 <c2d1n+0xc0>
   401ed0:	e5911004 	ldr	r1, [r1, #4]
   401ed4:	ebffff00 	bl	401adc <drawBowser>
-  401ed8:	e59f023c 	ldr	r0, [pc, #572]	; 40211c <clear2draw1+0x17c>
+  401ed8:	e59f024c 	ldr	r0, [pc, #588]	; 40212c <c2d1n+0xc4>
   401edc:	e5900000 	ldr	r0, [r0]
-  401ee0:	e59f1234 	ldr	r1, [pc, #564]	; 40211c <clear2draw1+0x17c>
+  401ee0:	e59f1244 	ldr	r1, [pc, #580]	; 40212c <c2d1n+0xc4>
   401ee4:	e5911004 	ldr	r1, [r1, #4]
   401ee8:	ebfffef2 	bl	401ab8 <drawPit>
-  401eec:	e59f022c 	ldr	r0, [pc, #556]	; 402120 <clear2draw1+0x180>
+  401eec:	e59f023c 	ldr	r0, [pc, #572]	; 402130 <c2d1n+0xc8>
   401ef0:	e5900000 	ldr	r0, [r0]
-  401ef4:	e59f1224 	ldr	r1, [pc, #548]	; 402120 <clear2draw1+0x180>
+  401ef4:	e59f1234 	ldr	r1, [pc, #564]	; 402130 <c2d1n+0xc8>
   401ef8:	e5911004 	ldr	r1, [r1, #4]
   401efc:	ebfffeb7 	bl	4019e0 <drawBlock>
-  401f00:	e59f021c 	ldr	r0, [pc, #540]	; 402124 <clear2draw1+0x184>
+  401f00:	e59f022c 	ldr	r0, [pc, #556]	; 402134 <c2d1n+0xcc>
   401f04:	e5900000 	ldr	r0, [r0]
-  401f08:	e59f1214 	ldr	r1, [pc, #532]	; 402124 <clear2draw1+0x184>
+  401f08:	e59f1224 	ldr	r1, [pc, #548]	; 402134 <c2d1n+0xcc>
   401f0c:	e5911004 	ldr	r1, [r1, #4]
   401f10:	ebfffeb2 	bl	4019e0 <drawBlock>
   401f14:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
@@ -1102,34 +1102,34 @@ Disassembly of section .text:
 
 00401f1c <clear3draw2>:
   401f1c:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-  401f20:	e59f01ec 	ldr	r0, [pc, #492]	; 402114 <clear2draw1+0x174>
+  401f20:	e59f01fc 	ldr	r0, [pc, #508]	; 402124 <c2d1n+0xbc>
   401f24:	e5900000 	ldr	r0, [r0]
-  401f28:	e59f11e4 	ldr	r1, [pc, #484]	; 402114 <clear2draw1+0x174>
+  401f28:	e59f11f4 	ldr	r1, [pc, #500]	; 402124 <c2d1n+0xbc>
   401f2c:	e5911004 	ldr	r1, [r1, #4]
   401f30:	ebfffefb 	bl	401b24 <clearCastle>
-  401f34:	e59f01dc 	ldr	r0, [pc, #476]	; 402118 <clear2draw1+0x178>
+  401f34:	e59f01ec 	ldr	r0, [pc, #492]	; 402128 <c2d1n+0xc0>
   401f38:	e5900000 	ldr	r0, [r0]
-  401f3c:	e59f11d4 	ldr	r1, [pc, #468]	; 402118 <clear2draw1+0x178>
+  401f3c:	e59f11e4 	ldr	r1, [pc, #484]	; 402128 <c2d1n+0xc0>
   401f40:	e5911004 	ldr	r1, [r1, #4]
   401f44:	ebfffeed 	bl	401b00 <clearBowser>
   401f48:	e3a00000 	mov	r0, #0
-  401f4c:	e59f1134 	ldr	r1, [pc, #308]	; 402088 <clear2draw1+0xe8>
-  401f50:	e59f2134 	ldr	r2, [pc, #308]	; 40208c <clear2draw1+0xec>
+  401f4c:	e59f1144 	ldr	r1, [pc, #324]	; 402098 <c2d1n+0x30>
+  401f50:	e59f2144 	ldr	r2, [pc, #324]	; 40209c <c2d1n+0x34>
   401f54:	e3a07b01 	mov	r7, #1024	; 0x400
   401f58:	e3a08c03 	mov	r8, #768	; 0x300
   401f5c:	ebffff4a 	bl	401c8c <drawPicture>
-  401f60:	e59f01b8 	ldr	r0, [pc, #440]	; 402120 <clear2draw1+0x180>
+  401f60:	e59f01c8 	ldr	r0, [pc, #456]	; 402130 <c2d1n+0xc8>
   401f64:	e5900000 	ldr	r0, [r0]
-  401f68:	e59f11b0 	ldr	r1, [pc, #432]	; 402120 <clear2draw1+0x180>
+  401f68:	e59f11c0 	ldr	r1, [pc, #448]	; 402130 <c2d1n+0xc8>
   401f6c:	e5911004 	ldr	r1, [r1, #4]
   401f70:	ebfffef4 	bl	401b48 <clearBox>
-  401f74:	e59f01a8 	ldr	r0, [pc, #424]	; 402124 <clear2draw1+0x184>
+  401f74:	e59f01b8 	ldr	r0, [pc, #440]	; 402134 <c2d1n+0xcc>
   401f78:	e5900000 	ldr	r0, [r0]
-  401f7c:	e59f11a0 	ldr	r1, [pc, #416]	; 402124 <clear2draw1+0x184>
+  401f7c:	e59f11b0 	ldr	r1, [pc, #432]	; 402134 <c2d1n+0xcc>
   401f80:	e5911004 	ldr	r1, [r1, #4]
   401f84:	ebfffeef 	bl	401b48 <clearBox>
   401f88:	e3a02002 	mov	r2, #2
-  401f8c:	e59f3168 	ldr	r3, [pc, #360]	; 4020fc <clear2draw1+0x15c>
+  401f8c:	e59f3178 	ldr	r3, [pc, #376]	; 40210c <c2d1n+0xa4>
   401f90:	e5832000 	str	r2, [r3]
   401f94:	ebffffa8 	bl	401e3c <initializeScreenTwo>
   401f98:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
@@ -1137,1162 +1137,1168 @@ Disassembly of section .text:
 
 00401fa0 <clear2draw1>:
   401fa0:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-  401fa4:	e59f0154 	ldr	r0, [pc, #340]	; 402100 <clear2draw1+0x160>
+  401fa4:	e59f0164 	ldr	r0, [pc, #356]	; 402110 <c2d1n+0xa8>
   401fa8:	e5900000 	ldr	r0, [r0]
-  401fac:	e59f114c 	ldr	r1, [pc, #332]	; 402100 <clear2draw1+0x160>
+  401fac:	e59f115c 	ldr	r1, [pc, #348]	; 402110 <c2d1n+0xa8>
   401fb0:	e5911004 	ldr	r1, [r1, #4]
   401fb4:	ebfffef5 	bl	401b90 <clearPipe>
-  401fb8:	e59f0144 	ldr	r0, [pc, #324]	; 402104 <clear2draw1+0x164>
+  401fb8:	e59f0154 	ldr	r0, [pc, #340]	; 402114 <c2d1n+0xac>
   401fbc:	e5900000 	ldr	r0, [r0]
-  401fc0:	e59f113c 	ldr	r1, [pc, #316]	; 402104 <clear2draw1+0x164>
+  401fc0:	e59f114c 	ldr	r1, [pc, #332]	; 402114 <c2d1n+0xac>
   401fc4:	e5911004 	ldr	r1, [r1, #4]
   401fc8:	ebfffef0 	bl	401b90 <clearPipe>
-  401fcc:	e59f0134 	ldr	r0, [pc, #308]	; 402108 <clear2draw1+0x168>
+  401fcc:	e59f0144 	ldr	r0, [pc, #324]	; 402118 <c2d1n+0xb0>
   401fd0:	e5900000 	ldr	r0, [r0]
-  401fd4:	e59f112c 	ldr	r1, [pc, #300]	; 402108 <clear2draw1+0x168>
+  401fd4:	e59f113c 	ldr	r1, [pc, #316]	; 402118 <c2d1n+0xb0>
   401fd8:	e5911004 	ldr	r1, [r1, #4]
   401fdc:	ebfffee2 	bl	401b6c <clearDragon>
-  401fe0:	e59f0124 	ldr	r0, [pc, #292]	; 40210c <clear2draw1+0x16c>
+  401fe0:	e59f0134 	ldr	r0, [pc, #308]	; 40211c <c2d1n+0xb4>
   401fe4:	e5900000 	ldr	r0, [r0]
-  401fe8:	e59f111c 	ldr	r1, [pc, #284]	; 40210c <clear2draw1+0x16c>
+  401fe8:	e59f112c 	ldr	r1, [pc, #300]	; 40211c <c2d1n+0xb4>
   401fec:	e5911004 	ldr	r1, [r1, #4]
   401ff0:	ebfffed4 	bl	401b48 <clearBox>
-  401ff4:	e59f0114 	ldr	r0, [pc, #276]	; 402110 <clear2draw1+0x170>
+  401ff4:	e59f0124 	ldr	r0, [pc, #292]	; 402120 <c2d1n+0xb8>
   401ff8:	e5900000 	ldr	r0, [r0]
-  401ffc:	e59f110c 	ldr	r1, [pc, #268]	; 402110 <clear2draw1+0x170>
+  401ffc:	e59f111c 	ldr	r1, [pc, #284]	; 402120 <c2d1n+0xb8>
   402000:	e5911004 	ldr	r1, [r1, #4]
   402004:	ebfffecf 	bl	401b48 <clearBox>
-  402008:	e59f0064 	ldr	r0, [pc, #100]	; 402074 <clear2draw1+0xd4>
+  402008:	e59f0074 	ldr	r0, [pc, #116]	; 402084 <c2d1n+0x1c>
   40200c:	e5900000 	ldr	r0, [r0]
-  402010:	e59f105c 	ldr	r1, [pc, #92]	; 402074 <clear2draw1+0xd4>
+  402010:	e59f106c 	ldr	r1, [pc, #108]	; 402084 <c2d1n+0x1c>
   402014:	e5911004 	ldr	r1, [r1, #4]
   402018:	ebfffe70 	bl	4019e0 <drawBlock>
-  40201c:	e59f0054 	ldr	r0, [pc, #84]	; 402078 <clear2draw1+0xd8>
+  40201c:	e59f0064 	ldr	r0, [pc, #100]	; 402088 <c2d1n+0x20>
   402020:	e5900000 	ldr	r0, [r0]
-  402024:	e59f104c 	ldr	r1, [pc, #76]	; 402078 <clear2draw1+0xd8>
+  402024:	e59f105c 	ldr	r1, [pc, #92]	; 402088 <c2d1n+0x20>
   402028:	e5911004 	ldr	r1, [r1, #4]
   40202c:	ebfffe74 	bl	401a04 <drawCoinBlock>
-  402030:	e59f0044 	ldr	r0, [pc, #68]	; 40207c <clear2draw1+0xdc>
+  402030:	e59f0054 	ldr	r0, [pc, #84]	; 40208c <c2d1n+0x24>
   402034:	e5900000 	ldr	r0, [r0]
-  402038:	e59f103c 	ldr	r1, [pc, #60]	; 40207c <clear2draw1+0xdc>
+  402038:	e59f104c 	ldr	r1, [pc, #76]	; 40208c <c2d1n+0x24>
   40203c:	e5911004 	ldr	r1, [r1, #4]
   402040:	ebfffe66 	bl	4019e0 <drawBlock>
-  402044:	e59f0034 	ldr	r0, [pc, #52]	; 402080 <clear2draw1+0xe0>
-  402048:	e5900000 	ldr	r0, [r0]
-  40204c:	e59f102c 	ldr	r1, [pc, #44]	; 402080 <clear2draw1+0xe0>
-  402050:	e5911004 	ldr	r1, [r1, #4]
-  402054:	ebfffe85 	bl	401a70 <drawShell>
-  402058:	e3a02001 	mov	r2, #1
-  40205c:	e59f3098 	ldr	r3, [pc, #152]	; 4020fc <clear2draw1+0x15c>
-  402060:	e5832000 	str	r2, [r3]
-  402064:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
-  402068:	e1a0f00e 	mov	pc, lr
-  40206c:	00009198 	.word	0x00009198
-  402070:	000002ee 	.word	0x000002ee
-  402074:	00009138 	.word	0x00009138
-  402078:	00009158 	.word	0x00009158
-  40207c:	00009140 	.word	0x00009140
-  402080:	00009128 	.word	0x00009128
-  402084:	000729d0 	.word	0x000729d0
-  402088:	0000022d 	.word	0x0000022d
-  40208c:	000091d0 	.word	0x000091d0
-  402090:	00009110 	.word	0x00009110
-  402094:	001f403c 	.word	0x001f403c
-  402098:	001f29d0 	.word	0x001f29d0
-  40209c:	001fdefc 	.word	0x001fdefc
-  4020a0:	001f56a8 	.word	0x001f56a8
-  4020a4:	001fcf2a 	.word	0x001fcf2a
-  4020a8:	001fbf58 	.word	0x001fbf58
-  4020ac:	0020053a 	.word	0x0020053a
-  4020b0:	00203c58 	.word	0x00203c58
-  4020b4:	00204ea0 	.word	0x00204ea0
-  4020b8:	0020a422 	.word	0x0020a422
-  4020bc:	00000166 	.word	0x00000166
-  4020c0:	00248d6a 	.word	0x00248d6a
-  4020c4:	00255d1e 	.word	0x00255d1e
-  4020c8:	0025d576 	.word	0x0025d576
-  4020cc:	0025d576 	.word	0x0025d576
-  4020d0:	001ff568 	.word	0x001ff568
-  4020d4:	00205abc 	.word	0x00205abc
-  4020d8:	00206d04 	.word	0x00206d04
-  4020dc:	0025952e 	.word	0x0025952e
-  4020e0:	0025a14a 	.word	0x0025a14a
-  4020e4:	0025b578 	.word	0x0025b578
-  4020e8:	0025c9a6 	.word	0x0025c9a6
-  4020ec:	0025cd96 	.word	0x0025cd96
-  4020f0:	0025d186 	.word	0x0025d186
-  4020f4:	0000643f 	.word	0x0000643f
-  4020f8:	00009100 	.word	0x00009100
-  4020fc:	00009134 	.word	0x00009134
-  402100:	00009170 	.word	0x00009170
-  402104:	00009178 	.word	0x00009178
-  402108:	0000911c 	.word	0x0000911c
-  40210c:	00009160 	.word	0x00009160
-  402110:	00009168 	.word	0x00009168
-  402114:	00009180 	.word	0x00009180
-  402118:	00009188 	.word	0x00009188
-  40211c:	00009190 	.word	0x00009190
-  402120:	00009148 	.word	0x00009148
-  402124:	00009150 	.word	0x00009150
+  402044:	e59f0044 	ldr	r0, [pc, #68]	; 402090 <c2d1n+0x28>
+  402048:	e5900008 	ldr	r0, [r0, #8]
+  40204c:	e3500001 	cmp	r0, #1
+  402050:	0a000004 	beq	402068 <c2d1n>
+  402054:	e59f0034 	ldr	r0, [pc, #52]	; 402090 <c2d1n+0x28>
+  402058:	e5900000 	ldr	r0, [r0]
+  40205c:	e59f102c 	ldr	r1, [pc, #44]	; 402090 <c2d1n+0x28>
+  402060:	e5911004 	ldr	r1, [r1, #4]
+  402064:	ebfffe81 	bl	401a70 <drawShell>
 
-00402128 <_InitAll>:
-  402128:	eaffffff 	b	40212c <InitClock>
+00402068 <c2d1n>:
+  402068:	e3a02001 	mov	r2, #1
+  40206c:	e59f3098 	ldr	r3, [pc, #152]	; 40210c <c2d1n+0xa4>
+  402070:	e5832000 	str	r2, [r3]
+  402074:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
+  402078:	e1a0f00e 	mov	pc, lr
+  40207c:	00009198 	.word	0x00009198
+  402080:	000002ee 	.word	0x000002ee
+  402084:	00009138 	.word	0x00009138
+  402088:	00009158 	.word	0x00009158
+  40208c:	00009140 	.word	0x00009140
+  402090:	00009128 	.word	0x00009128
+  402094:	000729d0 	.word	0x000729d0
+  402098:	0000022d 	.word	0x0000022d
+  40209c:	000091d0 	.word	0x000091d0
+  4020a0:	00009110 	.word	0x00009110
+  4020a4:	001f403c 	.word	0x001f403c
+  4020a8:	001f29d0 	.word	0x001f29d0
+  4020ac:	001fdefc 	.word	0x001fdefc
+  4020b0:	001f56a8 	.word	0x001f56a8
+  4020b4:	001fcf2a 	.word	0x001fcf2a
+  4020b8:	001fbf58 	.word	0x001fbf58
+  4020bc:	0020053a 	.word	0x0020053a
+  4020c0:	00203c58 	.word	0x00203c58
+  4020c4:	00204ea0 	.word	0x00204ea0
+  4020c8:	0020a422 	.word	0x0020a422
+  4020cc:	00000166 	.word	0x00000166
+  4020d0:	00248d6a 	.word	0x00248d6a
+  4020d4:	00255d1e 	.word	0x00255d1e
+  4020d8:	0025d576 	.word	0x0025d576
+  4020dc:	0025d576 	.word	0x0025d576
+  4020e0:	001ff568 	.word	0x001ff568
+  4020e4:	00205abc 	.word	0x00205abc
+  4020e8:	00206d04 	.word	0x00206d04
+  4020ec:	0025952e 	.word	0x0025952e
+  4020f0:	0025a14a 	.word	0x0025a14a
+  4020f4:	0025b578 	.word	0x0025b578
+  4020f8:	0025c9a6 	.word	0x0025c9a6
+  4020fc:	0025cd96 	.word	0x0025cd96
+  402100:	0025d186 	.word	0x0025d186
+  402104:	0000643f 	.word	0x0000643f
+  402108:	00009100 	.word	0x00009100
+  40210c:	00009134 	.word	0x00009134
+  402110:	00009170 	.word	0x00009170
+  402114:	00009178 	.word	0x00009178
+  402118:	0000911c 	.word	0x0000911c
+  40211c:	00009160 	.word	0x00009160
+  402120:	00009168 	.word	0x00009168
+  402124:	00009180 	.word	0x00009180
+  402128:	00009188 	.word	0x00009188
+  40212c:	00009190 	.word	0x00009190
+  402130:	00009148 	.word	0x00009148
+  402134:	00009150 	.word	0x00009150
 
-0040212c <InitClock>:
-  40212c:	e59f0060 	ldr	r0, [pc, #96]	; 402194 <InitData+0x20>
-  402130:	e5901000 	ldr	r1, [r0]
-  402134:	e3a02007 	mov	r2, #7
-  402138:	e1a02182 	lsl	r2, r2, #3
-  40213c:	e1c11002 	bic	r1, r1, r2
-  402140:	e3a03001 	mov	r3, #1
-  402144:	e1a03183 	lsl	r3, r3, #3
-  402148:	e1811003 	orr	r1, r1, r3
-  40214c:	e5801000 	str	r1, [r0]
+00402138 <_InitAll>:
+  402138:	eaffffff 	b	40213c <InitClock>
 
-00402150 <InitLatch>:
-  402150:	e59f0040 	ldr	r0, [pc, #64]	; 402198 <InitData+0x24>
-  402154:	e5901000 	ldr	r1, [r0]
-  402158:	e3a02007 	mov	r2, #7
-  40215c:	e1a02d82 	lsl	r2, r2, #27
-  402160:	e1c11002 	bic	r1, r1, r2
-  402164:	e3a03001 	mov	r3, #1
-  402168:	e1a03d83 	lsl	r3, r3, #27
-  40216c:	e1811003 	orr	r1, r1, r3
-  402170:	e5801000 	str	r1, [r0]
+0040213c <InitClock>:
+  40213c:	e59f0060 	ldr	r0, [pc, #96]	; 4021a4 <InitData+0x20>
+  402140:	e5901000 	ldr	r1, [r0]
+  402144:	e3a02007 	mov	r2, #7
+  402148:	e1a02182 	lsl	r2, r2, #3
+  40214c:	e1c11002 	bic	r1, r1, r2
+  402150:	e3a03001 	mov	r3, #1
+  402154:	e1a03183 	lsl	r3, r3, #3
+  402158:	e1811003 	orr	r1, r1, r3
+  40215c:	e5801000 	str	r1, [r0]
 
-00402174 <InitData>:
-  402174:	e59f0018 	ldr	r0, [pc, #24]	; 402194 <InitData+0x20>
-  402178:	e5901000 	ldr	r1, [r0]
-  40217c:	e3a02007 	mov	r2, #7
-  402180:	e1c11002 	bic	r1, r1, r2
-  402184:	e3a03001 	mov	r3, #1
-  402188:	e0833001 	add	r3, r3, r1
-  40218c:	e5801000 	str	r1, [r0]
-  402190:	e12fff1e 	bx	lr
-  402194:	3f200004 	.word	0x3f200004
-  402198:	3f200000 	.word	0x3f200000
+00402160 <InitLatch>:
+  402160:	e59f0040 	ldr	r0, [pc, #64]	; 4021a8 <InitData+0x24>
+  402164:	e5901000 	ldr	r1, [r0]
+  402168:	e3a02007 	mov	r2, #7
+  40216c:	e1a02d82 	lsl	r2, r2, #27
+  402170:	e1c11002 	bic	r1, r1, r2
+  402174:	e3a03001 	mov	r3, #1
+  402178:	e1a03d83 	lsl	r3, r3, #27
+  40217c:	e1811003 	orr	r1, r1, r3
+  402180:	e5801000 	str	r1, [r0]
 
-0040219c <StartScreen>:
-  40219c:	e92d47e0 	push	{r5, r6, r7, r8, r9, sl, lr}
-  4021a0:	ebfffd6a 	bl	401750 <InitFrameBuffer>
-  4021a4:	e3a00000 	mov	r0, #0
-  4021a8:	e3a01000 	mov	r1, #0
-  4021ac:	e59f2100 	ldr	r2, [pc, #256]	; 4022b4 <Down+0x40>
-  4021b0:	e3a07b01 	mov	r7, #1024	; 0x400
-  4021b4:	e3a08c03 	mov	r8, #768	; 0x300
-  4021b8:	ebfffeb3 	bl	401c8c <drawPicture>
-  4021bc:	e59f00f4 	ldr	r0, [pc, #244]	; 4022b8 <Down+0x44>
-  4021c0:	e5900000 	ldr	r0, [r0]
-  4021c4:	e59f10ec 	ldr	r1, [pc, #236]	; 4022b8 <Down+0x44>
-  4021c8:	e5911004 	ldr	r1, [r1, #4]
-  4021cc:	ebfffe81 	bl	401bd8 <drawselectCoin>
+00402184 <InitData>:
+  402184:	e59f0018 	ldr	r0, [pc, #24]	; 4021a4 <InitData+0x20>
+  402188:	e5901000 	ldr	r1, [r0]
+  40218c:	e3a02007 	mov	r2, #7
+  402190:	e1c11002 	bic	r1, r1, r2
+  402194:	e3a03001 	mov	r3, #1
+  402198:	e0833001 	add	r3, r3, r1
+  40219c:	e5801000 	str	r1, [r0]
+  4021a0:	e12fff1e 	bx	lr
+  4021a4:	3f200004 	.word	0x3f200004
+  4021a8:	3f200000 	.word	0x3f200000
 
-004021d0 <startScreenLoop>:
-  4021d0:	eb000263 	bl	402b64 <_ReadSNES>
-  4021d4:	e59f90e0 	ldr	r9, [pc, #224]	; 4022bc <Down+0x48>
-  4021d8:	e5d9a004 	ldrb	sl, [r9, #4]
-  4021dc:	e35a0000 	cmp	sl, #0
-  4021e0:	0b000013 	bleq	402234 <Up>
-  4021e4:	e59f90d0 	ldr	r9, [pc, #208]	; 4022bc <Down+0x48>
-  4021e8:	e5d9a005 	ldrb	sl, [r9, #5]
+004021ac <StartScreen>:
+  4021ac:	e92d47e0 	push	{r5, r6, r7, r8, r9, sl, lr}
+  4021b0:	ebfffd66 	bl	401750 <InitFrameBuffer>
+  4021b4:	e3a00000 	mov	r0, #0
+  4021b8:	e3a01000 	mov	r1, #0
+  4021bc:	e59f2100 	ldr	r2, [pc, #256]	; 4022c4 <Down+0x40>
+  4021c0:	e3a07b01 	mov	r7, #1024	; 0x400
+  4021c4:	e3a08c03 	mov	r8, #768	; 0x300
+  4021c8:	ebfffeaf 	bl	401c8c <drawPicture>
+  4021cc:	e59f00f4 	ldr	r0, [pc, #244]	; 4022c8 <Down+0x44>
+  4021d0:	e5900000 	ldr	r0, [r0]
+  4021d4:	e59f10ec 	ldr	r1, [pc, #236]	; 4022c8 <Down+0x44>
+  4021d8:	e5911004 	ldr	r1, [r1, #4]
+  4021dc:	ebfffe7d 	bl	401bd8 <drawselectCoin>
+
+004021e0 <startScreenLoop>:
+  4021e0:	eb000263 	bl	402b74 <_ReadSNES>
+  4021e4:	e59f90e0 	ldr	r9, [pc, #224]	; 4022cc <Down+0x48>
+  4021e8:	e5d9a004 	ldrb	sl, [r9, #4]
   4021ec:	e35a0000 	cmp	sl, #0
-  4021f0:	0b00001f 	bleq	402274 <Down>
-  4021f4:	e59f90c0 	ldr	r9, [pc, #192]	; 4022bc <Down+0x48>
-  4021f8:	e5d9a008 	ldrb	sl, [r9, #8]
+  4021f0:	0b000013 	bleq	402244 <Up>
+  4021f4:	e59f90d0 	ldr	r9, [pc, #208]	; 4022cc <Down+0x48>
+  4021f8:	e5d9a005 	ldrb	sl, [r9, #5]
   4021fc:	e35a0000 	cmp	sl, #0
-  402200:	0a000000 	beq	402208 <select>
-  402204:	eafffff1 	b	4021d0 <startScreenLoop>
+  402200:	0b00001f 	bleq	402284 <Down>
+  402204:	e59f90c0 	ldr	r9, [pc, #192]	; 4022cc <Down+0x48>
+  402208:	e5d9a008 	ldrb	sl, [r9, #8]
+  40220c:	e35a0000 	cmp	sl, #0
+  402210:	0a000000 	beq	402218 <select>
+  402214:	eafffff1 	b	4021e0 <startScreenLoop>
 
-00402208 <select>:
-  402208:	e3a06001 	mov	r6, #1
-  40220c:	e59f50ac 	ldr	r5, [pc, #172]	; 4022c0 <Down+0x4c>
-  402210:	e5955000 	ldr	r5, [r5]
-  402214:	e1550006 	cmp	r5, r6
-  402218:	0a000000 	beq	402220 <done>
-  40221c:	1afffbc4 	bne	401134 <hang>
+00402218 <select>:
+  402218:	e3a06001 	mov	r6, #1
+  40221c:	e59f50ac 	ldr	r5, [pc, #172]	; 4022d0 <Down+0x4c>
+  402220:	e5955000 	ldr	r5, [r5]
+  402224:	e1550006 	cmp	r5, r6
+  402228:	0a000000 	beq	402230 <done>
+  40222c:	1afffbc0 	bne	401134 <hang>
 
-00402220 <done>:
-  402220:	e59fa09c 	ldr	sl, [pc, #156]	; 4022c4 <Down+0x50>
-  402224:	e3a09001 	mov	r9, #1
-  402228:	e58a9000 	str	r9, [sl]
-  40222c:	e8bd47e0 	pop	{r5, r6, r7, r8, r9, sl, lr}
-  402230:	e1a0f00e 	mov	pc, lr
+00402230 <done>:
+  402230:	e59fa09c 	ldr	sl, [pc, #156]	; 4022d4 <Down+0x50>
+  402234:	e3a09001 	mov	r9, #1
+  402238:	e58a9000 	str	r9, [sl]
+  40223c:	e8bd47e0 	pop	{r5, r6, r7, r8, r9, sl, lr}
+  402240:	e1a0f00e 	mov	pc, lr
 
-00402234 <Up>:
-  402234:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-  402238:	e59f0088 	ldr	r0, [pc, #136]	; 4022c8 <Down+0x54>
-  40223c:	e5900000 	ldr	r0, [r0]
-  402240:	e59f1080 	ldr	r1, [pc, #128]	; 4022c8 <Down+0x54>
-  402244:	e5911004 	ldr	r1, [r1, #4]
-  402248:	ebfffe6b 	bl	401bfc <clearselectCoin>
-  40224c:	e59f0064 	ldr	r0, [pc, #100]	; 4022b8 <Down+0x44>
-  402250:	e5900000 	ldr	r0, [r0]
-  402254:	e59f105c 	ldr	r1, [pc, #92]	; 4022b8 <Down+0x44>
-  402258:	e5911004 	ldr	r1, [r1, #4]
-  40225c:	ebfffe5d 	bl	401bd8 <drawselectCoin>
-  402260:	e59f2058 	ldr	r2, [pc, #88]	; 4022c0 <Down+0x4c>
-  402264:	e3a03001 	mov	r3, #1
-  402268:	e5823000 	str	r3, [r2]
-  40226c:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
-  402270:	e1a0f00e 	mov	pc, lr
+00402244 <Up>:
+  402244:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+  402248:	e59f0088 	ldr	r0, [pc, #136]	; 4022d8 <Down+0x54>
+  40224c:	e5900000 	ldr	r0, [r0]
+  402250:	e59f1080 	ldr	r1, [pc, #128]	; 4022d8 <Down+0x54>
+  402254:	e5911004 	ldr	r1, [r1, #4]
+  402258:	ebfffe67 	bl	401bfc <clearselectCoin>
+  40225c:	e59f0064 	ldr	r0, [pc, #100]	; 4022c8 <Down+0x44>
+  402260:	e5900000 	ldr	r0, [r0]
+  402264:	e59f105c 	ldr	r1, [pc, #92]	; 4022c8 <Down+0x44>
+  402268:	e5911004 	ldr	r1, [r1, #4]
+  40226c:	ebfffe59 	bl	401bd8 <drawselectCoin>
+  402270:	e59f2058 	ldr	r2, [pc, #88]	; 4022d0 <Down+0x4c>
+  402274:	e3a03001 	mov	r3, #1
+  402278:	e5823000 	str	r3, [r2]
+  40227c:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
+  402280:	e1a0f00e 	mov	pc, lr
 
-00402274 <Down>:
-  402274:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-  402278:	e59f0038 	ldr	r0, [pc, #56]	; 4022b8 <Down+0x44>
-  40227c:	e5900000 	ldr	r0, [r0]
-  402280:	e59f1030 	ldr	r1, [pc, #48]	; 4022b8 <Down+0x44>
-  402284:	e5911004 	ldr	r1, [r1, #4]
-  402288:	ebfffe5b 	bl	401bfc <clearselectCoin>
-  40228c:	e59f0034 	ldr	r0, [pc, #52]	; 4022c8 <Down+0x54>
-  402290:	e5900000 	ldr	r0, [r0]
-  402294:	e59f102c 	ldr	r1, [pc, #44]	; 4022c8 <Down+0x54>
-  402298:	e5911004 	ldr	r1, [r1, #4]
-  40229c:	ebfffe4d 	bl	401bd8 <drawselectCoin>
-  4022a0:	e59f2018 	ldr	r2, [pc, #24]	; 4022c0 <Down+0x4c>
-  4022a4:	e3a03000 	mov	r3, #0
-  4022a8:	e5823000 	str	r3, [r2]
-  4022ac:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
-  4022b0:	e1a0f00e 	mov	pc, lr
-  4022b4:	0025d578 	.word	0x0025d578
-  4022b8:	000091a4 	.word	0x000091a4
-  4022bc:	00009080 	.word	0x00009080
-  4022c0:	0000919c 	.word	0x0000919c
-  4022c4:	00009198 	.word	0x00009198
-  4022c8:	000091ac 	.word	0x000091ac
+00402284 <Down>:
+  402284:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+  402288:	e59f0038 	ldr	r0, [pc, #56]	; 4022c8 <Down+0x44>
+  40228c:	e5900000 	ldr	r0, [r0]
+  402290:	e59f1030 	ldr	r1, [pc, #48]	; 4022c8 <Down+0x44>
+  402294:	e5911004 	ldr	r1, [r1, #4]
+  402298:	ebfffe57 	bl	401bfc <clearselectCoin>
+  40229c:	e59f0034 	ldr	r0, [pc, #52]	; 4022d8 <Down+0x54>
+  4022a0:	e5900000 	ldr	r0, [r0]
+  4022a4:	e59f102c 	ldr	r1, [pc, #44]	; 4022d8 <Down+0x54>
+  4022a8:	e5911004 	ldr	r1, [r1, #4]
+  4022ac:	ebfffe49 	bl	401bd8 <drawselectCoin>
+  4022b0:	e59f2018 	ldr	r2, [pc, #24]	; 4022d0 <Down+0x4c>
+  4022b4:	e3a03000 	mov	r3, #0
+  4022b8:	e5823000 	str	r3, [r2]
+  4022bc:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
+  4022c0:	e1a0f00e 	mov	pc, lr
+  4022c4:	0025d578 	.word	0x0025d578
+  4022c8:	000091a4 	.word	0x000091a4
+  4022cc:	00009080 	.word	0x00009080
+  4022d0:	0000919c 	.word	0x0000919c
+  4022d4:	00009198 	.word	0x00009198
+  4022d8:	000091ac 	.word	0x000091ac
 
-004022cc <_ReadData>:
-  4022cc:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  4022d0:	eaffffff 	b	4022d4 <ReadData>
+004022dc <_ReadData>:
+  4022dc:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  4022e0:	eaffffff 	b	4022e4 <ReadData>
 
-004022d4 <ReadData>:
-  4022d4:	e3a0000a 	mov	r0, #10
-  4022d8:	e59f2020 	ldr	r2, [pc, #32]	; 402300 <ReadData+0x2c>
-  4022dc:	e5921034 	ldr	r1, [r2, #52]	; 0x34
-  4022e0:	e3a03001 	mov	r3, #1
-  4022e4:	e1a03013 	lsl	r3, r3, r0
-  4022e8:	e0011003 	and	r1, r1, r3
-  4022ec:	e3310000 	teq	r1, #0
-  4022f0:	03a00000 	moveq	r0, #0
-  4022f4:	13a00001 	movne	r0, #1
-  4022f8:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  4022fc:	e12fff1e 	bx	lr
-  402300:	3f200000 	.word	0x3f200000
+004022e4 <ReadData>:
+  4022e4:	e3a0000a 	mov	r0, #10
+  4022e8:	e59f2020 	ldr	r2, [pc, #32]	; 402310 <ReadData+0x2c>
+  4022ec:	e5921034 	ldr	r1, [r2, #52]	; 0x34
+  4022f0:	e3a03001 	mov	r3, #1
+  4022f4:	e1a03013 	lsl	r3, r3, r0
+  4022f8:	e0011003 	and	r1, r1, r3
+  4022fc:	e3310000 	teq	r1, #0
+  402300:	03a00000 	moveq	r0, #0
+  402304:	13a00001 	movne	r0, #1
+  402308:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  40230c:	e12fff1e 	bx	lr
+  402310:	3f200000 	.word	0x3f200000
 
-00402304 <UpdateSprites>:
-  402304:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402308:	e3570001 	cmp	r7, #1
-  40230c:	0a000015 	beq	402368 <B>
-  402310:	e3570002 	cmp	r7, #2
-  402314:	0a000015 	beq	402370 <Y>
-  402318:	e3570003 	cmp	r7, #3
-  40231c:	0a000015 	beq	402378 <Sel>
-  402320:	e3570004 	cmp	r7, #4
-  402324:	0a000015 	beq	402380 <St>
-  402328:	e3570005 	cmp	r7, #5
-  40232c:	0a000016 	beq	40238c <JPU>
-  402330:	e3570007 	cmp	r7, #7
-  402334:	0a000017 	beq	402398 <JPL>
-  402338:	e3570008 	cmp	r7, #8
-  40233c:	0a000017 	beq	4023a0 <JPR>
-  402340:	e3570009 	cmp	r7, #9
-  402344:	0a000017 	beq	4023a8 <A>
-  402348:	e357000a 	cmp	r7, #10
-  40234c:	0a000017 	beq	4023b0 <X>
-  402350:	e357000b 	cmp	r7, #11
-  402354:	0a000017 	beq	4023b8 <LB>
-  402358:	e357000c 	cmp	r7, #12
-  40235c:	0a000017 	beq	4023c0 <RB>
-  402360:	e357000d 	cmp	r7, #13
-  402364:	aa0002e0 	bge	402eec <GL>
+00402314 <UpdateSprites>:
+  402314:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402318:	e3570001 	cmp	r7, #1
+  40231c:	0a000015 	beq	402378 <B>
+  402320:	e3570002 	cmp	r7, #2
+  402324:	0a000015 	beq	402380 <Y>
+  402328:	e3570003 	cmp	r7, #3
+  40232c:	0a000015 	beq	402388 <Sel>
+  402330:	e3570004 	cmp	r7, #4
+  402334:	0a000015 	beq	402390 <St>
+  402338:	e3570005 	cmp	r7, #5
+  40233c:	0a000016 	beq	40239c <JPU>
+  402340:	e3570007 	cmp	r7, #7
+  402344:	0a000017 	beq	4023a8 <JPL>
+  402348:	e3570008 	cmp	r7, #8
+  40234c:	0a000017 	beq	4023b0 <JPR>
+  402350:	e3570009 	cmp	r7, #9
+  402354:	0a000017 	beq	4023b8 <A>
+  402358:	e357000a 	cmp	r7, #10
+  40235c:	0a000017 	beq	4023c0 <X>
+  402360:	e357000b 	cmp	r7, #11
+  402364:	0a000017 	beq	4023c8 <LB>
+  402368:	e357000c 	cmp	r7, #12
+  40236c:	0a000017 	beq	4023d0 <RB>
+  402370:	e357000d 	cmp	r7, #13
+  402374:	aa0002e0 	bge	402efc <GL>
 
-00402368 <B>:
-  402368:	e3540000 	cmp	r4, #0
-  40236c:	0a000229 	beq	402c18 <BPress>
-
-00402370 <Y>:
-  402370:	e3540000 	cmp	r4, #0
-  402374:	0b00022a 	bleq	402c24 <STPress>
-
-00402378 <Sel>:
+00402378 <B>:
   402378:	e3540000 	cmp	r4, #0
-  40237c:	0a000228 	beq	402c24 <STPress>
+  40237c:	0a000229 	beq	402c28 <BPress>
 
-00402380 <St>:
+00402380 <Y>:
   402380:	e3540000 	cmp	r4, #0
-  402384:	0b000226 	bleq	402c24 <STPress>
-  402388:	ea0002d7 	b	402eec <GL>
+  402384:	0b00022a 	bleq	402c34 <STPress>
 
-0040238c <JPU>:
-  40238c:	e3540000 	cmp	r4, #0
-  402390:	0b000238 	bleq	402c78 <JPUPress>
-  402394:	ea0002d4 	b	402eec <GL>
+00402388 <Sel>:
+  402388:	e3540000 	cmp	r4, #0
+  40238c:	0a000228 	beq	402c34 <STPress>
 
-00402398 <JPL>:
-  402398:	e3540000 	cmp	r4, #0
-  40239c:	0a000292 	beq	402dec <JPLPress>
+00402390 <St>:
+  402390:	e3540000 	cmp	r4, #0
+  402394:	0b000226 	bleq	402c34 <STPress>
+  402398:	ea0002d7 	b	402efc <GL>
 
-004023a0 <JPR>:
-  4023a0:	e3540000 	cmp	r4, #0
-  4023a4:	0a0002aa 	beq	402e54 <JPRPress>
+0040239c <JPU>:
+  40239c:	e3540000 	cmp	r4, #0
+  4023a0:	0b000238 	bleq	402c88 <JPUPress>
+  4023a4:	ea0002d4 	b	402efc <GL>
 
-004023a8 <A>:
+004023a8 <JPL>:
   4023a8:	e3540000 	cmp	r4, #0
-  4023ac:	0a0002c6 	beq	402ecc <APress>
+  4023ac:	0a000292 	beq	402dfc <JPLPress>
 
-004023b0 <X>:
+004023b0 <JPR>:
   4023b0:	e3540000 	cmp	r4, #0
-  4023b4:	0a0002c4 	beq	402ecc <APress>
+  4023b4:	0a0002aa 	beq	402e64 <JPRPress>
 
-004023b8 <LB>:
+004023b8 <A>:
   4023b8:	e3540000 	cmp	r4, #0
-  4023bc:	0a0002c2 	beq	402ecc <APress>
+  4023bc:	0a0002c6 	beq	402edc <APress>
 
-004023c0 <RB>:
+004023c0 <X>:
   4023c0:	e3540000 	cmp	r4, #0
-  4023c4:	0a0002c0 	beq	402ecc <APress>
-  4023c8:	0affffff 	beq	4023cc <blockUpdate>
+  4023c4:	0a0002c4 	beq	402edc <APress>
 
-004023cc <blockUpdate>:
-  4023cc:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  4023d0:	e12fff1e 	bx	lr
+004023c8 <LB>:
+  4023c8:	e3540000 	cmp	r4, #0
+  4023cc:	0a0002c2 	beq	402edc <APress>
 
-004023d4 <Grav>:
-  4023d4:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  4023d8:	e59f00a0 	ldr	r0, [pc, #160]	; 402480 <gravdone+0x8>
-  4023dc:	e5d00000 	ldrb	r0, [r0]
-  4023e0:	e3500000 	cmp	r0, #0
-  4023e4:	0a000023 	beq	402478 <gravdone>
-  4023e8:	e59f0094 	ldr	r0, [pc, #148]	; 402484 <gravdone+0xc>
-  4023ec:	e5905004 	ldr	r5, [r0, #4]
-  4023f0:	e1a06005 	mov	r6, r5
+004023d0 <RB>:
+  4023d0:	e3540000 	cmp	r4, #0
+  4023d4:	0a0002c0 	beq	402edc <APress>
+  4023d8:	0affffff 	beq	4023dc <blockUpdate>
 
-004023f4 <gravityloop>:
-  4023f4:	e286601e 	add	r6, r6, #30
-  4023f8:	e3a00e7d 	mov	r0, #2000	; 0x7d0
-  4023fc:	eb000030 	bl	4024c4 <WaitLong>
-  402400:	ebfffd60 	bl	401988 <clearMario>
-  402404:	e59f007c 	ldr	r0, [pc, #124]	; 402488 <gravdone+0x10>
-  402408:	e5900000 	ldr	r0, [r0]
-  40240c:	e1560000 	cmp	r6, r0
-  402410:	ca000013 	bgt	402464 <gravfloor1>
-  402414:	e59f0068 	ldr	r0, [pc, #104]	; 402484 <gravdone+0xc>
-  402418:	e5806004 	str	r6, [r0, #4]
-  40241c:	ebfffd42 	bl	40192c <drawMario>
-  402420:	e59f1064 	ldr	r1, [pc, #100]	; 40248c <gravdone+0x14>
-  402424:	e5911000 	ldr	r1, [r1]
-  402428:	e3510001 	cmp	r1, #1
-  40242c:	ebfffb96 	bl	40128c <Detect1>
-  402430:	e59f9058 	ldr	r9, [pc, #88]	; 402490 <gravdone+0x18>
-  402434:	e5d9a007 	ldrb	sl, [r9, #7]
-  402438:	e35a0000 	cmp	sl, #0
-  40243c:	0b000232 	bleq	402d0c <UpRightPress>
-  402440:	e59f9048 	ldr	r9, [pc, #72]	; 402490 <gravdone+0x18>
-  402444:	e5d9a006 	ldrb	sl, [r9, #6]
+004023dc <blockUpdate>:
+  4023dc:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  4023e0:	e12fff1e 	bx	lr
+
+004023e4 <Grav>:
+  4023e4:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  4023e8:	e59f00a0 	ldr	r0, [pc, #160]	; 402490 <gravdone+0x8>
+  4023ec:	e5d00000 	ldrb	r0, [r0]
+  4023f0:	e3500000 	cmp	r0, #0
+  4023f4:	0a000023 	beq	402488 <gravdone>
+  4023f8:	e59f0094 	ldr	r0, [pc, #148]	; 402494 <gravdone+0xc>
+  4023fc:	e5905004 	ldr	r5, [r0, #4]
+  402400:	e1a06005 	mov	r6, r5
+
+00402404 <gravityloop>:
+  402404:	e286601e 	add	r6, r6, #30
+  402408:	e3a00e7d 	mov	r0, #2000	; 0x7d0
+  40240c:	eb000030 	bl	4024d4 <WaitLong>
+  402410:	ebfffd5c 	bl	401988 <clearMario>
+  402414:	e59f007c 	ldr	r0, [pc, #124]	; 402498 <gravdone+0x10>
+  402418:	e5900000 	ldr	r0, [r0]
+  40241c:	e1560000 	cmp	r6, r0
+  402420:	ca000013 	bgt	402474 <gravfloor1>
+  402424:	e59f0068 	ldr	r0, [pc, #104]	; 402494 <gravdone+0xc>
+  402428:	e5806004 	str	r6, [r0, #4]
+  40242c:	ebfffd3e 	bl	40192c <drawMario>
+  402430:	e59f1064 	ldr	r1, [pc, #100]	; 40249c <gravdone+0x14>
+  402434:	e5911000 	ldr	r1, [r1]
+  402438:	e3510001 	cmp	r1, #1
+  40243c:	ebfffb92 	bl	40128c <Detect1>
+  402440:	e59f9058 	ldr	r9, [pc, #88]	; 4024a0 <gravdone+0x18>
+  402444:	e5d9a007 	ldrb	sl, [r9, #7]
   402448:	e35a0000 	cmp	sl, #0
-  40244c:	0b00024c 	bleq	402d84 <UpLeftPress>
-  402450:	e59f0030 	ldr	r0, [pc, #48]	; 402488 <gravdone+0x10>
-  402454:	e5900000 	ldr	r0, [r0]
-  402458:	e1560000 	cmp	r6, r0
-  40245c:	baffffe4 	blt	4023f4 <gravityloop>
-  402460:	ea000004 	b	402478 <gravdone>
+  40244c:	0b000232 	bleq	402d1c <UpRightPress>
+  402450:	e59f9048 	ldr	r9, [pc, #72]	; 4024a0 <gravdone+0x18>
+  402454:	e5d9a006 	ldrb	sl, [r9, #6]
+  402458:	e35a0000 	cmp	sl, #0
+  40245c:	0b00024c 	bleq	402d94 <UpLeftPress>
+  402460:	e59f0030 	ldr	r0, [pc, #48]	; 402498 <gravdone+0x10>
+  402464:	e5900000 	ldr	r0, [r0]
+  402468:	e1560000 	cmp	r6, r0
+  40246c:	baffffe4 	blt	402404 <gravityloop>
+  402470:	ea000004 	b	402488 <gravdone>
 
-00402464 <gravfloor1>:
-  402464:	e59f0018 	ldr	r0, [pc, #24]	; 402484 <gravdone+0xc>
-  402468:	e59f1018 	ldr	r1, [pc, #24]	; 402488 <gravdone+0x10>
-  40246c:	e5911000 	ldr	r1, [r1]
-  402470:	e5801004 	str	r1, [r0, #4]
-  402474:	ebfffd2c 	bl	40192c <drawMario>
+00402474 <gravfloor1>:
+  402474:	e59f0018 	ldr	r0, [pc, #24]	; 402494 <gravdone+0xc>
+  402478:	e59f1018 	ldr	r1, [pc, #24]	; 402498 <gravdone+0x10>
+  40247c:	e5911000 	ldr	r1, [r1]
+  402480:	e5801004 	str	r1, [r0, #4]
+  402484:	ebfffd28 	bl	40192c <drawMario>
 
-00402478 <gravdone>:
-  402478:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  40247c:	e1a0f00e 	mov	pc, lr
-  402480:	003dd578 	.word	0x003dd578
-  402484:	00009110 	.word	0x00009110
-  402488:	0000909c 	.word	0x0000909c
-  40248c:	00009134 	.word	0x00009134
-  402490:	00009080 	.word	0x00009080
+00402488 <gravdone>:
+  402488:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  40248c:	e1a0f00e 	mov	pc, lr
+  402490:	003dd578 	.word	0x003dd578
+  402494:	00009110 	.word	0x00009110
+  402498:	0000909c 	.word	0x0000909c
+  40249c:	00009134 	.word	0x00009134
+  4024a0:	00009080 	.word	0x00009080
 
-00402494 <_Wait>:
-  402494:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402498:	e1a04000 	mov	r4, r0
-  40249c:	eaffffff 	b	4024a0 <Wait>
+004024a4 <_Wait>:
+  4024a4:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  4024a8:	e1a04000 	mov	r4, r0
+  4024ac:	eaffffff 	b	4024b0 <Wait>
 
-004024a0 <Wait>:
-  4024a0:	e59f0050 	ldr	r0, [pc, #80]	; 4024f8 <LoopInWaitL+0x18>
-  4024a4:	e5901000 	ldr	r1, [r0]
-  4024a8:	e0811004 	add	r1, r1, r4
+004024b0 <Wait>:
+  4024b0:	e59f0050 	ldr	r0, [pc, #80]	; 402508 <LoopInWaitL+0x18>
+  4024b4:	e5901000 	ldr	r1, [r0]
+  4024b8:	e0811004 	add	r1, r1, r4
 
-004024ac <LoopInWait>:
-  4024ac:	e59f0044 	ldr	r0, [pc, #68]	; 4024f8 <LoopInWaitL+0x18>
-  4024b0:	e5902000 	ldr	r2, [r0]
-  4024b4:	e1520001 	cmp	r2, r1
-  4024b8:	bafffffb 	blt	4024ac <LoopInWait>
-  4024bc:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  4024c0:	e12fff1e 	bx	lr
+004024bc <LoopInWait>:
+  4024bc:	e59f0044 	ldr	r0, [pc, #68]	; 402508 <LoopInWaitL+0x18>
+  4024c0:	e5902000 	ldr	r2, [r0]
+  4024c4:	e1520001 	cmp	r2, r1
+  4024c8:	bafffffb 	blt	4024bc <LoopInWait>
+  4024cc:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  4024d0:	e12fff1e 	bx	lr
 
-004024c4 <WaitLong>:
-  4024c4:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  4024c8:	e1a04000 	mov	r4, r0
-  4024cc:	e3a0503c 	mov	r5, #60	; 0x3c
-  4024d0:	e0040594 	mul	r4, r4, r5
-  4024d4:	e59f001c 	ldr	r0, [pc, #28]	; 4024f8 <LoopInWaitL+0x18>
-  4024d8:	e5901000 	ldr	r1, [r0]
-  4024dc:	e0811004 	add	r1, r1, r4
+004024d4 <WaitLong>:
+  4024d4:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  4024d8:	e1a04000 	mov	r4, r0
+  4024dc:	e3a0503c 	mov	r5, #60	; 0x3c
+  4024e0:	e0040594 	mul	r4, r4, r5
+  4024e4:	e59f001c 	ldr	r0, [pc, #28]	; 402508 <LoopInWaitL+0x18>
+  4024e8:	e5901000 	ldr	r1, [r0]
+  4024ec:	e0811004 	add	r1, r1, r4
 
-004024e0 <LoopInWaitL>:
-  4024e0:	e59f0010 	ldr	r0, [pc, #16]	; 4024f8 <LoopInWaitL+0x18>
-  4024e4:	e5902000 	ldr	r2, [r0]
-  4024e8:	e1520001 	cmp	r2, r1
-  4024ec:	bafffffb 	blt	4024e0 <LoopInWaitL>
-  4024f0:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  4024f4:	e12fff1e 	bx	lr
-  4024f8:	3f003004 	.word	0x3f003004
+004024f0 <LoopInWaitL>:
+  4024f0:	e59f0010 	ldr	r0, [pc, #16]	; 402508 <LoopInWaitL+0x18>
+  4024f4:	e5902000 	ldr	r2, [r0]
+  4024f8:	e1520001 	cmp	r2, r1
+  4024fc:	bafffffb 	blt	4024f0 <LoopInWaitL>
+  402500:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402504:	e12fff1e 	bx	lr
+  402508:	3f003004 	.word	0x3f003004
 
-004024fc <_WriteLatch>:
-  4024fc:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402500:	e1a04001 	mov	r4, r1
-  402504:	eaffffff 	b	402508 <WriteLatch>
+0040250c <_WriteLatch>:
+  40250c:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402510:	e1a04001 	mov	r4, r1
+  402514:	eaffffff 	b	402518 <WriteLatch>
 
-00402508 <WriteLatch>:
-  402508:	e3a00009 	mov	r0, #9
-  40250c:	e59f2018 	ldr	r2, [pc, #24]	; 40252c <WriteLatch+0x24>
-  402510:	e3a03001 	mov	r3, #1
-  402514:	e1a03013 	lsl	r3, r3, r0
-  402518:	e3340000 	teq	r4, #0
-  40251c:	05823028 	streq	r3, [r2, #40]	; 0x28
-  402520:	1582301c 	strne	r3, [r2, #28]
-  402524:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402528:	e12fff1e 	bx	lr
-  40252c:	3f200000 	.word	0x3f200000
+00402518 <WriteLatch>:
+  402518:	e3a00009 	mov	r0, #9
+  40251c:	e59f2018 	ldr	r2, [pc, #24]	; 40253c <WriteLatch+0x24>
+  402520:	e3a03001 	mov	r3, #1
+  402524:	e1a03013 	lsl	r3, r3, r0
+  402528:	e3340000 	teq	r4, #0
+  40252c:	05823028 	streq	r3, [r2, #40]	; 0x28
+  402530:	1582301c 	strne	r3, [r2, #28]
+  402534:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402538:	e12fff1e 	bx	lr
+  40253c:	3f200000 	.word	0x3f200000
 
-00402530 <PauseMenu>:
-  402530:	e92d47e0 	push	{r5, r6, r7, r8, r9, sl, lr}
-  402534:	e59f93b0 	ldr	r9, [pc, #944]	; 4028ec <ClearMenu+0x24>
-  402538:	e3a0a001 	mov	sl, #1
-  40253c:	e589a000 	str	sl, [r9]
-  402540:	e59f13a8 	ldr	r1, [pc, #936]	; 4028f0 <ClearMenu+0x28>
-  402544:	e3a02001 	mov	r2, #1
-  402548:	e5812000 	str	r2, [r1]
-  40254c:	e59f03a0 	ldr	r0, [pc, #928]	; 4028f4 <ClearMenu+0x2c>
-  402550:	e5900000 	ldr	r0, [r0]
-  402554:	e59f1398 	ldr	r1, [pc, #920]	; 4028f4 <ClearMenu+0x2c>
-  402558:	e5911004 	ldr	r1, [r1, #4]
-  40255c:	eb0000d0 	bl	4028a4 <drawPauseMenu>
-  402560:	e59f0390 	ldr	r0, [pc, #912]	; 4028f8 <ClearMenu+0x30>
-  402564:	e5900000 	ldr	r0, [r0]
-  402568:	e59f1388 	ldr	r1, [pc, #904]	; 4028f8 <ClearMenu+0x30>
-  40256c:	e5911004 	ldr	r1, [r1, #4]
-  402570:	ebfffdaa 	bl	401c20 <drawPauseSelectCoin>
+00402540 <PauseMenu>:
+  402540:	e92d47e0 	push	{r5, r6, r7, r8, r9, sl, lr}
+  402544:	e59f93b0 	ldr	r9, [pc, #944]	; 4028fc <ClearMenu+0x24>
+  402548:	e3a0a001 	mov	sl, #1
+  40254c:	e589a000 	str	sl, [r9]
+  402550:	e59f13a8 	ldr	r1, [pc, #936]	; 402900 <ClearMenu+0x28>
+  402554:	e3a02001 	mov	r2, #1
+  402558:	e5812000 	str	r2, [r1]
+  40255c:	e59f03a0 	ldr	r0, [pc, #928]	; 402904 <ClearMenu+0x2c>
+  402560:	e5900000 	ldr	r0, [r0]
+  402564:	e59f1398 	ldr	r1, [pc, #920]	; 402904 <ClearMenu+0x2c>
+  402568:	e5911004 	ldr	r1, [r1, #4]
+  40256c:	eb0000d0 	bl	4028b4 <drawPauseMenu>
+  402570:	e59f0390 	ldr	r0, [pc, #912]	; 402908 <ClearMenu+0x30>
+  402574:	e5900000 	ldr	r0, [r0]
+  402578:	e59f1388 	ldr	r1, [pc, #904]	; 402908 <ClearMenu+0x30>
+  40257c:	e5911004 	ldr	r1, [r1, #4]
+  402580:	ebfffda6 	bl	401c20 <drawPauseSelectCoin>
 
-00402574 <PauseScreenLoop>:
-  402574:	eb00017a 	bl	402b64 <_ReadSNES>
-  402578:	e59f937c 	ldr	r9, [pc, #892]	; 4028fc <ClearMenu+0x34>
-  40257c:	e5d9a004 	ldrb	sl, [r9, #4]
-  402580:	e35a0000 	cmp	sl, #0
-  402584:	0b000091 	bleq	4027d0 <Up>
-  402588:	e59f936c 	ldr	r9, [pc, #876]	; 4028fc <ClearMenu+0x34>
-  40258c:	e5d9a005 	ldrb	sl, [r9, #5]
+00402584 <PauseScreenLoop>:
+  402584:	eb00017a 	bl	402b74 <_ReadSNES>
+  402588:	e59f937c 	ldr	r9, [pc, #892]	; 40290c <ClearMenu+0x34>
+  40258c:	e5d9a004 	ldrb	sl, [r9, #4]
   402590:	e35a0000 	cmp	sl, #0
-  402594:	0b00009d 	bleq	402810 <Down>
-  402598:	e59f935c 	ldr	r9, [pc, #860]	; 4028fc <ClearMenu+0x34>
-  40259c:	e5d9a008 	ldrb	sl, [r9, #8]
+  402594:	0b000091 	bleq	4027e0 <Up>
+  402598:	e59f936c 	ldr	r9, [pc, #876]	; 40290c <ClearMenu+0x34>
+  40259c:	e5d9a005 	ldrb	sl, [r9, #5]
   4025a0:	e35a0000 	cmp	sl, #0
-  4025a4:	0a00001b 	beq	402618 <restart>
-  4025a8:	e5d9a001 	ldrb	sl, [r9, #1]
-  4025ac:	e35a0000 	cmp	sl, #0
-  4025b0:	0a000083 	beq	4027c4 <removeScreen>
-  4025b4:	e5d9a002 	ldrb	sl, [r9, #2]
-  4025b8:	e35a0000 	cmp	sl, #0
-  4025bc:	0a000080 	beq	4027c4 <removeScreen>
-  4025c0:	e5d9a003 	ldrb	sl, [r9, #3]
-  4025c4:	e35a0000 	cmp	sl, #0
-  4025c8:	0a00007d 	beq	4027c4 <removeScreen>
-  4025cc:	e5d9a006 	ldrb	sl, [r9, #6]
-  4025d0:	e35a0000 	cmp	sl, #0
-  4025d4:	0a00007a 	beq	4027c4 <removeScreen>
-  4025d8:	e5d9a007 	ldrb	sl, [r9, #7]
-  4025dc:	e35a0000 	cmp	sl, #0
-  4025e0:	0a000077 	beq	4027c4 <removeScreen>
-  4025e4:	e5d9a009 	ldrb	sl, [r9, #9]
-  4025e8:	e35a0000 	cmp	sl, #0
-  4025ec:	0a000074 	beq	4027c4 <removeScreen>
-  4025f0:	e5d9a00a 	ldrb	sl, [r9, #10]
-  4025f4:	e35a0000 	cmp	sl, #0
-  4025f8:	0a000071 	beq	4027c4 <removeScreen>
-  4025fc:	e5d9a00b 	ldrb	sl, [r9, #11]
-  402600:	e35a0000 	cmp	sl, #0
-  402604:	0a00006e 	beq	4027c4 <removeScreen>
-  402608:	e5d9a00c 	ldrb	sl, [r9, #12]
-  40260c:	e35a0000 	cmp	sl, #0
-  402610:	0a00006b 	beq	4027c4 <removeScreen>
-  402614:	eaffffd6 	b	402574 <PauseScreenLoop>
+  4025a4:	0b00009d 	bleq	402820 <Down>
+  4025a8:	e59f935c 	ldr	r9, [pc, #860]	; 40290c <ClearMenu+0x34>
+  4025ac:	e5d9a008 	ldrb	sl, [r9, #8]
+  4025b0:	e35a0000 	cmp	sl, #0
+  4025b4:	0a00001b 	beq	402628 <restart>
+  4025b8:	e5d9a001 	ldrb	sl, [r9, #1]
+  4025bc:	e35a0000 	cmp	sl, #0
+  4025c0:	0a000083 	beq	4027d4 <removeScreen>
+  4025c4:	e5d9a002 	ldrb	sl, [r9, #2]
+  4025c8:	e35a0000 	cmp	sl, #0
+  4025cc:	0a000080 	beq	4027d4 <removeScreen>
+  4025d0:	e5d9a003 	ldrb	sl, [r9, #3]
+  4025d4:	e35a0000 	cmp	sl, #0
+  4025d8:	0a00007d 	beq	4027d4 <removeScreen>
+  4025dc:	e5d9a006 	ldrb	sl, [r9, #6]
+  4025e0:	e35a0000 	cmp	sl, #0
+  4025e4:	0a00007a 	beq	4027d4 <removeScreen>
+  4025e8:	e5d9a007 	ldrb	sl, [r9, #7]
+  4025ec:	e35a0000 	cmp	sl, #0
+  4025f0:	0a000077 	beq	4027d4 <removeScreen>
+  4025f4:	e5d9a009 	ldrb	sl, [r9, #9]
+  4025f8:	e35a0000 	cmp	sl, #0
+  4025fc:	0a000074 	beq	4027d4 <removeScreen>
+  402600:	e5d9a00a 	ldrb	sl, [r9, #10]
+  402604:	e35a0000 	cmp	sl, #0
+  402608:	0a000071 	beq	4027d4 <removeScreen>
+  40260c:	e5d9a00b 	ldrb	sl, [r9, #11]
+  402610:	e35a0000 	cmp	sl, #0
+  402614:	0a00006e 	beq	4027d4 <removeScreen>
+  402618:	e5d9a00c 	ldrb	sl, [r9, #12]
+  40261c:	e35a0000 	cmp	sl, #0
+  402620:	0a00006b 	beq	4027d4 <removeScreen>
+  402624:	eaffffd6 	b	402584 <PauseScreenLoop>
 
-00402618 <restart>:
-  402618:	e59f12e0 	ldr	r1, [pc, #736]	; 402900 <ClearMenu+0x38>
-  40261c:	e3a02000 	mov	r2, #0
-  402620:	e5812000 	str	r2, [r1]
-  402624:	e59f22d8 	ldr	r2, [pc, #728]	; 402904 <ClearMenu+0x3c>
-  402628:	e5812004 	str	r2, [r1, #4]
-  40262c:	e59f12d4 	ldr	r1, [pc, #724]	; 402908 <ClearMenu+0x40>
-  402630:	e3a02f7d 	mov	r2, #500	; 0x1f4
-  402634:	e5812000 	str	r2, [r1]
-  402638:	e59f22cc 	ldr	r2, [pc, #716]	; 40290c <ClearMenu+0x44>
-  40263c:	e5812004 	str	r2, [r1, #4]
-  402640:	e59f12c8 	ldr	r1, [pc, #712]	; 402910 <ClearMenu+0x48>
-  402644:	e59f22c8 	ldr	r2, [pc, #712]	; 402914 <ClearMenu+0x4c>
-  402648:	e5812000 	str	r2, [r1]
-  40264c:	e59f22c4 	ldr	r2, [pc, #708]	; 402918 <ClearMenu+0x50>
-  402650:	e5812004 	str	r2, [r1, #4]
-  402654:	e3a03000 	mov	r3, #0
-  402658:	e5813008 	str	r3, [r1, #8]
-  40265c:	e59f12b8 	ldr	r1, [pc, #696]	; 40291c <ClearMenu+0x54>
-  402660:	e3a02001 	mov	r2, #1
-  402664:	e5812000 	str	r2, [r1]
-  402668:	e59f12b0 	ldr	r1, [pc, #688]	; 402920 <ClearMenu+0x58>
-  40266c:	e59f22b0 	ldr	r2, [pc, #688]	; 402924 <ClearMenu+0x5c>
-  402670:	e5812000 	str	r2, [r1]
-  402674:	e3a02e19 	mov	r2, #400	; 0x190
-  402678:	e5812004 	str	r2, [r1, #4]
-  40267c:	e59f12a4 	ldr	r1, [pc, #676]	; 402928 <ClearMenu+0x60>
-  402680:	e3a02faf 	mov	r2, #700	; 0x2bc
-  402684:	e5812000 	str	r2, [r1]
-  402688:	e3a02e19 	mov	r2, #400	; 0x190
-  40268c:	e5812004 	str	r2, [r1, #4]
-  402690:	e59f1294 	ldr	r1, [pc, #660]	; 40292c <ClearMenu+0x64>
-  402694:	e3a020be 	mov	r2, #190	; 0xbe
-  402698:	e5812000 	str	r2, [r1]
-  40269c:	e3a02f6e 	mov	r2, #440	; 0x1b8
-  4026a0:	e5812004 	str	r2, [r1, #4]
-  4026a4:	e59f1284 	ldr	r1, [pc, #644]	; 402930 <ClearMenu+0x68>
-  4026a8:	e3a02f41 	mov	r2, #260	; 0x104
-  4026ac:	e5812000 	str	r2, [r1]
-  4026b0:	e59f227c 	ldr	r2, [pc, #636]	; 402934 <ClearMenu+0x6c>
-  4026b4:	e5812004 	str	r2, [r1, #4]
-  4026b8:	e59f1278 	ldr	r1, [pc, #632]	; 402938 <ClearMenu+0x70>
-  4026bc:	e59f2278 	ldr	r2, [pc, #632]	; 40293c <ClearMenu+0x74>
-  4026c0:	e5812000 	str	r2, [r1]
-  4026c4:	e3a02e19 	mov	r2, #400	; 0x190
-  4026c8:	e5812004 	str	r2, [r1, #4]
-  4026cc:	e59f126c 	ldr	r1, [pc, #620]	; 402940 <ClearMenu+0x78>
-  4026d0:	e59f226c 	ldr	r2, [pc, #620]	; 402944 <ClearMenu+0x7c>
-  4026d4:	e5812000 	str	r2, [r1]
-  4026d8:	e59f2268 	ldr	r2, [pc, #616]	; 402948 <ClearMenu+0x80>
-  4026dc:	e5812004 	str	r2, [r1, #4]
-  4026e0:	e59f1264 	ldr	r1, [pc, #612]	; 40294c <ClearMenu+0x84>
-  4026e4:	e59f2264 	ldr	r2, [pc, #612]	; 402950 <ClearMenu+0x88>
-  4026e8:	e5812000 	str	r2, [r1]
-  4026ec:	e59f2254 	ldr	r2, [pc, #596]	; 402948 <ClearMenu+0x80>
-  4026f0:	e5812004 	str	r2, [r1, #4]
-  4026f4:	e59f1258 	ldr	r1, [pc, #600]	; 402954 <ClearMenu+0x8c>
-  4026f8:	e3a020fa 	mov	r2, #250	; 0xfa
-  4026fc:	e5812000 	str	r2, [r1]
-  402700:	e3a02f76 	mov	r2, #472	; 0x1d8
-  402704:	e5812004 	str	r2, [r1, #4]
-  402708:	e59f1248 	ldr	r1, [pc, #584]	; 402958 <ClearMenu+0x90>
-  40270c:	e59f2248 	ldr	r2, [pc, #584]	; 40295c <ClearMenu+0x94>
-  402710:	e5812000 	str	r2, [r1]
-  402714:	e3a02f76 	mov	r2, #472	; 0x1d8
-  402718:	e5812004 	str	r2, [r1, #4]
-  40271c:	e59f123c 	ldr	r1, [pc, #572]	; 402960 <ClearMenu+0x98>
-  402720:	e59f223c 	ldr	r2, [pc, #572]	; 402964 <ClearMenu+0x9c>
-  402724:	e5812000 	str	r2, [r1]
-  402728:	e3a020c7 	mov	r2, #199	; 0xc7
-  40272c:	e5812004 	str	r2, [r1, #4]
-  402730:	e59f1230 	ldr	r1, [pc, #560]	; 402968 <ClearMenu+0xa0>
-  402734:	e3a02e19 	mov	r2, #400	; 0x190
-  402738:	e5812000 	str	r2, [r1]
-  40273c:	e59f2228 	ldr	r2, [pc, #552]	; 40296c <ClearMenu+0xa4>
-  402740:	e5812004 	str	r2, [r1, #4]
-  402744:	e59f1224 	ldr	r1, [pc, #548]	; 402970 <ClearMenu+0xa8>
-  402748:	e3a020c8 	mov	r2, #200	; 0xc8
-  40274c:	e5812000 	str	r2, [r1]
-  402750:	e59f221c 	ldr	r2, [pc, #540]	; 402974 <ClearMenu+0xac>
-  402754:	e5812004 	str	r2, [r1, #4]
-  402758:	e59f1218 	ldr	r1, [pc, #536]	; 402978 <ClearMenu+0xb0>
-  40275c:	e3a02003 	mov	r2, #3
-  402760:	e5812000 	str	r2, [r1]
-  402764:	e59f1210 	ldr	r1, [pc, #528]	; 40297c <ClearMenu+0xb4>
-  402768:	e3a02000 	mov	r2, #0
-  40276c:	e5812000 	str	r2, [r1]
-  402770:	e59f1208 	ldr	r1, [pc, #520]	; 402980 <ClearMenu+0xb8>
-  402774:	e3a02001 	mov	r2, #1
-  402778:	e5812000 	str	r2, [r1]
-  40277c:	e59f1200 	ldr	r1, [pc, #512]	; 402984 <ClearMenu+0xbc>
-  402780:	e3a02002 	mov	r2, #2
-  402784:	e5812000 	str	r2, [r1]
-  402788:	e59f11f8 	ldr	r1, [pc, #504]	; 402988 <ClearMenu+0xc0>
-  40278c:	e3a02001 	mov	r2, #1
-  402790:	e5812000 	str	r2, [r1]
+00402628 <restart>:
+  402628:	e59f12e0 	ldr	r1, [pc, #736]	; 402910 <ClearMenu+0x38>
+  40262c:	e3a02000 	mov	r2, #0
+  402630:	e5812000 	str	r2, [r1]
+  402634:	e59f22d8 	ldr	r2, [pc, #728]	; 402914 <ClearMenu+0x3c>
+  402638:	e5812004 	str	r2, [r1, #4]
+  40263c:	e59f12d4 	ldr	r1, [pc, #724]	; 402918 <ClearMenu+0x40>
+  402640:	e3a02f7d 	mov	r2, #500	; 0x1f4
+  402644:	e5812000 	str	r2, [r1]
+  402648:	e59f22cc 	ldr	r2, [pc, #716]	; 40291c <ClearMenu+0x44>
+  40264c:	e5812004 	str	r2, [r1, #4]
+  402650:	e59f12c8 	ldr	r1, [pc, #712]	; 402920 <ClearMenu+0x48>
+  402654:	e59f22c8 	ldr	r2, [pc, #712]	; 402924 <ClearMenu+0x4c>
+  402658:	e5812000 	str	r2, [r1]
+  40265c:	e59f22c4 	ldr	r2, [pc, #708]	; 402928 <ClearMenu+0x50>
+  402660:	e5812004 	str	r2, [r1, #4]
+  402664:	e3a03000 	mov	r3, #0
+  402668:	e5813008 	str	r3, [r1, #8]
+  40266c:	e59f12b8 	ldr	r1, [pc, #696]	; 40292c <ClearMenu+0x54>
+  402670:	e3a02001 	mov	r2, #1
+  402674:	e5812000 	str	r2, [r1]
+  402678:	e59f12b0 	ldr	r1, [pc, #688]	; 402930 <ClearMenu+0x58>
+  40267c:	e59f22b0 	ldr	r2, [pc, #688]	; 402934 <ClearMenu+0x5c>
+  402680:	e5812000 	str	r2, [r1]
+  402684:	e3a02e19 	mov	r2, #400	; 0x190
+  402688:	e5812004 	str	r2, [r1, #4]
+  40268c:	e59f12a4 	ldr	r1, [pc, #676]	; 402938 <ClearMenu+0x60>
+  402690:	e3a02faf 	mov	r2, #700	; 0x2bc
+  402694:	e5812000 	str	r2, [r1]
+  402698:	e3a02e19 	mov	r2, #400	; 0x190
+  40269c:	e5812004 	str	r2, [r1, #4]
+  4026a0:	e59f1294 	ldr	r1, [pc, #660]	; 40293c <ClearMenu+0x64>
+  4026a4:	e3a020be 	mov	r2, #190	; 0xbe
+  4026a8:	e5812000 	str	r2, [r1]
+  4026ac:	e3a02f6e 	mov	r2, #440	; 0x1b8
+  4026b0:	e5812004 	str	r2, [r1, #4]
+  4026b4:	e59f1284 	ldr	r1, [pc, #644]	; 402940 <ClearMenu+0x68>
+  4026b8:	e3a02f41 	mov	r2, #260	; 0x104
+  4026bc:	e5812000 	str	r2, [r1]
+  4026c0:	e59f227c 	ldr	r2, [pc, #636]	; 402944 <ClearMenu+0x6c>
+  4026c4:	e5812004 	str	r2, [r1, #4]
+  4026c8:	e59f1278 	ldr	r1, [pc, #632]	; 402948 <ClearMenu+0x70>
+  4026cc:	e59f2278 	ldr	r2, [pc, #632]	; 40294c <ClearMenu+0x74>
+  4026d0:	e5812000 	str	r2, [r1]
+  4026d4:	e3a02e19 	mov	r2, #400	; 0x190
+  4026d8:	e5812004 	str	r2, [r1, #4]
+  4026dc:	e59f126c 	ldr	r1, [pc, #620]	; 402950 <ClearMenu+0x78>
+  4026e0:	e59f226c 	ldr	r2, [pc, #620]	; 402954 <ClearMenu+0x7c>
+  4026e4:	e5812000 	str	r2, [r1]
+  4026e8:	e59f2268 	ldr	r2, [pc, #616]	; 402958 <ClearMenu+0x80>
+  4026ec:	e5812004 	str	r2, [r1, #4]
+  4026f0:	e59f1264 	ldr	r1, [pc, #612]	; 40295c <ClearMenu+0x84>
+  4026f4:	e59f2264 	ldr	r2, [pc, #612]	; 402960 <ClearMenu+0x88>
+  4026f8:	e5812000 	str	r2, [r1]
+  4026fc:	e59f2254 	ldr	r2, [pc, #596]	; 402958 <ClearMenu+0x80>
+  402700:	e5812004 	str	r2, [r1, #4]
+  402704:	e59f1258 	ldr	r1, [pc, #600]	; 402964 <ClearMenu+0x8c>
+  402708:	e3a020fa 	mov	r2, #250	; 0xfa
+  40270c:	e5812000 	str	r2, [r1]
+  402710:	e3a02f76 	mov	r2, #472	; 0x1d8
+  402714:	e5812004 	str	r2, [r1, #4]
+  402718:	e59f1248 	ldr	r1, [pc, #584]	; 402968 <ClearMenu+0x90>
+  40271c:	e59f2248 	ldr	r2, [pc, #584]	; 40296c <ClearMenu+0x94>
+  402720:	e5812000 	str	r2, [r1]
+  402724:	e3a02f76 	mov	r2, #472	; 0x1d8
+  402728:	e5812004 	str	r2, [r1, #4]
+  40272c:	e59f123c 	ldr	r1, [pc, #572]	; 402970 <ClearMenu+0x98>
+  402730:	e59f223c 	ldr	r2, [pc, #572]	; 402974 <ClearMenu+0x9c>
+  402734:	e5812000 	str	r2, [r1]
+  402738:	e3a020c7 	mov	r2, #199	; 0xc7
+  40273c:	e5812004 	str	r2, [r1, #4]
+  402740:	e59f1230 	ldr	r1, [pc, #560]	; 402978 <ClearMenu+0xa0>
+  402744:	e3a02e19 	mov	r2, #400	; 0x190
+  402748:	e5812000 	str	r2, [r1]
+  40274c:	e59f2228 	ldr	r2, [pc, #552]	; 40297c <ClearMenu+0xa4>
+  402750:	e5812004 	str	r2, [r1, #4]
+  402754:	e59f1224 	ldr	r1, [pc, #548]	; 402980 <ClearMenu+0xa8>
+  402758:	e3a020c8 	mov	r2, #200	; 0xc8
+  40275c:	e5812000 	str	r2, [r1]
+  402760:	e59f221c 	ldr	r2, [pc, #540]	; 402984 <ClearMenu+0xac>
+  402764:	e5812004 	str	r2, [r1, #4]
+  402768:	e59f1218 	ldr	r1, [pc, #536]	; 402988 <ClearMenu+0xb0>
+  40276c:	e3a02003 	mov	r2, #3
+  402770:	e5812000 	str	r2, [r1]
+  402774:	e59f1210 	ldr	r1, [pc, #528]	; 40298c <ClearMenu+0xb4>
+  402778:	e3a02000 	mov	r2, #0
+  40277c:	e5812000 	str	r2, [r1]
+  402780:	e59f1208 	ldr	r1, [pc, #520]	; 402990 <ClearMenu+0xb8>
+  402784:	e3a02001 	mov	r2, #1
+  402788:	e5812000 	str	r2, [r1]
+  40278c:	e59f1200 	ldr	r1, [pc, #512]	; 402994 <ClearMenu+0xbc>
+  402790:	e3a02002 	mov	r2, #2
+  402794:	e5812000 	str	r2, [r1]
+  402798:	e59f11f8 	ldr	r1, [pc, #504]	; 402998 <ClearMenu+0xc0>
+  40279c:	e3a02001 	mov	r2, #1
+  4027a0:	e5812000 	str	r2, [r1]
 
-00402794 <select1>:
-  402794:	e59f1150 	ldr	r1, [pc, #336]	; 4028ec <ClearMenu+0x24>
-  402798:	e3a02001 	mov	r2, #1
-  40279c:	e5812000 	str	r2, [r1]
-  4027a0:	e3a06001 	mov	r6, #1
-  4027a4:	e59f5144 	ldr	r5, [pc, #324]	; 4028f0 <ClearMenu+0x28>
-  4027a8:	e5955000 	ldr	r5, [r5]
-  4027ac:	e1550006 	cmp	r5, r6
-  4027b0:	0afffa5c 	beq	401128 <nG>
-  4027b4:	e59f1130 	ldr	r1, [pc, #304]	; 4028ec <ClearMenu+0x24>
-  4027b8:	e3a02001 	mov	r2, #1
-  4027bc:	e5812000 	str	r2, [r1]
-  4027c0:	eaf0160e 	b	8000 <_start>
+004027a4 <select1>:
+  4027a4:	e59f1150 	ldr	r1, [pc, #336]	; 4028fc <ClearMenu+0x24>
+  4027a8:	e3a02001 	mov	r2, #1
+  4027ac:	e5812000 	str	r2, [r1]
+  4027b0:	e3a06001 	mov	r6, #1
+  4027b4:	e59f5144 	ldr	r5, [pc, #324]	; 402900 <ClearMenu+0x28>
+  4027b8:	e5955000 	ldr	r5, [r5]
+  4027bc:	e1550006 	cmp	r5, r6
+  4027c0:	0afffa58 	beq	401128 <nG>
+  4027c4:	e59f1130 	ldr	r1, [pc, #304]	; 4028fc <ClearMenu+0x24>
+  4027c8:	e3a02001 	mov	r2, #1
+  4027cc:	e5812000 	str	r2, [r1]
+  4027d0:	eaf0160a 	b	8000 <_start>
 
-004027c4 <removeScreen>:
-  4027c4:	eb000021 	bl	402850 <clearPauseMenu>
-  4027c8:	e8bd47e0 	pop	{r5, r6, r7, r8, r9, sl, lr}
-  4027cc:	e1a0f00e 	mov	pc, lr
+004027d4 <removeScreen>:
+  4027d4:	eb000021 	bl	402860 <clearPauseMenu>
+  4027d8:	e8bd47e0 	pop	{r5, r6, r7, r8, r9, sl, lr}
+  4027dc:	e1a0f00e 	mov	pc, lr
 
-004027d0 <Up>:
-  4027d0:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-  4027d4:	e59f01b0 	ldr	r0, [pc, #432]	; 40298c <ClearMenu+0xc4>
-  4027d8:	e5900000 	ldr	r0, [r0]
-  4027dc:	e59f11a8 	ldr	r1, [pc, #424]	; 40298c <ClearMenu+0xc4>
-  4027e0:	e5911004 	ldr	r1, [r1, #4]
-  4027e4:	ebfffd16 	bl	401c44 <clearPauseSelectCoinGreen>
-  4027e8:	e59f0108 	ldr	r0, [pc, #264]	; 4028f8 <ClearMenu+0x30>
-  4027ec:	e5900000 	ldr	r0, [r0]
-  4027f0:	e59f1100 	ldr	r1, [pc, #256]	; 4028f8 <ClearMenu+0x30>
-  4027f4:	e5911004 	ldr	r1, [r1, #4]
-  4027f8:	ebfffd08 	bl	401c20 <drawPauseSelectCoin>
-  4027fc:	e59f20ec 	ldr	r2, [pc, #236]	; 4028f0 <ClearMenu+0x28>
-  402800:	e3a03001 	mov	r3, #1
-  402804:	e5823000 	str	r3, [r2]
-  402808:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
-  40280c:	e1a0f00e 	mov	pc, lr
+004027e0 <Up>:
+  4027e0:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+  4027e4:	e59f01b0 	ldr	r0, [pc, #432]	; 40299c <ClearMenu+0xc4>
+  4027e8:	e5900000 	ldr	r0, [r0]
+  4027ec:	e59f11a8 	ldr	r1, [pc, #424]	; 40299c <ClearMenu+0xc4>
+  4027f0:	e5911004 	ldr	r1, [r1, #4]
+  4027f4:	ebfffd12 	bl	401c44 <clearPauseSelectCoinGreen>
+  4027f8:	e59f0108 	ldr	r0, [pc, #264]	; 402908 <ClearMenu+0x30>
+  4027fc:	e5900000 	ldr	r0, [r0]
+  402800:	e59f1100 	ldr	r1, [pc, #256]	; 402908 <ClearMenu+0x30>
+  402804:	e5911004 	ldr	r1, [r1, #4]
+  402808:	ebfffd04 	bl	401c20 <drawPauseSelectCoin>
+  40280c:	e59f20ec 	ldr	r2, [pc, #236]	; 402900 <ClearMenu+0x28>
+  402810:	e3a03001 	mov	r3, #1
+  402814:	e5823000 	str	r3, [r2]
+  402818:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
+  40281c:	e1a0f00e 	mov	pc, lr
 
-00402810 <Down>:
-  402810:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-  402814:	e59f00dc 	ldr	r0, [pc, #220]	; 4028f8 <ClearMenu+0x30>
-  402818:	e5900000 	ldr	r0, [r0]
-  40281c:	e59f10d4 	ldr	r1, [pc, #212]	; 4028f8 <ClearMenu+0x30>
-  402820:	e5911004 	ldr	r1, [r1, #4]
-  402824:	ebfffd06 	bl	401c44 <clearPauseSelectCoinGreen>
-  402828:	e59f015c 	ldr	r0, [pc, #348]	; 40298c <ClearMenu+0xc4>
-  40282c:	e5900000 	ldr	r0, [r0]
-  402830:	e59f1154 	ldr	r1, [pc, #340]	; 40298c <ClearMenu+0xc4>
-  402834:	e5911004 	ldr	r1, [r1, #4]
-  402838:	ebfffcf8 	bl	401c20 <drawPauseSelectCoin>
-  40283c:	e59f20ac 	ldr	r2, [pc, #172]	; 4028f0 <ClearMenu+0x28>
-  402840:	e3a03000 	mov	r3, #0
-  402844:	e5823000 	str	r3, [r2]
-  402848:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
-  40284c:	e1a0f00e 	mov	pc, lr
+00402820 <Down>:
+  402820:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+  402824:	e59f00dc 	ldr	r0, [pc, #220]	; 402908 <ClearMenu+0x30>
+  402828:	e5900000 	ldr	r0, [r0]
+  40282c:	e59f10d4 	ldr	r1, [pc, #212]	; 402908 <ClearMenu+0x30>
+  402830:	e5911004 	ldr	r1, [r1, #4]
+  402834:	ebfffd02 	bl	401c44 <clearPauseSelectCoinGreen>
+  402838:	e59f015c 	ldr	r0, [pc, #348]	; 40299c <ClearMenu+0xc4>
+  40283c:	e5900000 	ldr	r0, [r0]
+  402840:	e59f1154 	ldr	r1, [pc, #340]	; 40299c <ClearMenu+0xc4>
+  402844:	e5911004 	ldr	r1, [r1, #4]
+  402848:	ebfffcf4 	bl	401c20 <drawPauseSelectCoin>
+  40284c:	e59f20ac 	ldr	r2, [pc, #172]	; 402900 <ClearMenu+0x28>
+  402850:	e3a03000 	mov	r3, #0
+  402854:	e5823000 	str	r3, [r2]
+  402858:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
+  40285c:	e1a0f00e 	mov	pc, lr
 
-00402850 <clearPauseMenu>:
-  402850:	e92d4180 	push	{r7, r8, lr}
-  402854:	e59f0098 	ldr	r0, [pc, #152]	; 4028f4 <ClearMenu+0x2c>
-  402858:	e5900000 	ldr	r0, [r0]
-  40285c:	e59f1090 	ldr	r1, [pc, #144]	; 4028f4 <ClearMenu+0x2c>
-  402860:	e5911004 	ldr	r1, [r1, #4]
-  402864:	eb000017 	bl	4028c8 <ClearMenu>
-  402868:	e59f0088 	ldr	r0, [pc, #136]	; 4028f8 <ClearMenu+0x30>
-  40286c:	e5900000 	ldr	r0, [r0]
-  402870:	e59f1080 	ldr	r1, [pc, #128]	; 4028f8 <ClearMenu+0x30>
-  402874:	e5911004 	ldr	r1, [r1, #4]
-  402878:	ebfffcfa 	bl	401c68 <clearPauseSelectCoinBlue>
-  40287c:	e59f0108 	ldr	r0, [pc, #264]	; 40298c <ClearMenu+0xc4>
-  402880:	e5900000 	ldr	r0, [r0]
-  402884:	e59f1100 	ldr	r1, [pc, #256]	; 40298c <ClearMenu+0xc4>
-  402888:	e5911004 	ldr	r1, [r1, #4]
-  40288c:	ebfffcf5 	bl	401c68 <clearPauseSelectCoinBlue>
-  402890:	e59f1054 	ldr	r1, [pc, #84]	; 4028ec <ClearMenu+0x24>
-  402894:	e3a02000 	mov	r2, #0
-  402898:	e5812000 	str	r2, [r1]
-  40289c:	e8bd4180 	pop	{r7, r8, lr}
-  4028a0:	e1a0f00e 	mov	pc, lr
+00402860 <clearPauseMenu>:
+  402860:	e92d4180 	push	{r7, r8, lr}
+  402864:	e59f0098 	ldr	r0, [pc, #152]	; 402904 <ClearMenu+0x2c>
+  402868:	e5900000 	ldr	r0, [r0]
+  40286c:	e59f1090 	ldr	r1, [pc, #144]	; 402904 <ClearMenu+0x2c>
+  402870:	e5911004 	ldr	r1, [r1, #4]
+  402874:	eb000017 	bl	4028d8 <ClearMenu>
+  402878:	e59f0088 	ldr	r0, [pc, #136]	; 402908 <ClearMenu+0x30>
+  40287c:	e5900000 	ldr	r0, [r0]
+  402880:	e59f1080 	ldr	r1, [pc, #128]	; 402908 <ClearMenu+0x30>
+  402884:	e5911004 	ldr	r1, [r1, #4]
+  402888:	ebfffcf6 	bl	401c68 <clearPauseSelectCoinBlue>
+  40288c:	e59f0108 	ldr	r0, [pc, #264]	; 40299c <ClearMenu+0xc4>
+  402890:	e5900000 	ldr	r0, [r0]
+  402894:	e59f1100 	ldr	r1, [pc, #256]	; 40299c <ClearMenu+0xc4>
+  402898:	e5911004 	ldr	r1, [r1, #4]
+  40289c:	ebfffcf1 	bl	401c68 <clearPauseSelectCoinBlue>
+  4028a0:	e59f1054 	ldr	r1, [pc, #84]	; 4028fc <ClearMenu+0x24>
+  4028a4:	e3a02000 	mov	r2, #0
+  4028a8:	e5812000 	str	r2, [r1]
+  4028ac:	e8bd4180 	pop	{r7, r8, lr}
+  4028b0:	e1a0f00e 	mov	pc, lr
 
-004028a4 <drawPauseMenu>:
-  4028a4:	e92d4180 	push	{r7, r8, lr}
-  4028a8:	e59f20e0 	ldr	r2, [pc, #224]	; 402990 <ClearMenu+0xc8>
-  4028ac:	e3a070ef 	mov	r7, #239	; 0xef
-  4028b0:	e0877000 	add	r7, r7, r0
-  4028b4:	e3a08099 	mov	r8, #153	; 0x99
-  4028b8:	e0888001 	add	r8, r8, r1
-  4028bc:	ebfffcf2 	bl	401c8c <drawPicture>
-  4028c0:	e8bd4180 	pop	{r7, r8, lr}
-  4028c4:	e1a0f00e 	mov	pc, lr
+004028b4 <drawPauseMenu>:
+  4028b4:	e92d4180 	push	{r7, r8, lr}
+  4028b8:	e59f20e0 	ldr	r2, [pc, #224]	; 4029a0 <ClearMenu+0xc8>
+  4028bc:	e3a070ef 	mov	r7, #239	; 0xef
+  4028c0:	e0877000 	add	r7, r7, r0
+  4028c4:	e3a08099 	mov	r8, #153	; 0x99
+  4028c8:	e0888001 	add	r8, r8, r1
+  4028cc:	ebfffcee 	bl	401c8c <drawPicture>
+  4028d0:	e8bd4180 	pop	{r7, r8, lr}
+  4028d4:	e1a0f00e 	mov	pc, lr
 
-004028c8 <ClearMenu>:
-  4028c8:	e92d4180 	push	{r7, r8, lr}
-  4028cc:	e59f20c0 	ldr	r2, [pc, #192]	; 402994 <ClearMenu+0xcc>
-  4028d0:	e3a070ef 	mov	r7, #239	; 0xef
-  4028d4:	e0877000 	add	r7, r7, r0
-  4028d8:	e3a08099 	mov	r8, #153	; 0x99
-  4028dc:	e0888001 	add	r8, r8, r1
-  4028e0:	ebfffce9 	bl	401c8c <drawPicture>
-  4028e4:	e8bd4180 	pop	{r7, r8, lr}
-  4028e8:	e1a0f00e 	mov	pc, lr
-  4028ec:	00009198 	.word	0x00009198
-  4028f0:	000091a0 	.word	0x000091a0
-  4028f4:	003dd57c 	.word	0x003dd57c
-  4028f8:	000091b4 	.word	0x000091b4
-  4028fc:	00009080 	.word	0x00009080
-  402900:	00009110 	.word	0x00009110
-  402904:	000001e7 	.word	0x000001e7
-  402908:	0000911c 	.word	0x0000911c
-  40290c:	000001f1 	.word	0x000001f1
-  402910:	00009128 	.word	0x00009128
-  402914:	0000025d 	.word	0x0000025d
-  402918:	000001fb 	.word	0x000001fb
-  40291c:	00009134 	.word	0x00009134
-  402920:	00009138 	.word	0x00009138
-  402924:	00000262 	.word	0x00000262
-  402928:	00009140 	.word	0x00009140
-  40292c:	00009148 	.word	0x00009148
-  402930:	00009150 	.word	0x00009150
-  402934:	00000186 	.word	0x00000186
-  402938:	00009158 	.word	0x00009158
-  40293c:	0000028f 	.word	0x0000028f
-  402940:	00009160 	.word	0x00009160
-  402944:	0000010e 	.word	0x0000010e
-  402948:	0000015e 	.word	0x0000015e
-  40294c:	00009168 	.word	0x00009168
-  402950:	00000302 	.word	0x00000302
-  402954:	00009170 	.word	0x00009170
-  402958:	00009178 	.word	0x00009178
-  40295c:	000002ee 	.word	0x000002ee
-  402960:	00009180 	.word	0x00009180
-  402964:	0000029a 	.word	0x0000029a
-  402968:	00009188 	.word	0x00009188
-  40296c:	000001a9 	.word	0x000001a9
-  402970:	00009190 	.word	0x00009190
-  402974:	0000022d 	.word	0x0000022d
-  402978:	000091c4 	.word	0x000091c4
-  40297c:	000091c8 	.word	0x000091c8
-  402980:	00009090 	.word	0x00009090
-  402984:	00009094 	.word	0x00009094
-  402988:	00009098 	.word	0x00009098
-  40298c:	000091bc 	.word	0x000091bc
-  402990:	003dd584 	.word	0x003dd584
-  402994:	003ef332 	.word	0x003ef332
+004028d8 <ClearMenu>:
+  4028d8:	e92d4180 	push	{r7, r8, lr}
+  4028dc:	e59f20c0 	ldr	r2, [pc, #192]	; 4029a4 <ClearMenu+0xcc>
+  4028e0:	e3a070ef 	mov	r7, #239	; 0xef
+  4028e4:	e0877000 	add	r7, r7, r0
+  4028e8:	e3a08099 	mov	r8, #153	; 0x99
+  4028ec:	e0888001 	add	r8, r8, r1
+  4028f0:	ebfffce5 	bl	401c8c <drawPicture>
+  4028f4:	e8bd4180 	pop	{r7, r8, lr}
+  4028f8:	e1a0f00e 	mov	pc, lr
+  4028fc:	00009198 	.word	0x00009198
+  402900:	000091a0 	.word	0x000091a0
+  402904:	003dd57c 	.word	0x003dd57c
+  402908:	000091b4 	.word	0x000091b4
+  40290c:	00009080 	.word	0x00009080
+  402910:	00009110 	.word	0x00009110
+  402914:	000001e7 	.word	0x000001e7
+  402918:	0000911c 	.word	0x0000911c
+  40291c:	000001f1 	.word	0x000001f1
+  402920:	00009128 	.word	0x00009128
+  402924:	0000025d 	.word	0x0000025d
+  402928:	000001fb 	.word	0x000001fb
+  40292c:	00009134 	.word	0x00009134
+  402930:	00009138 	.word	0x00009138
+  402934:	00000262 	.word	0x00000262
+  402938:	00009140 	.word	0x00009140
+  40293c:	00009148 	.word	0x00009148
+  402940:	00009150 	.word	0x00009150
+  402944:	00000186 	.word	0x00000186
+  402948:	00009158 	.word	0x00009158
+  40294c:	0000028f 	.word	0x0000028f
+  402950:	00009160 	.word	0x00009160
+  402954:	0000010e 	.word	0x0000010e
+  402958:	0000015e 	.word	0x0000015e
+  40295c:	00009168 	.word	0x00009168
+  402960:	00000302 	.word	0x00000302
+  402964:	00009170 	.word	0x00009170
+  402968:	00009178 	.word	0x00009178
+  40296c:	000002ee 	.word	0x000002ee
+  402970:	00009180 	.word	0x00009180
+  402974:	0000029a 	.word	0x0000029a
+  402978:	00009188 	.word	0x00009188
+  40297c:	000001a9 	.word	0x000001a9
+  402980:	00009190 	.word	0x00009190
+  402984:	0000022d 	.word	0x0000022d
+  402988:	000091c4 	.word	0x000091c4
+  40298c:	000091c8 	.word	0x000091c8
+  402990:	00009090 	.word	0x00009090
+  402994:	00009094 	.word	0x00009094
+  402998:	00009098 	.word	0x00009098
+  40299c:	000091bc 	.word	0x000091bc
+  4029a0:	003dd584 	.word	0x003dd584
+  4029a4:	003ef332 	.word	0x003ef332
 
-00402998 <marioFallDown>:
-  402998:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  40299c:	e59f019c 	ldr	r0, [pc, #412]	; 402b40 <mfDone+0x8>
-  4029a0:	e5904000 	ldr	r4, [r0]
-  4029a4:	e5905004 	ldr	r5, [r0, #4]
-  4029a8:	e2846029 	add	r6, r4, #41	; 0x29
-  4029ac:	e2857046 	add	r7, r5, #70	; 0x46
-  4029b0:	e284a014 	add	sl, r4, #20
-  4029b4:	e59f0188 	ldr	r0, [pc, #392]	; 402b44 <mfDone+0xc>
-  4029b8:	e15a0000 	cmp	sl, r0
-  4029bc:	ba00005d 	blt	402b38 <mfDone>
-  4029c0:	e59f0180 	ldr	r0, [pc, #384]	; 402b48 <mfDone+0x10>
-  4029c4:	e15a0000 	cmp	sl, r0
-  4029c8:	ca00001a 	bgt	402a38 <fallDown2>
-  4029cc:	e59f0178 	ldr	r0, [pc, #376]	; 402b4c <mfDone+0x14>
-  4029d0:	e1550000 	cmp	r5, r0
-  4029d4:	ca000057 	bgt	402b38 <mfDone>
-  4029d8:	e59f8170 	ldr	r8, [pc, #368]	; 402b50 <mfDone+0x18>
-  4029dc:	e5988000 	ldr	r8, [r8]
-  4029e0:	e3580011 	cmp	r8, #17
-  4029e4:	1a000053 	bne	402b38 <mfDone>
-  4029e8:	e1a09005 	mov	r9, r5
+004029a8 <marioFallDown>:
+  4029a8:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  4029ac:	e59f019c 	ldr	r0, [pc, #412]	; 402b50 <mfDone+0x8>
+  4029b0:	e5904000 	ldr	r4, [r0]
+  4029b4:	e5905004 	ldr	r5, [r0, #4]
+  4029b8:	e2846029 	add	r6, r4, #41	; 0x29
+  4029bc:	e2857046 	add	r7, r5, #70	; 0x46
+  4029c0:	e284a014 	add	sl, r4, #20
+  4029c4:	e59f0188 	ldr	r0, [pc, #392]	; 402b54 <mfDone+0xc>
+  4029c8:	e15a0000 	cmp	sl, r0
+  4029cc:	ba00005d 	blt	402b48 <mfDone>
+  4029d0:	e59f0180 	ldr	r0, [pc, #384]	; 402b58 <mfDone+0x10>
+  4029d4:	e15a0000 	cmp	sl, r0
+  4029d8:	ca00001a 	bgt	402a48 <fallDown2>
+  4029dc:	e59f0178 	ldr	r0, [pc, #376]	; 402b5c <mfDone+0x14>
+  4029e0:	e1550000 	cmp	r5, r0
+  4029e4:	ca000057 	bgt	402b48 <mfDone>
+  4029e8:	e59f8170 	ldr	r8, [pc, #368]	; 402b60 <mfDone+0x18>
+  4029ec:	e5988000 	ldr	r8, [r8]
+  4029f0:	e3580011 	cmp	r8, #17
+  4029f4:	1a000053 	bne	402b48 <mfDone>
+  4029f8:	e1a09005 	mov	r9, r5
 
-004029ec <fallDown>:
-  4029ec:	e289900c 	add	r9, r9, #12
-  4029f0:	ebfffbe4 	bl	401988 <clearMario>
-  4029f4:	e59f0144 	ldr	r0, [pc, #324]	; 402b40 <mfDone+0x8>
-  4029f8:	e5809004 	str	r9, [r0, #4]
-  4029fc:	ebfffbca 	bl	40192c <drawMario>
-  402a00:	e59f014c 	ldr	r0, [pc, #332]	; 402b54 <mfDone+0x1c>
-  402a04:	eb000056 	bl	402b64 <_ReadSNES>
-  402a08:	e59f0148 	ldr	r0, [pc, #328]	; 402b58 <mfDone+0x20>
-  402a0c:	e5d01007 	ldrb	r1, [r0, #7]
-  402a10:	e3510000 	cmp	r1, #0
-  402a14:	0b0000bc 	bleq	402d0c <UpRightPress>
-  402a18:	e59f0138 	ldr	r0, [pc, #312]	; 402b58 <mfDone+0x20>
-  402a1c:	e5d01006 	ldrb	r1, [r0, #6]
+004029fc <fallDown>:
+  4029fc:	e289900c 	add	r9, r9, #12
+  402a00:	ebfffbe0 	bl	401988 <clearMario>
+  402a04:	e59f0144 	ldr	r0, [pc, #324]	; 402b50 <mfDone+0x8>
+  402a08:	e5809004 	str	r9, [r0, #4]
+  402a0c:	ebfffbc6 	bl	40192c <drawMario>
+  402a10:	e59f014c 	ldr	r0, [pc, #332]	; 402b64 <mfDone+0x1c>
+  402a14:	eb000056 	bl	402b74 <_ReadSNES>
+  402a18:	e59f0148 	ldr	r0, [pc, #328]	; 402b68 <mfDone+0x20>
+  402a1c:	e5d01007 	ldrb	r1, [r0, #7]
   402a20:	e3510000 	cmp	r1, #0
-  402a24:	0b0000d6 	bleq	402d84 <UpLeftPress>
-  402a28:	e59f0124 	ldr	r0, [pc, #292]	; 402b54 <mfDone+0x1c>
-  402a2c:	e1590000 	cmp	r9, r0
-  402a30:	baffffed 	blt	4029ec <fallDown>
-  402a34:	ea00003f 	b	402b38 <mfDone>
+  402a24:	0b0000bc 	bleq	402d1c <UpRightPress>
+  402a28:	e59f0138 	ldr	r0, [pc, #312]	; 402b68 <mfDone+0x20>
+  402a2c:	e5d01006 	ldrb	r1, [r0, #6]
+  402a30:	e3510000 	cmp	r1, #0
+  402a34:	0b0000d6 	bleq	402d94 <UpLeftPress>
+  402a38:	e59f0124 	ldr	r0, [pc, #292]	; 402b64 <mfDone+0x1c>
+  402a3c:	e1590000 	cmp	r9, r0
+  402a40:	baffffed 	blt	4029fc <fallDown>
+  402a44:	ea00003f 	b	402b48 <mfDone>
 
-00402a38 <fallDown2>:
-  402a38:	e59f0108 	ldr	r0, [pc, #264]	; 402b48 <mfDone+0x10>
-  402a3c:	e15a0000 	cmp	sl, r0
-  402a40:	baffffd4 	blt	402998 <marioFallDown>
-  402a44:	e3a00faf 	mov	r0, #700	; 0x2bc
-  402a48:	e15a0000 	cmp	sl, r0
-  402a4c:	ca000019 	bgt	402ab8 <fallDown3>
-  402a50:	e59f00f4 	ldr	r0, [pc, #244]	; 402b4c <mfDone+0x14>
-  402a54:	ca000037 	bgt	402b38 <mfDone>
-  402a58:	e59f80fc 	ldr	r8, [pc, #252]	; 402b5c <mfDone+0x24>
-  402a5c:	e5988000 	ldr	r8, [r8]
-  402a60:	e3580011 	cmp	r8, #17
-  402a64:	1a000033 	bne	402b38 <mfDone>
-  402a68:	e1a09005 	mov	r9, r5
+00402a48 <fallDown2>:
+  402a48:	e59f0108 	ldr	r0, [pc, #264]	; 402b58 <mfDone+0x10>
+  402a4c:	e15a0000 	cmp	sl, r0
+  402a50:	baffffd4 	blt	4029a8 <marioFallDown>
+  402a54:	e3a00faf 	mov	r0, #700	; 0x2bc
+  402a58:	e15a0000 	cmp	sl, r0
+  402a5c:	ca000019 	bgt	402ac8 <fallDown3>
+  402a60:	e59f00f4 	ldr	r0, [pc, #244]	; 402b5c <mfDone+0x14>
+  402a64:	ca000037 	bgt	402b48 <mfDone>
+  402a68:	e59f80fc 	ldr	r8, [pc, #252]	; 402b6c <mfDone+0x24>
+  402a6c:	e5988000 	ldr	r8, [r8]
+  402a70:	e3580011 	cmp	r8, #17
+  402a74:	1a000033 	bne	402b48 <mfDone>
+  402a78:	e1a09005 	mov	r9, r5
 
-00402a6c <f2l>:
-  402a6c:	e289900c 	add	r9, r9, #12
-  402a70:	ebfffbc4 	bl	401988 <clearMario>
-  402a74:	e59f00c4 	ldr	r0, [pc, #196]	; 402b40 <mfDone+0x8>
-  402a78:	e5809004 	str	r9, [r0, #4]
-  402a7c:	ebfffbaa 	bl	40192c <drawMario>
-  402a80:	e59f00cc 	ldr	r0, [pc, #204]	; 402b54 <mfDone+0x1c>
-  402a84:	eb000036 	bl	402b64 <_ReadSNES>
-  402a88:	e59f00c8 	ldr	r0, [pc, #200]	; 402b58 <mfDone+0x20>
-  402a8c:	e5d01007 	ldrb	r1, [r0, #7]
-  402a90:	e3510000 	cmp	r1, #0
-  402a94:	0b00009c 	bleq	402d0c <UpRightPress>
-  402a98:	e59f00b8 	ldr	r0, [pc, #184]	; 402b58 <mfDone+0x20>
-  402a9c:	e5d01006 	ldrb	r1, [r0, #6]
+00402a7c <f2l>:
+  402a7c:	e289900c 	add	r9, r9, #12
+  402a80:	ebfffbc0 	bl	401988 <clearMario>
+  402a84:	e59f00c4 	ldr	r0, [pc, #196]	; 402b50 <mfDone+0x8>
+  402a88:	e5809004 	str	r9, [r0, #4]
+  402a8c:	ebfffba6 	bl	40192c <drawMario>
+  402a90:	e59f00cc 	ldr	r0, [pc, #204]	; 402b64 <mfDone+0x1c>
+  402a94:	eb000036 	bl	402b74 <_ReadSNES>
+  402a98:	e59f00c8 	ldr	r0, [pc, #200]	; 402b68 <mfDone+0x20>
+  402a9c:	e5d01007 	ldrb	r1, [r0, #7]
   402aa0:	e3510000 	cmp	r1, #0
-  402aa4:	0b0000b6 	bleq	402d84 <UpLeftPress>
-  402aa8:	e59f00a4 	ldr	r0, [pc, #164]	; 402b54 <mfDone+0x1c>
-  402aac:	e1590000 	cmp	r9, r0
-  402ab0:	baffffed 	blt	402a6c <f2l>
-  402ab4:	ea00001f 	b	402b38 <mfDone>
+  402aa4:	0b00009c 	bleq	402d1c <UpRightPress>
+  402aa8:	e59f00b8 	ldr	r0, [pc, #184]	; 402b68 <mfDone+0x20>
+  402aac:	e5d01006 	ldrb	r1, [r0, #6]
+  402ab0:	e3510000 	cmp	r1, #0
+  402ab4:	0b0000b6 	bleq	402d94 <UpLeftPress>
+  402ab8:	e59f00a4 	ldr	r0, [pc, #164]	; 402b64 <mfDone+0x1c>
+  402abc:	e1590000 	cmp	r9, r0
+  402ac0:	baffffed 	blt	402a7c <f2l>
+  402ac4:	ea00001f 	b	402b48 <mfDone>
 
-00402ab8 <fallDown3>:
-  402ab8:	e3a00faf 	mov	r0, #700	; 0x2bc
-  402abc:	e15a0000 	cmp	sl, r0
-  402ac0:	baffffb4 	blt	402998 <marioFallDown>
-  402ac4:	e59f0094 	ldr	r0, [pc, #148]	; 402b60 <mfDone+0x28>
-  402ac8:	e15a0000 	cmp	sl, r0
-  402acc:	cafffff9 	bgt	402ab8 <fallDown3>
-  402ad0:	e59f0074 	ldr	r0, [pc, #116]	; 402b4c <mfDone+0x14>
-  402ad4:	ca000017 	bgt	402b38 <mfDone>
-  402ad8:	e59f807c 	ldr	r8, [pc, #124]	; 402b5c <mfDone+0x24>
-  402adc:	e5988000 	ldr	r8, [r8]
-  402ae0:	e3580011 	cmp	r8, #17
-  402ae4:	1a000013 	bne	402b38 <mfDone>
-  402ae8:	e1a09005 	mov	r9, r5
+00402ac8 <fallDown3>:
+  402ac8:	e3a00faf 	mov	r0, #700	; 0x2bc
+  402acc:	e15a0000 	cmp	sl, r0
+  402ad0:	baffffb4 	blt	4029a8 <marioFallDown>
+  402ad4:	e59f0094 	ldr	r0, [pc, #148]	; 402b70 <mfDone+0x28>
+  402ad8:	e15a0000 	cmp	sl, r0
+  402adc:	cafffff9 	bgt	402ac8 <fallDown3>
+  402ae0:	e59f0074 	ldr	r0, [pc, #116]	; 402b5c <mfDone+0x14>
+  402ae4:	ca000017 	bgt	402b48 <mfDone>
+  402ae8:	e59f807c 	ldr	r8, [pc, #124]	; 402b6c <mfDone+0x24>
+  402aec:	e5988000 	ldr	r8, [r8]
+  402af0:	e3580011 	cmp	r8, #17
+  402af4:	1a000013 	bne	402b48 <mfDone>
+  402af8:	e1a09005 	mov	r9, r5
 
-00402aec <f3l>:
-  402aec:	e289900c 	add	r9, r9, #12
-  402af0:	ebfffba4 	bl	401988 <clearMario>
-  402af4:	e59f0044 	ldr	r0, [pc, #68]	; 402b40 <mfDone+0x8>
-  402af8:	e5809004 	str	r9, [r0, #4]
-  402afc:	ebfffb8a 	bl	40192c <drawMario>
-  402b00:	e59f004c 	ldr	r0, [pc, #76]	; 402b54 <mfDone+0x1c>
-  402b04:	eb000016 	bl	402b64 <_ReadSNES>
-  402b08:	e59f0048 	ldr	r0, [pc, #72]	; 402b58 <mfDone+0x20>
-  402b0c:	e5d01007 	ldrb	r1, [r0, #7]
-  402b10:	e3510000 	cmp	r1, #0
-  402b14:	0b00007c 	bleq	402d0c <UpRightPress>
-  402b18:	e59f0038 	ldr	r0, [pc, #56]	; 402b58 <mfDone+0x20>
-  402b1c:	e5d01006 	ldrb	r1, [r0, #6]
+00402afc <f3l>:
+  402afc:	e289900c 	add	r9, r9, #12
+  402b00:	ebfffba0 	bl	401988 <clearMario>
+  402b04:	e59f0044 	ldr	r0, [pc, #68]	; 402b50 <mfDone+0x8>
+  402b08:	e5809004 	str	r9, [r0, #4]
+  402b0c:	ebfffb86 	bl	40192c <drawMario>
+  402b10:	e59f004c 	ldr	r0, [pc, #76]	; 402b64 <mfDone+0x1c>
+  402b14:	eb000016 	bl	402b74 <_ReadSNES>
+  402b18:	e59f0048 	ldr	r0, [pc, #72]	; 402b68 <mfDone+0x20>
+  402b1c:	e5d01007 	ldrb	r1, [r0, #7]
   402b20:	e3510000 	cmp	r1, #0
-  402b24:	0b000096 	bleq	402d84 <UpLeftPress>
-  402b28:	e59f0024 	ldr	r0, [pc, #36]	; 402b54 <mfDone+0x1c>
-  402b2c:	e1590000 	cmp	r9, r0
-  402b30:	baffffed 	blt	402aec <f3l>
-  402b34:	eaffffff 	b	402b38 <mfDone>
+  402b24:	0b00007c 	bleq	402d1c <UpRightPress>
+  402b28:	e59f0038 	ldr	r0, [pc, #56]	; 402b68 <mfDone+0x20>
+  402b2c:	e5d01006 	ldrb	r1, [r0, #6]
+  402b30:	e3510000 	cmp	r1, #0
+  402b34:	0b000096 	bleq	402d94 <UpLeftPress>
+  402b38:	e59f0024 	ldr	r0, [pc, #36]	; 402b64 <mfDone+0x1c>
+  402b3c:	e1590000 	cmp	r9, r0
+  402b40:	baffffed 	blt	402afc <f3l>
+  402b44:	eaffffff 	b	402b48 <mfDone>
 
-00402b38 <mfDone>:
-  402b38:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402b3c:	e1a0f00e 	mov	pc, lr
-  402b40:	00009110 	.word	0x00009110
-  402b44:	00000262 	.word	0x00000262
-  402b48:	0000028f 	.word	0x0000028f
-  402b4c:	0000014b 	.word	0x0000014b
-  402b50:	00009090 	.word	0x00009090
-  402b54:	000001e7 	.word	0x000001e7
-  402b58:	00009080 	.word	0x00009080
-  402b5c:	00009094 	.word	0x00009094
-  402b60:	000002e9 	.word	0x000002e9
+00402b48 <mfDone>:
+  402b48:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402b4c:	e1a0f00e 	mov	pc, lr
+  402b50:	00009110 	.word	0x00009110
+  402b54:	00000262 	.word	0x00000262
+  402b58:	0000028f 	.word	0x0000028f
+  402b5c:	0000014b 	.word	0x0000014b
+  402b60:	00009090 	.word	0x00009090
+  402b64:	000001e7 	.word	0x000001e7
+  402b68:	00009080 	.word	0x00009080
+  402b6c:	00009094 	.word	0x00009094
+  402b70:	000002e9 	.word	0x000002e9
 
-00402b64 <_ReadSNES>:
-  402b64:	eaffffff 	b	402b68 <ReadSNES>
+00402b74 <_ReadSNES>:
+  402b74:	eaffffff 	b	402b78 <ReadSNES>
 
-00402b68 <ReadSNES>:
-  402b68:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402b6c:	e59fa094 	ldr	sl, [pc, #148]	; 402c08 <pulseLoop+0x40>
-  402b70:	e59aa000 	ldr	sl, [sl]
-  402b74:	e3a09000 	mov	r9, #0
-  402b78:	e15a0009 	cmp	sl, r9
-  402b7c:	1a000006 	bne	402b9c <skipUpdate>
-  402b80:	ebfff96f 	bl	401144 <updateMonsters>
-  402b84:	e59f0080 	ldr	r0, [pc, #128]	; 402c0c <pulseLoop+0x44>
-  402b88:	e5905004 	ldr	r5, [r0, #4]
-  402b8c:	e59f007c 	ldr	r0, [pc, #124]	; 402c10 <pulseLoop+0x48>
-  402b90:	e5900000 	ldr	r0, [r0]
-  402b94:	e1550000 	cmp	r5, r0
-  402b98:	bbfffe0d 	bllt	4023d4 <Grav>
+00402b78 <ReadSNES>:
+  402b78:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402b7c:	e59fa094 	ldr	sl, [pc, #148]	; 402c18 <pulseLoop+0x40>
+  402b80:	e59aa000 	ldr	sl, [sl]
+  402b84:	e3a09000 	mov	r9, #0
+  402b88:	e15a0009 	cmp	sl, r9
+  402b8c:	1a000006 	bne	402bac <skipUpdate>
+  402b90:	ebfff96b 	bl	401144 <updateMonsters>
+  402b94:	e59f0080 	ldr	r0, [pc, #128]	; 402c1c <pulseLoop+0x44>
+  402b98:	e5905004 	ldr	r5, [r0, #4]
+  402b9c:	e59f007c 	ldr	r0, [pc, #124]	; 402c20 <pulseLoop+0x48>
+  402ba0:	e5900000 	ldr	r0, [r0]
+  402ba4:	e1550000 	cmp	r5, r0
+  402ba8:	bbfffe0d 	bllt	4023e4 <Grav>
 
-00402b9c <skipUpdate>:
-  402b9c:	e3a01001 	mov	r1, #1
-  402ba0:	ebfffadd 	bl	40171c <_WriteClock>
-  402ba4:	e3a01001 	mov	r1, #1
-  402ba8:	ebfffe53 	bl	4024fc <_WriteLatch>
-  402bac:	e3a0000c 	mov	r0, #12
-  402bb0:	ebfffe37 	bl	402494 <_Wait>
-  402bb4:	e3a01000 	mov	r1, #0
-  402bb8:	ebfffe4f 	bl	4024fc <_WriteLatch>
-  402bbc:	e3a07000 	mov	r7, #0
-  402bc0:	e3a00e7d 	mov	r0, #2000	; 0x7d0
-  402bc4:	ebfffe3e 	bl	4024c4 <WaitLong>
+00402bac <skipUpdate>:
+  402bac:	e3a01001 	mov	r1, #1
+  402bb0:	ebfffad9 	bl	40171c <_WriteClock>
+  402bb4:	e3a01001 	mov	r1, #1
+  402bb8:	ebfffe53 	bl	40250c <_WriteLatch>
+  402bbc:	e3a0000c 	mov	r0, #12
+  402bc0:	ebfffe37 	bl	4024a4 <_Wait>
+  402bc4:	e3a01000 	mov	r1, #0
+  402bc8:	ebfffe4f 	bl	40250c <_WriteLatch>
+  402bcc:	e3a07000 	mov	r7, #0
+  402bd0:	e3a00e7d 	mov	r0, #2000	; 0x7d0
+  402bd4:	ebfffe3e 	bl	4024d4 <WaitLong>
 
-00402bc8 <pulseLoop>:
-  402bc8:	e3a00006 	mov	r0, #6
-  402bcc:	ebfffe30 	bl	402494 <_Wait>
-  402bd0:	e3a01000 	mov	r1, #0
-  402bd4:	ebfffad0 	bl	40171c <_WriteClock>
+00402bd8 <pulseLoop>:
   402bd8:	e3a00006 	mov	r0, #6
-  402bdc:	ebfffe2c 	bl	402494 <_Wait>
-  402be0:	ebfffdb9 	bl	4022cc <_ReadData>
-  402be4:	e59f5028 	ldr	r5, [pc, #40]	; 402c14 <pulseLoop+0x4c>
-  402be8:	e7c50007 	strb	r0, [r5, r7]
-  402bec:	e2877001 	add	r7, r7, #1
-  402bf0:	e3a01001 	mov	r1, #1
-  402bf4:	ebfffac8 	bl	40171c <_WriteClock>
-  402bf8:	e3570010 	cmp	r7, #16
-  402bfc:	bafffff1 	blt	402bc8 <pulseLoop>
-  402c00:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402c04:	e12fff1e 	bx	lr
-  402c08:	00009198 	.word	0x00009198
-  402c0c:	00009110 	.word	0x00009110
-  402c10:	0000909c 	.word	0x0000909c
-  402c14:	00009080 	.word	0x00009080
+  402bdc:	ebfffe30 	bl	4024a4 <_Wait>
+  402be0:	e3a01000 	mov	r1, #0
+  402be4:	ebfffacc 	bl	40171c <_WriteClock>
+  402be8:	e3a00006 	mov	r0, #6
+  402bec:	ebfffe2c 	bl	4024a4 <_Wait>
+  402bf0:	ebfffdb9 	bl	4022dc <_ReadData>
+  402bf4:	e59f5028 	ldr	r5, [pc, #40]	; 402c24 <pulseLoop+0x4c>
+  402bf8:	e7c50007 	strb	r0, [r5, r7]
+  402bfc:	e2877001 	add	r7, r7, #1
+  402c00:	e3a01001 	mov	r1, #1
+  402c04:	ebfffac4 	bl	40171c <_WriteClock>
+  402c08:	e3570010 	cmp	r7, #16
+  402c0c:	bafffff1 	blt	402bd8 <pulseLoop>
+  402c10:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402c14:	e12fff1e 	bx	lr
+  402c18:	00009198 	.word	0x00009198
+  402c1c:	00009110 	.word	0x00009110
+  402c20:	0000909c 	.word	0x0000909c
+  402c24:	00009080 	.word	0x00009080
 
-00402c18 <BPress>:
-  402c18:	e59f02ac 	ldr	r0, [pc, #684]	; 402ecc <APress>
-  402c1c:	e5904000 	ldr	r4, [r0]
-  402c20:	e5905004 	ldr	r5, [r0, #4]
+00402c28 <BPress>:
+  402c28:	e59f02ac 	ldr	r0, [pc, #684]	; 402edc <APress>
+  402c2c:	e5904000 	ldr	r4, [r0]
+  402c30:	e5905004 	ldr	r5, [r0, #4]
 
-00402c24 <STPress>:
-  402c24:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402c28:	ebfffe40 	bl	402530 <PauseMenu>
-  402c2c:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402c30:	e12fff1e 	bx	lr
+00402c34 <STPress>:
+  402c34:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402c38:	ebfffe40 	bl	402540 <PauseMenu>
+  402c3c:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402c40:	e12fff1e 	bx	lr
 
-00402c34 <upOpt>:
-  402c34:	ebffffca 	bl	402b64 <_ReadSNES>
-  402c38:	e59f5290 	ldr	r5, [pc, #656]	; 402ed0 <APress+0x4>
-  402c3c:	e5d54009 	ldrb	r4, [r5, #9]
-  402c40:	e3540000 	cmp	r4, #0
-  402c44:	0af014ed 	beq	8000 <_start>
-  402c48:	e5d54006 	ldrb	r4, [r5, #6]
-  402c4c:	e3540000 	cmp	r4, #0
-  402c50:	0a000000 	beq	402c58 <dR>
-  402c54:	eafffff6 	b	402c34 <upOpt>
+00402c44 <upOpt>:
+  402c44:	ebffffca 	bl	402b74 <_ReadSNES>
+  402c48:	e59f5290 	ldr	r5, [pc, #656]	; 402ee0 <APress+0x4>
+  402c4c:	e5d54009 	ldrb	r4, [r5, #9]
+  402c50:	e3540000 	cmp	r4, #0
+  402c54:	0af014e9 	beq	8000 <_start>
+  402c58:	e5d54006 	ldrb	r4, [r5, #6]
+  402c5c:	e3540000 	cmp	r4, #0
+  402c60:	0a000000 	beq	402c68 <dR>
+  402c64:	eafffff6 	b	402c44 <upOpt>
 
-00402c58 <dR>:
-  402c58:	ebffffc1 	bl	402b64 <_ReadSNES>
-  402c5c:	e59f526c 	ldr	r5, [pc, #620]	; 402ed0 <APress+0x4>
-  402c60:	e5d54009 	ldrb	r4, [r5, #9]
-  402c64:	e3540000 	cmp	r4, #0
-  402c68:	e5d54005 	ldrb	r4, [r5, #5]
-  402c6c:	e3540000 	cmp	r4, #0
-  402c70:	0affffef 	beq	402c34 <upOpt>
-  402c74:	eafffff7 	b	402c58 <dR>
+00402c68 <dR>:
+  402c68:	ebffffc1 	bl	402b74 <_ReadSNES>
+  402c6c:	e59f526c 	ldr	r5, [pc, #620]	; 402ee0 <APress+0x4>
+  402c70:	e5d54009 	ldrb	r4, [r5, #9]
+  402c74:	e3540000 	cmp	r4, #0
+  402c78:	e5d54005 	ldrb	r4, [r5, #5]
+  402c7c:	e3540000 	cmp	r4, #0
+  402c80:	0affffef 	beq	402c44 <upOpt>
+  402c84:	eafffff7 	b	402c68 <dR>
 
-00402c78 <JPUPress>:
-  402c78:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402c7c:	e59f5248 	ldr	r5, [pc, #584]	; 402ecc <APress>
-  402c80:	e5954000 	ldr	r4, [r5]
-  402c84:	e5957004 	ldr	r7, [r5, #4]
-  402c88:	e1a06007 	mov	r6, r7
-  402c8c:	e24780b4 	sub	r8, r7, #180	; 0xb4
-  402c90:	e59f023c 	ldr	r0, [pc, #572]	; 402ed4 <APress+0x8>
-  402c94:	e3a01000 	mov	r1, #0
-  402c98:	e5801000 	str	r1, [r0]
+00402c88 <JPUPress>:
+  402c88:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402c8c:	e59f5248 	ldr	r5, [pc, #584]	; 402edc <APress>
+  402c90:	e5954000 	ldr	r4, [r5]
+  402c94:	e5957004 	ldr	r7, [r5, #4]
+  402c98:	e1a06007 	mov	r6, r7
+  402c9c:	e24780b4 	sub	r8, r7, #180	; 0xb4
+  402ca0:	e59f023c 	ldr	r0, [pc, #572]	; 402ee4 <APress+0x8>
+  402ca4:	e3a01000 	mov	r1, #0
+  402ca8:	e5801000 	str	r1, [r0]
 
-00402c9c <jumpup>:
-  402c9c:	e59f0230 	ldr	r0, [pc, #560]	; 402ed4 <APress+0x8>
-  402ca0:	e5d00000 	ldrb	r0, [r0]
-  402ca4:	e3500001 	cmp	r0, #1
-  402ca8:	0a000012 	beq	402cf8 <jumpdone>
-  402cac:	e246601e 	sub	r6, r6, #30
-  402cb0:	ebfffb34 	bl	401988 <clearMario>
-  402cb4:	e5856004 	str	r6, [r5, #4]
-  402cb8:	e59f1218 	ldr	r1, [pc, #536]	; 402ed8 <APress+0xc>
-  402cbc:	e5911000 	ldr	r1, [r1]
-  402cc0:	e3510001 	cmp	r1, #1
-  402cc4:	ebfff970 	bl	40128c <Detect1>
-  402cc8:	ebfffb17 	bl	40192c <drawMario>
-  402ccc:	ebffffa4 	bl	402b64 <_ReadSNES>
-  402cd0:	e59f91f8 	ldr	r9, [pc, #504]	; 402ed0 <APress+0x4>
-  402cd4:	e5d9a007 	ldrb	sl, [r9, #7]
-  402cd8:	e35a0000 	cmp	sl, #0
-  402cdc:	0b00000a 	bleq	402d0c <UpRightPress>
-  402ce0:	e59f91e8 	ldr	r9, [pc, #488]	; 402ed0 <APress+0x4>
-  402ce4:	e5d9a006 	ldrb	sl, [r9, #6]
+00402cac <jumpup>:
+  402cac:	e59f0230 	ldr	r0, [pc, #560]	; 402ee4 <APress+0x8>
+  402cb0:	e5d00000 	ldrb	r0, [r0]
+  402cb4:	e3500001 	cmp	r0, #1
+  402cb8:	0a000012 	beq	402d08 <jumpdone>
+  402cbc:	e246601e 	sub	r6, r6, #30
+  402cc0:	ebfffb30 	bl	401988 <clearMario>
+  402cc4:	e5856004 	str	r6, [r5, #4]
+  402cc8:	e59f1218 	ldr	r1, [pc, #536]	; 402ee8 <APress+0xc>
+  402ccc:	e5911000 	ldr	r1, [r1]
+  402cd0:	e3510001 	cmp	r1, #1
+  402cd4:	ebfff96c 	bl	40128c <Detect1>
+  402cd8:	ebfffb13 	bl	40192c <drawMario>
+  402cdc:	ebffffa4 	bl	402b74 <_ReadSNES>
+  402ce0:	e59f91f8 	ldr	r9, [pc, #504]	; 402ee0 <APress+0x4>
+  402ce4:	e5d9a007 	ldrb	sl, [r9, #7]
   402ce8:	e35a0000 	cmp	sl, #0
-  402cec:	0b000024 	bleq	402d84 <UpLeftPress>
-  402cf0:	e1560008 	cmp	r6, r8
-  402cf4:	aaffffe8 	bge	402c9c <jumpup>
+  402cec:	0b00000a 	bleq	402d1c <UpRightPress>
+  402cf0:	e59f91e8 	ldr	r9, [pc, #488]	; 402ee0 <APress+0x4>
+  402cf4:	e5d9a006 	ldrb	sl, [r9, #6]
+  402cf8:	e35a0000 	cmp	sl, #0
+  402cfc:	0b000024 	bleq	402d94 <UpLeftPress>
+  402d00:	e1560008 	cmp	r6, r8
+  402d04:	aaffffe8 	bge	402cac <jumpup>
 
-00402cf8 <jumpdone>:
-  402cf8:	e59f01d4 	ldr	r0, [pc, #468]	; 402ed4 <APress+0x8>
-  402cfc:	e3a01001 	mov	r1, #1
-  402d00:	e5801000 	str	r1, [r0]
-  402d04:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402d08:	e1a0f00e 	mov	pc, lr
+00402d08 <jumpdone>:
+  402d08:	e59f01d4 	ldr	r0, [pc, #468]	; 402ee4 <APress+0x8>
+  402d0c:	e3a01001 	mov	r1, #1
+  402d10:	e5801000 	str	r1, [r0]
+  402d14:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402d18:	e1a0f00e 	mov	pc, lr
 
-00402d0c <UpRightPress>:
-  402d0c:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402d10:	e59f51b4 	ldr	r5, [pc, #436]	; 402ecc <APress>
-  402d14:	e5954000 	ldr	r4, [r5]
-  402d18:	e3a07ff5 	mov	r7, #980	; 0x3d4
-  402d1c:	e284600a 	add	r6, r4, #10
-  402d20:	e1560007 	cmp	r6, r7
-  402d24:	ba000004 	blt	402d3c <UdrawR>
-  402d28:	aa00000b 	bge	402d5c <UscreenR>
-  402d2c:	e59f71a8 	ldr	r7, [pc, #424]	; 402edc <APress+0x10>
+00402d1c <UpRightPress>:
+  402d1c:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402d20:	e59f51b4 	ldr	r5, [pc, #436]	; 402edc <APress>
+  402d24:	e5954000 	ldr	r4, [r5]
+  402d28:	e3a07ff5 	mov	r7, #980	; 0x3d4
+  402d2c:	e284600a 	add	r6, r4, #10
   402d30:	e1560007 	cmp	r6, r7
-  402d34:	ba000000 	blt	402d3c <UdrawR>
-  402d38:	0a000007 	beq	402d5c <UscreenR>
+  402d34:	ba000004 	blt	402d4c <UdrawR>
+  402d38:	aa00000b 	bge	402d6c <UscreenR>
+  402d3c:	e59f71a8 	ldr	r7, [pc, #424]	; 402eec <APress+0x10>
+  402d40:	e1560007 	cmp	r6, r7
+  402d44:	ba000000 	blt	402d4c <UdrawR>
+  402d48:	0a000007 	beq	402d6c <UscreenR>
 
-00402d3c <UdrawR>:
-  402d3c:	ebfffb11 	bl	401988 <clearMario>
-  402d40:	e5856000 	str	r6, [r5]
-  402d44:	e59f118c 	ldr	r1, [pc, #396]	; 402ed8 <APress+0xc>
-  402d48:	e5911000 	ldr	r1, [r1]
-  402d4c:	e3510001 	cmp	r1, #1
-  402d50:	ebfff94d 	bl	40128c <Detect1>
-  402d54:	ebfffaf4 	bl	40192c <drawMario>
-  402d58:	ea000007 	b	402d7c <UdoneR>
+00402d4c <UdrawR>:
+  402d4c:	ebfffb0d 	bl	401988 <clearMario>
+  402d50:	e5856000 	str	r6, [r5]
+  402d54:	e59f118c 	ldr	r1, [pc, #396]	; 402ee8 <APress+0xc>
+  402d58:	e5911000 	ldr	r1, [r1]
+  402d5c:	e3510001 	cmp	r1, #1
+  402d60:	ebfff949 	bl	40128c <Detect1>
+  402d64:	ebfffaf0 	bl	40192c <drawMario>
+  402d68:	ea000007 	b	402d8c <UdoneR>
 
-00402d5c <UscreenR>:
-  402d5c:	ebfffbe9 	bl	401d08 <updateScreenRight>
-  402d60:	ebfffb08 	bl	401988 <clearMario>
-  402d64:	e59f5160 	ldr	r5, [pc, #352]	; 402ecc <APress>
-  402d68:	e3a0404b 	mov	r4, #75	; 0x4b
-  402d6c:	e59f616c 	ldr	r6, [pc, #364]	; 402ee0 <APress+0x14>
-  402d70:	e5854000 	str	r4, [r5]
-  402d74:	e5856004 	str	r6, [r5, #4]
-  402d78:	ebfffaeb 	bl	40192c <drawMario>
+00402d6c <UscreenR>:
+  402d6c:	ebfffbe5 	bl	401d08 <updateScreenRight>
+  402d70:	ebfffb04 	bl	401988 <clearMario>
+  402d74:	e59f5160 	ldr	r5, [pc, #352]	; 402edc <APress>
+  402d78:	e3a0404b 	mov	r4, #75	; 0x4b
+  402d7c:	e59f616c 	ldr	r6, [pc, #364]	; 402ef0 <APress+0x14>
+  402d80:	e5854000 	str	r4, [r5]
+  402d84:	e5856004 	str	r6, [r5, #4]
+  402d88:	ebfffae7 	bl	40192c <drawMario>
 
-00402d7c <UdoneR>:
-  402d7c:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402d80:	e1a0f00e 	mov	pc, lr
+00402d8c <UdoneR>:
+  402d8c:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402d90:	e1a0f00e 	mov	pc, lr
 
-00402d84 <UpLeftPress>:
-  402d84:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402d88:	e59f513c 	ldr	r5, [pc, #316]	; 402ecc <APress>
-  402d8c:	e5954000 	ldr	r4, [r5]
-  402d90:	e3a0704b 	mov	r7, #75	; 0x4b
-  402d94:	e244600a 	sub	r6, r4, #10
-  402d98:	e3560000 	cmp	r6, #0
-  402d9c:	ca000000 	bgt	402da4 <UdrawL>
-  402da0:	da000007 	ble	402dc4 <UscreenL>
+00402d94 <UpLeftPress>:
+  402d94:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402d98:	e59f513c 	ldr	r5, [pc, #316]	; 402edc <APress>
+  402d9c:	e5954000 	ldr	r4, [r5]
+  402da0:	e3a0704b 	mov	r7, #75	; 0x4b
+  402da4:	e244600a 	sub	r6, r4, #10
+  402da8:	e3560000 	cmp	r6, #0
+  402dac:	ca000000 	bgt	402db4 <UdrawL>
+  402db0:	da000007 	ble	402dd4 <UscreenL>
 
-00402da4 <UdrawL>:
-  402da4:	ebfffaf7 	bl	401988 <clearMario>
-  402da8:	e5856000 	str	r6, [r5]
-  402dac:	e59f1124 	ldr	r1, [pc, #292]	; 402ed8 <APress+0xc>
-  402db0:	e5911000 	ldr	r1, [r1]
-  402db4:	e3510001 	cmp	r1, #1
-  402db8:	ebfff933 	bl	40128c <Detect1>
-  402dbc:	ebfffada 	bl	40192c <drawMario>
-  402dc0:	ea000007 	b	402de4 <Udonel>
+00402db4 <UdrawL>:
+  402db4:	ebfffaf3 	bl	401988 <clearMario>
+  402db8:	e5856000 	str	r6, [r5]
+  402dbc:	e59f1124 	ldr	r1, [pc, #292]	; 402ee8 <APress+0xc>
+  402dc0:	e5911000 	ldr	r1, [r1]
+  402dc4:	e3510001 	cmp	r1, #1
+  402dc8:	ebfff92f 	bl	40128c <Detect1>
+  402dcc:	ebfffad6 	bl	40192c <drawMario>
+  402dd0:	ea000007 	b	402df4 <Udonel>
 
-00402dc4 <UscreenL>:
-  402dc4:	ebfffbd8 	bl	401d2c <updateScreenLeft>
-  402dc8:	ebfffaee 	bl	401988 <clearMario>
-  402dcc:	e59f50f8 	ldr	r5, [pc, #248]	; 402ecc <APress>
-  402dd0:	e59f410c 	ldr	r4, [pc, #268]	; 402ee4 <APress+0x18>
-  402dd4:	e59f6104 	ldr	r6, [pc, #260]	; 402ee0 <APress+0x14>
-  402dd8:	e5854000 	str	r4, [r5]
-  402ddc:	e5856004 	str	r6, [r5, #4]
-  402de0:	ebfffad1 	bl	40192c <drawMario>
+00402dd4 <UscreenL>:
+  402dd4:	ebfffbd4 	bl	401d2c <updateScreenLeft>
+  402dd8:	ebfffaea 	bl	401988 <clearMario>
+  402ddc:	e59f50f8 	ldr	r5, [pc, #248]	; 402edc <APress>
+  402de0:	e59f410c 	ldr	r4, [pc, #268]	; 402ef4 <APress+0x18>
+  402de4:	e59f6104 	ldr	r6, [pc, #260]	; 402ef0 <APress+0x14>
+  402de8:	e5854000 	str	r4, [r5]
+  402dec:	e5856004 	str	r6, [r5, #4]
+  402df0:	ebfffacd 	bl	40192c <drawMario>
 
-00402de4 <Udonel>:
-  402de4:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402de8:	e1a0f00e 	mov	pc, lr
+00402df4 <Udonel>:
+  402df4:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402df8:	e1a0f00e 	mov	pc, lr
 
-00402dec <JPLPress>:
-  402dec:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402df0:	e59f50d4 	ldr	r5, [pc, #212]	; 402ecc <APress>
-  402df4:	e5954000 	ldr	r4, [r5]
-  402df8:	e3a0704b 	mov	r7, #75	; 0x4b
-  402dfc:	e244600f 	sub	r6, r4, #15
-  402e00:	e3560000 	cmp	r6, #0
-  402e04:	ca000000 	bgt	402e0c <drawL>
-  402e08:	da000007 	ble	402e2c <screenL>
+00402dfc <JPLPress>:
+  402dfc:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402e00:	e59f50d4 	ldr	r5, [pc, #212]	; 402edc <APress>
+  402e04:	e5954000 	ldr	r4, [r5]
+  402e08:	e3a0704b 	mov	r7, #75	; 0x4b
+  402e0c:	e244600f 	sub	r6, r4, #15
+  402e10:	e3560000 	cmp	r6, #0
+  402e14:	ca000000 	bgt	402e1c <drawL>
+  402e18:	da000007 	ble	402e3c <screenL>
 
-00402e0c <drawL>:
-  402e0c:	ebfffadd 	bl	401988 <clearMario>
-  402e10:	e5856000 	str	r6, [r5]
-  402e14:	e59f10bc 	ldr	r1, [pc, #188]	; 402ed8 <APress+0xc>
-  402e18:	e5911000 	ldr	r1, [r1]
-  402e1c:	e3510001 	cmp	r1, #1
-  402e20:	ebfff919 	bl	40128c <Detect1>
-  402e24:	ebfffac0 	bl	40192c <drawMario>
-  402e28:	ea000007 	b	402e4c <donel>
+00402e1c <drawL>:
+  402e1c:	ebfffad9 	bl	401988 <clearMario>
+  402e20:	e5856000 	str	r6, [r5]
+  402e24:	e59f10bc 	ldr	r1, [pc, #188]	; 402ee8 <APress+0xc>
+  402e28:	e5911000 	ldr	r1, [r1]
+  402e2c:	e3510001 	cmp	r1, #1
+  402e30:	ebfff915 	bl	40128c <Detect1>
+  402e34:	ebfffabc 	bl	40192c <drawMario>
+  402e38:	ea000007 	b	402e5c <donel>
 
-00402e2c <screenL>:
-  402e2c:	ebfffbbe 	bl	401d2c <updateScreenLeft>
-  402e30:	ebfffad4 	bl	401988 <clearMario>
-  402e34:	e59f5090 	ldr	r5, [pc, #144]	; 402ecc <APress>
-  402e38:	e59f40a4 	ldr	r4, [pc, #164]	; 402ee4 <APress+0x18>
-  402e3c:	e59f609c 	ldr	r6, [pc, #156]	; 402ee0 <APress+0x14>
-  402e40:	e5854000 	str	r4, [r5]
-  402e44:	e5856004 	str	r6, [r5, #4]
-  402e48:	ebfffab7 	bl	40192c <drawMario>
+00402e3c <screenL>:
+  402e3c:	ebfffbba 	bl	401d2c <updateScreenLeft>
+  402e40:	ebfffad0 	bl	401988 <clearMario>
+  402e44:	e59f5090 	ldr	r5, [pc, #144]	; 402edc <APress>
+  402e48:	e59f40a4 	ldr	r4, [pc, #164]	; 402ef4 <APress+0x18>
+  402e4c:	e59f609c 	ldr	r6, [pc, #156]	; 402ef0 <APress+0x14>
+  402e50:	e5854000 	str	r4, [r5]
+  402e54:	e5856004 	str	r6, [r5, #4]
+  402e58:	ebfffab3 	bl	40192c <drawMario>
 
-00402e4c <donel>:
-  402e4c:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402e50:	e12fff1e 	bx	lr
+00402e5c <donel>:
+  402e5c:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402e60:	e12fff1e 	bx	lr
 
-00402e54 <JPRPress>:
-  402e54:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402e58:	e59f506c 	ldr	r5, [pc, #108]	; 402ecc <APress>
-  402e5c:	e5954000 	ldr	r4, [r5]
-  402e60:	e3a07ff5 	mov	r7, #980	; 0x3d4
-  402e64:	e284600f 	add	r6, r4, #15
-  402e68:	e1560007 	cmp	r6, r7
-  402e6c:	ba000004 	blt	402e84 <drawR>
-  402e70:	aa00000b 	bge	402ea4 <screenR>
-  402e74:	e59f7060 	ldr	r7, [pc, #96]	; 402edc <APress+0x10>
+00402e64 <JPRPress>:
+  402e64:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402e68:	e59f506c 	ldr	r5, [pc, #108]	; 402edc <APress>
+  402e6c:	e5954000 	ldr	r4, [r5]
+  402e70:	e3a07ff5 	mov	r7, #980	; 0x3d4
+  402e74:	e284600f 	add	r6, r4, #15
   402e78:	e1560007 	cmp	r6, r7
-  402e7c:	ba000000 	blt	402e84 <drawR>
-  402e80:	0a000007 	beq	402ea4 <screenR>
+  402e7c:	ba000004 	blt	402e94 <drawR>
+  402e80:	aa00000b 	bge	402eb4 <screenR>
+  402e84:	e59f7060 	ldr	r7, [pc, #96]	; 402eec <APress+0x10>
+  402e88:	e1560007 	cmp	r6, r7
+  402e8c:	ba000000 	blt	402e94 <drawR>
+  402e90:	0a000007 	beq	402eb4 <screenR>
 
-00402e84 <drawR>:
-  402e84:	ebfffabf 	bl	401988 <clearMario>
-  402e88:	e5856000 	str	r6, [r5]
-  402e8c:	e59f1044 	ldr	r1, [pc, #68]	; 402ed8 <APress+0xc>
-  402e90:	e5911000 	ldr	r1, [r1]
-  402e94:	e3510001 	cmp	r1, #1
-  402e98:	ebfff8fb 	bl	40128c <Detect1>
-  402e9c:	ebfffaa2 	bl	40192c <drawMario>
-  402ea0:	ea000007 	b	402ec4 <doneR>
+00402e94 <drawR>:
+  402e94:	ebfffabb 	bl	401988 <clearMario>
+  402e98:	e5856000 	str	r6, [r5]
+  402e9c:	e59f1044 	ldr	r1, [pc, #68]	; 402ee8 <APress+0xc>
+  402ea0:	e5911000 	ldr	r1, [r1]
+  402ea4:	e3510001 	cmp	r1, #1
+  402ea8:	ebfff8f7 	bl	40128c <Detect1>
+  402eac:	ebfffa9e 	bl	40192c <drawMario>
+  402eb0:	ea000007 	b	402ed4 <doneR>
 
-00402ea4 <screenR>:
-  402ea4:	ebfffb97 	bl	401d08 <updateScreenRight>
-  402ea8:	ebfffab6 	bl	401988 <clearMario>
-  402eac:	e59f5018 	ldr	r5, [pc, #24]	; 402ecc <APress>
-  402eb0:	e3a0404b 	mov	r4, #75	; 0x4b
-  402eb4:	e59f6024 	ldr	r6, [pc, #36]	; 402ee0 <APress+0x14>
-  402eb8:	e5854000 	str	r4, [r5]
-  402ebc:	e5856004 	str	r6, [r5, #4]
-  402ec0:	ebfffa99 	bl	40192c <drawMario>
+00402eb4 <screenR>:
+  402eb4:	ebfffb93 	bl	401d08 <updateScreenRight>
+  402eb8:	ebfffab2 	bl	401988 <clearMario>
+  402ebc:	e59f5018 	ldr	r5, [pc, #24]	; 402edc <APress>
+  402ec0:	e3a0404b 	mov	r4, #75	; 0x4b
+  402ec4:	e59f6024 	ldr	r6, [pc, #36]	; 402ef0 <APress+0x14>
+  402ec8:	e5854000 	str	r4, [r5]
+  402ecc:	e5856004 	str	r6, [r5, #4]
+  402ed0:	ebfffa95 	bl	40192c <drawMario>
 
-00402ec4 <doneR>:
-  402ec4:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402ec8:	e12fff1e 	bx	lr
+00402ed4 <doneR>:
+  402ed4:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402ed8:	e12fff1e 	bx	lr
 
-00402ecc <APress>:
-  402ecc:	00009110 	.word	0x00009110
-  402ed0:	00009080 	.word	0x00009080
-  402ed4:	003dd578 	.word	0x003dd578
-  402ed8:	00009134 	.word	0x00009134
-  402edc:	00000807 	.word	0x00000807
-  402ee0:	000001e7 	.word	0x000001e7
-  402ee4:	000003b5 	.word	0x000003b5
+00402edc <APress>:
+  402edc:	00009110 	.word	0x00009110
+  402ee0:	00009080 	.word	0x00009080
+  402ee4:	003dd578 	.word	0x003dd578
+  402ee8:	00009134 	.word	0x00009134
+  402eec:	00000807 	.word	0x00000807
+  402ef0:	000001e7 	.word	0x000001e7
+  402ef4:	000003b5 	.word	0x000003b5
 
-00402ee8 <GameLoop>:
-  402ee8:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+00402ef8 <GameLoop>:
+  402ef8:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
 
-00402eec <GL>:
-  402eec:	e3a07000 	mov	r7, #0
-  402ef0:	ebffff1b 	bl	402b64 <_ReadSNES>
+00402efc <GL>:
+  402efc:	e3a07000 	mov	r7, #0
+  402f00:	ebffff1b 	bl	402b74 <_ReadSNES>
 
-00402ef4 <loop>:
-  402ef4:	e357000f 	cmp	r7, #15
-  402ef8:	aafffffb 	bge	402eec <GL>
-  402efc:	e59f5018 	ldr	r5, [pc, #24]	; 402f1c <loop+0x28>
-  402f00:	e7d54007 	ldrb	r4, [r5, r7]
-  402f04:	e2877001 	add	r7, r7, #1
-  402f08:	e3540001 	cmp	r4, #1
-  402f0c:	0afffff8 	beq	402ef4 <loop>
-  402f10:	ebf0143c 	bl	8008 <_UpdateSprites>
-  402f14:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
-  402f18:	e12fff1e 	bx	lr
-  402f1c:	00009080 	.word	0x00009080
+00402f04 <loop>:
+  402f04:	e357000f 	cmp	r7, #15
+  402f08:	aafffffb 	bge	402efc <GL>
+  402f0c:	e59f5018 	ldr	r5, [pc, #24]	; 402f2c <loop+0x28>
+  402f10:	e7d54007 	ldrb	r4, [r5, r7]
+  402f14:	e2877001 	add	r7, r7, #1
+  402f18:	e3540001 	cmp	r4, #1
+  402f1c:	0afffff8 	beq	402f04 <loop>
+  402f20:	ebf01438 	bl	8008 <_UpdateSprites>
+  402f24:	e8bd47f0 	pop	{r4, r5, r6, r7, r8, r9, sl, lr}
+  402f28:	e12fff1e 	bx	lr
+  402f2c:	00009080 	.word	0x00009080

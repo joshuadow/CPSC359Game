@@ -46,8 +46,8 @@ drawL:
     ldr r0, [r0]
     ldr r1, =shellEnemy
     ldr r1, [r1,#4]
-    ldr r2, =shellEnemy
-    ldr r2, [r2,#8]
+    ldr r2, =shelllife
+    ldr r2, [r2]
     cmp r2, #1
     beq donel
     bl drawShell

@@ -25,13 +25,13 @@ gravityloop:
     bgt gravfloor1
     ldr r0, =mario
     str r6, [r0,#4]
-    bl drawMario
-    ldr r1, =screenNumber
-    ldr r1, [r1]
     cmp r1, #1
     bleq Detect1
     cmp r1, #2
     bleq Detect2
+    bl drawMario
+    ldr r1, =screenNumber
+    ldr r1, [r1]
     //cmp r1, #3
     //bl Detect3
     ldr r9, =buttons

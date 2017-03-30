@@ -29,9 +29,9 @@ gravityloop:
     ldr r1, =screenNumber
     ldr r1, [r1]
     cmp r1, #1
-    bl Detect1
-    //cmp r1, #2
-    //bl Detect2
+    bleq Detect1
+    cmp r1, #2
+    bleq Detect2
     //cmp r1, #3
     //bl Detect3
     ldr r9, =buttons

@@ -70,20 +70,25 @@ jumpup:
     sub r6, r6, #30  //jump height per frame
     bl clearMario
     str r6, [r5,#4]
+
     ldr r1, =screenNumber
     ldr r1, [r1]
     cmp r1, #1
-    bl Detect1
+    bleq Detect1
+
+    cmp r1, #2
+    bleq Detect2
+    
     bl drawMario
 
-    //ldr r1, =screenNumber
-    //ldr r1, [r1]
-    //cmp r1, #2
-    //bl Detect2
+
+
+
     //ldr r1, =screenNumber
     //ldr r1, [r1]
     //cmp r1, #3
     //bl Detect3
+
     bl _ReadSNES
     ldr r9, =buttons
     ldrb r10, [r9, #7]
@@ -121,12 +126,13 @@ UpRightPress:
 UdrawR:
     bl clearMario
     str r6, [r5]
+
     ldr r1, =screenNumber
     ldr r1, [r1]
     cmp r1, #1
-    bl Detect1
-    //cmp r1, #2
-    //bl Detect2
+    bleq Detect1
+    cmp r1, #2
+    bleq Detect2
     //cmp r1, #3
     //bl Detect3
     bl drawMario
@@ -160,9 +166,9 @@ UdrawL:
     ldr r1, =screenNumber
     ldr r1, [r1]
     cmp r1, #1
-    bl Detect1
-    //cmp r1, #2
-    //bl Detect2
+    bleq Detect1
+    cmp r1, #2
+    bleq Detect2
     //cmp r1, #3
     //bl Detect3
     bl drawMario
@@ -197,7 +203,9 @@ drawL:
     ldr r1, =screenNumber
     ldr r1, [r1]
     cmp r1, #1
-    bl Detect1
+    bleq Detect1
+    cmp r1, #2
+    bleq Detect2
     bl drawMario
     b donel
 screenL:
@@ -235,7 +243,9 @@ drawR:
     ldr r1, =screenNumber
     ldr r1, [r1]
     cmp r1, #1
-    bl Detect1
+    bleq Detect1
+    cmp r1, #2
+    bleq Detect2
     bl drawMario
     b doneR
 screenR:

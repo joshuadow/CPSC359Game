@@ -184,6 +184,12 @@ PauseMenu:
                 ldr r1, =state1
                 mov r2, #1
                 str r2, [r1]
+                ldr r1, =state2
+                mov r2, #2
+                str r2, [r1]
+                ldr r1, =state3
+                mov r2, #1
+                str r2, [r1]
 
         select1:
                 ldr r1, =playingstatus

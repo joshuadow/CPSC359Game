@@ -16,11 +16,13 @@ Grav:
     mov r6, r5
 gravityloop:
     add r6, r6, #30
+    mov r0, #2000
+    bl WaitLong
     bl clearMario
     ldr r0, =floor
     ldr r0, [r0]
     cmp r6, r0
-    bgt gravfloor
+    bgt gravfloor1
     ldr r0, =mario
     str r6, [r0,#4]
     bl drawMario
@@ -32,7 +34,6 @@ gravityloop:
     //bl Detect2
     //cmp r1, #3
     //bl Detect3
-    bl _ReadSNES
     ldr r9, =buttons
     ldrb r10, [r9, #7]
     cmp r10, #0
@@ -46,9 +47,10 @@ gravityloop:
     cmp r6, r0
     blt gravityloop
     b gravdone
-gravfloor:
+gravfloor1:
     ldr r0, =mario
-    ldr r1, =0x1E7
+    ldr r1, =floor
+    ldr r1, [r1]
     str r1, [r0,#4]
     bl drawMario
 gravdone:

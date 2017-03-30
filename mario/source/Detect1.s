@@ -59,6 +59,14 @@ MK:
 	pop {r4-r10, lr}
 	mov pc, lr
 
+//What must be true if mario is colliding with the sides??
+//Right side MUST be at least at 610, if not further
+//Either his head is above 400 and feet below 445, or head is above 400 feet above 445, and finally
+//head below 400 feet below 445 
+//collision happens at 605 and 755 respectively
+
+//          NOTE THAT THESE TESTS DONT FULLY WORK YET, IT STILL CUTS OFF CORNERS
+
 Block1:
     ldr r0, =mario
     ldr r4, [r0]
@@ -66,8 +74,48 @@ Block1:
     add r6, r4, #41
     add r7, r5, #70
     add r10, r4, #20
-    ldr r0, =0x262 //Left side of block
-    cmp r10, r0      
+    ldr r0, =0x25D 
+    cmp r6, r0
+    bne b1c
+tst1:
+    ldr r0, =0x190
+    cmp r5, r0
+    blt tst2
+    ldr r0, =0x1BD
+    cmp r7, r0
+    bgt tst2
+    ldr r0, =gravflag
+    mov r1, #1
+    str r1, [r0]
+    ldr r0, =mario
+    ldr r1, =0x262
+    str r1, [r0]
+    b Block1down
+tst2:
+    ldr r0, =0x190
+    cmp r5, r0
+    bgt tst3
+    ldr r0, =0x1BD
+    cmp r7, r0
+    bgt tst3
+    ldr r0, =gravflag
+    mov r1, #1
+    str r1, [r0]
+    ldr r0, =mario
+    ldr r1, =0x262
+    str r1, [r0]
+    b Block1down
+tst3:
+    ldr r0, =gravflag
+    mov r1, #1
+    str r1, [r0]
+    ldr r0, =mario
+    ldr r1, =0x262
+    str r1, [r0]
+    b Block1down
+b1c:
+    ldr r0, =0x262 
+    cmp r6, r0      
     blt Block1down
     ldr r0, =0x28F
     cmp r10, r0
@@ -80,6 +128,7 @@ Block1:
     cmp r5, r0
     bge Block1Under
     b Block1Above
+
 Block1down:
     ldr r0, =floor
     ldr r1, =0x1E7
@@ -222,7 +271,7 @@ Block3:
     cmp r10, r0      
     blt Block2
     ldr r0, =0x2E9
-    cmp r10, r0
+    cmp r4, r0
     bgt Block3down
     ldr r0, =state3
     ldrb r0, [r0]

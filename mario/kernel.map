@@ -115,7 +115,7 @@ LOAD build/GameLoop.o
 .igot.plt       0x004010e0        0x0
  .igot.plt      0x00000000        0x0 build/Main.o
 
-.text           0x004010e0     0x1da8
+.text           0x004010e0     0x1e40
  *.c.o(.text)
  *(.text)
  .text          0x004010e0       0x64 build/Main.o
@@ -123,130 +123,130 @@ LOAD build/GameLoop.o
                 0x00401134                hang
  .text          0x00401144      0x148 build/updateMonsters.o
                 0x00401144                updateMonsters
- .text          0x0040128c      0x3f8 build/Detect1.o
+ .text          0x0040128c      0x490 build/Detect1.o
                 0x0040128c                Detect1
- .text          0x00401684       0x34 build/WriteClock.o
-                0x00401684                _WriteClock
- .text          0x004016b8       0x80 build/framebuffer.o
-                0x004016b8                InitFrameBuffer
- .text          0x00401738       0x8c build/jtag.o
-                0x00401738                EnableJTAG
- .text          0x004017c4      0x8cc build/drawingFunctions.o
-                0x004017c4                initialscreen
-                0x00401858                initializeBackground
-                0x00401894                drawMario
-                0x004018f0                clearMario
-                0x00401924                drawCloud
-                0x00401948                drawBlock
-                0x0040196c                drawCoinBlock
-                0x00401990                drawPipe
-                0x004019b4                drawDragon
-                0x004019d8                drawShell
-                0x004019fc                drawCastle
-                0x00401a20                drawPit
-                0x00401a44                drawBowser
-                0x00401a68                clearBowser
-                0x00401a8c                clearCastle
-                0x00401ab0                clearBox
-                0x00401ad4                clearDragon
-                0x00401af8                clearPipe
-                0x00401b1c                clearShell
-                0x00401b40                drawselectCoin
-                0x00401b64                clearselectCoin
-                0x00401b88                drawPauseSelectCoin
-                0x00401bac                clearPauseSelectCoinGreen
-                0x00401bd0                clearPauseSelectCoinBlue
-                0x00401bf4                drawPicture
-                0x00401c70                updateScreenRight
-                0x00401c94                updateScreenLeft
-                0x00401cb8                clear1draw2
-                0x00401d24                clear2draw3
-                0x00401da4                initializeScreenTwo
-                0x00401e14                initializeScreenThree
-                0x00401e84                clear3draw2
-                0x00401f08                clear2draw1
- .text          0x00402090        0x0 build/DetectCollisions.o
- .text          0x00402090       0x74 build/InitAll.o
-                0x00402090                _InitAll
- .text          0x00402104        0x0 build/UpdateScore.o
- .text          0x00402104      0x130 build/StartScreen.o
- .text          0x00402234       0x38 build/ReadData.o
-                0x00402234                _ReadData
- .text          0x0040226c       0xd0 build/UpdateSprites.o
- .text          0x0040233c       0xc0 build/Grav.o
-                0x0040233c                Grav
- .text          0x004023fc       0x68 build/Wait.o
-                0x004023fc                _Wait
-                0x0040242c                WaitLong
- .text          0x00402464       0x34 build/WriteLatch.o
-                0x00402464                _WriteLatch
- .text          0x00402498      0x468 build/PauseMenu.o
-                0x00402498                PauseMenu
-                0x00402580                restart
-                0x0040280c                drawPauseMenu
-                0x00402830                ClearMenu
- .text          0x00402900      0x1cc build/MFD.o
-                0x00402900                marioFallDown
- .text          0x00402acc       0xb4 build/ReadSNES.o
-                0x00402acc                _ReadSNES
- .text          0x00402b80      0x2d0 build/ButtonFunctions.o
-                0x00402b80                BPress
-                0x00402b8c                YPress
-                0x00402b8c                SelPress
-                0x00402b8c                STPress
-                0x00402be0                JPUPress
-                0x00402c74                UpRightPress
-                0x00402cec                UpLeftPress
-                0x00402d54                JPLPress
-                0x00402dbc                JPRPress
-                0x00402e34                APress
-                0x00402e34                XPress
-                0x00402e34                RBPress
-                0x00402e34                LBPress
- .text          0x00402e50       0x38 build/GameLoop.o
-                0x00402e54                GL
+ .text          0x0040171c       0x34 build/WriteClock.o
+                0x0040171c                _WriteClock
+ .text          0x00401750       0x80 build/framebuffer.o
+                0x00401750                InitFrameBuffer
+ .text          0x004017d0       0x8c build/jtag.o
+                0x004017d0                EnableJTAG
+ .text          0x0040185c      0x8cc build/drawingFunctions.o
+                0x0040185c                initialscreen
+                0x004018f0                initializeBackground
+                0x0040192c                drawMario
+                0x00401988                clearMario
+                0x004019bc                drawCloud
+                0x004019e0                drawBlock
+                0x00401a04                drawCoinBlock
+                0x00401a28                drawPipe
+                0x00401a4c                drawDragon
+                0x00401a70                drawShell
+                0x00401a94                drawCastle
+                0x00401ab8                drawPit
+                0x00401adc                drawBowser
+                0x00401b00                clearBowser
+                0x00401b24                clearCastle
+                0x00401b48                clearBox
+                0x00401b6c                clearDragon
+                0x00401b90                clearPipe
+                0x00401bb4                clearShell
+                0x00401bd8                drawselectCoin
+                0x00401bfc                clearselectCoin
+                0x00401c20                drawPauseSelectCoin
+                0x00401c44                clearPauseSelectCoinGreen
+                0x00401c68                clearPauseSelectCoinBlue
+                0x00401c8c                drawPicture
+                0x00401d08                updateScreenRight
+                0x00401d2c                updateScreenLeft
+                0x00401d50                clear1draw2
+                0x00401dbc                clear2draw3
+                0x00401e3c                initializeScreenTwo
+                0x00401eac                initializeScreenThree
+                0x00401f1c                clear3draw2
+                0x00401fa0                clear2draw1
+ .text          0x00402128        0x0 build/DetectCollisions.o
+ .text          0x00402128       0x74 build/InitAll.o
+                0x00402128                _InitAll
+ .text          0x0040219c        0x0 build/UpdateScore.o
+ .text          0x0040219c      0x130 build/StartScreen.o
+ .text          0x004022cc       0x38 build/ReadData.o
+                0x004022cc                _ReadData
+ .text          0x00402304       0xd0 build/UpdateSprites.o
+ .text          0x004023d4       0xc0 build/Grav.o
+                0x004023d4                Grav
+ .text          0x00402494       0x68 build/Wait.o
+                0x00402494                _Wait
+                0x004024c4                WaitLong
+ .text          0x004024fc       0x34 build/WriteLatch.o
+                0x004024fc                _WriteLatch
+ .text          0x00402530      0x468 build/PauseMenu.o
+                0x00402530                PauseMenu
+                0x00402618                restart
+                0x004028a4                drawPauseMenu
+                0x004028c8                ClearMenu
+ .text          0x00402998      0x1cc build/MFD.o
+                0x00402998                marioFallDown
+ .text          0x00402b64       0xb4 build/ReadSNES.o
+                0x00402b64                _ReadSNES
+ .text          0x00402c18      0x2d0 build/ButtonFunctions.o
+                0x00402c18                BPress
+                0x00402c24                YPress
+                0x00402c24                SelPress
+                0x00402c24                STPress
+                0x00402c78                JPUPress
+                0x00402d0c                UpRightPress
+                0x00402d84                UpLeftPress
+                0x00402dec                JPLPress
+                0x00402e54                JPRPress
+                0x00402ecc                APress
+                0x00402ecc                XPress
+                0x00402ecc                RBPress
+                0x00402ecc                LBPress
+ .text          0x00402ee8       0x38 build/GameLoop.o
+                0x00402eec                GL
 OUTPUT(build/output.elf elf32-littlearm)
 
-.glue_7         0x00402e88        0x0
+.glue_7         0x00402f20        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x00402e88        0x0
+.glue_7t        0x00402f20        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x00402e88        0x0
+.vfp11_veneer   0x00402f20        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x00402e88        0x0
+.v4_bx          0x00402f20        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00402e88        0x0
+.iplt           0x00402f20        0x0
  .iplt          0x00000000        0x0 build/Main.o
 
-.rel.dyn        0x00402e88        0x0
+.rel.dyn        0x00402f20        0x0
  .rel.iplt      0x00000000        0x0 build/Main.o
 
-.bss            0x00402e88        0x0
- .bss           0x00402e88        0x0 build/Main.o
- .bss           0x00402e88        0x0 build/updateMonsters.o
- .bss           0x00402e88        0x0 build/Detect1.o
- .bss           0x00402e88        0x0 build/WriteClock.o
- .bss           0x00402e88        0x0 build/framebuffer.o
- .bss           0x00402e88        0x0 build/jtag.o
- .bss           0x00402e88        0x0 build/drawingFunctions.o
- .bss           0x00402e88        0x0 build/DetectCollisions.o
- .bss           0x00402e88        0x0 build/InitAll.o
- .bss           0x00402e88        0x0 build/UpdateScore.o
- .bss           0x00402e88        0x0 build/StartScreen.o
- .bss           0x00402e88        0x0 build/ReadData.o
- .bss           0x00402e88        0x0 build/UpdateSprites.o
- .bss           0x00402e88        0x0 build/Grav.o
- .bss           0x00402e88        0x0 build/Wait.o
- .bss           0x00402e88        0x0 build/WriteLatch.o
- .bss           0x00402e88        0x0 build/PauseMenu.o
- .bss           0x00402e88        0x0 build/MFD.o
- .bss           0x00402e88        0x0 build/ReadSNES.o
- .bss           0x00402e88        0x0 build/ButtonFunctions.o
- .bss           0x00402e88        0x0 build/GameLoop.o
+.bss            0x00402f20        0x0
+ .bss           0x00402f20        0x0 build/Main.o
+ .bss           0x00402f20        0x0 build/updateMonsters.o
+ .bss           0x00402f20        0x0 build/Detect1.o
+ .bss           0x00402f20        0x0 build/WriteClock.o
+ .bss           0x00402f20        0x0 build/framebuffer.o
+ .bss           0x00402f20        0x0 build/jtag.o
+ .bss           0x00402f20        0x0 build/drawingFunctions.o
+ .bss           0x00402f20        0x0 build/DetectCollisions.o
+ .bss           0x00402f20        0x0 build/InitAll.o
+ .bss           0x00402f20        0x0 build/UpdateScore.o
+ .bss           0x00402f20        0x0 build/StartScreen.o
+ .bss           0x00402f20        0x0 build/ReadData.o
+ .bss           0x00402f20        0x0 build/UpdateSprites.o
+ .bss           0x00402f20        0x0 build/Grav.o
+ .bss           0x00402f20        0x0 build/Wait.o
+ .bss           0x00402f20        0x0 build/WriteLatch.o
+ .bss           0x00402f20        0x0 build/PauseMenu.o
+ .bss           0x00402f20        0x0 build/MFD.o
+ .bss           0x00402f20        0x0 build/ReadSNES.o
+ .bss           0x00402f20        0x0 build/ButtonFunctions.o
+ .bss           0x00402f20        0x0 build/GameLoop.o
 
 .ARM.attributes
                 0x00000000       0x29
@@ -293,26 +293,26 @@ OUTPUT(build/output.elf elf32-littlearm)
  .ARM.attributes
                 0x00000334       0x29 build/GameLoop.o
 
-.debug_line     0x00000000      0xd05
+.debug_line     0x00000000      0xd2d
  .debug_line    0x00000000       0x64 build/Main.o
  .debug_line    0x00000064       0x9d build/updateMonsters.o
- .debug_line    0x00000101      0x14f build/Detect1.o
- .debug_line    0x00000250       0x4f build/WriteClock.o
- .debug_line    0x0000029f       0x67 build/framebuffer.o
- .debug_line    0x00000306       0x61 build/jtag.o
- .debug_line    0x00000367      0x2b7 build/drawingFunctions.o
- .debug_line    0x0000061e       0x5e build/InitAll.o
- .debug_line    0x0000067c       0x9f build/StartScreen.o
- .debug_line    0x0000071b       0x4e build/ReadData.o
- .debug_line    0x00000769       0x86 build/UpdateSprites.o
- .debug_line    0x000007ef       0x6c build/Grav.o
- .debug_line    0x0000085b       0x56 build/Wait.o
- .debug_line    0x000008b1       0x4f build/WriteLatch.o
- .debug_line    0x00000900      0x167 build/PauseMenu.o
- .debug_line    0x00000a67       0xb5 build/MFD.o
- .debug_line    0x00000b1c       0x6f build/ReadSNES.o
- .debug_line    0x00000b8b      0x11b build/ButtonFunctions.o
- .debug_line    0x00000ca6       0x5f build/GameLoop.o
+ .debug_line    0x00000101      0x177 build/Detect1.o
+ .debug_line    0x00000278       0x4f build/WriteClock.o
+ .debug_line    0x000002c7       0x67 build/framebuffer.o
+ .debug_line    0x0000032e       0x61 build/jtag.o
+ .debug_line    0x0000038f      0x2b7 build/drawingFunctions.o
+ .debug_line    0x00000646       0x5e build/InitAll.o
+ .debug_line    0x000006a4       0x9f build/StartScreen.o
+ .debug_line    0x00000743       0x4e build/ReadData.o
+ .debug_line    0x00000791       0x86 build/UpdateSprites.o
+ .debug_line    0x00000817       0x6c build/Grav.o
+ .debug_line    0x00000883       0x56 build/Wait.o
+ .debug_line    0x000008d9       0x4f build/WriteLatch.o
+ .debug_line    0x00000928      0x167 build/PauseMenu.o
+ .debug_line    0x00000a8f       0xb5 build/MFD.o
+ .debug_line    0x00000b44       0x6f build/ReadSNES.o
+ .debug_line    0x00000bb3      0x11b build/ButtonFunctions.o
+ .debug_line    0x00000cce       0x5f build/GameLoop.o
 
 .debug_info     0x00000000      0x6e1
  .debug_info    0x00000000       0x55 build/Main.o

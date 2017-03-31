@@ -131,6 +131,10 @@ drawL2:
     ldr r0, [r0]
     ldr r1, =dragonEnemy
     ldr r1, [r1,#4]
+    ldr r2, =dragonEnemy
+    ldr r2, [r2,#8]
+    cmp r2, #1
+    beq donel2
     bl drawDragon
 donel2:
     pop {r4-r10, lr}

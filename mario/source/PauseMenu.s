@@ -76,16 +76,21 @@ PauseMenu:
           restart:
                 //reset all variables
                 ldr r1, =mario
-                mov r2, #0
+                mov r2, #75
                 str r2, [r1]
-                ldr r2, =0x1e7
+                ldr r2, =0x1E7
                 str r2, [r1, #4]
+                
+                ldr r1, =floor
+                ldr r2, =0x1E7
+                str r2, [r1]
 
                 ldr r1, =dragonEnemy
                 mov r2, #500
                 str r2, [r1]
                 ldr r2, =0x1f1
                 str r2, [r1, #4]
+
 
                 ldr r1, =shellEnemy
                 ldr r2, =0x25d
@@ -130,15 +135,15 @@ PauseMenu:
                 str r2, [r1, #4]
 
                 ldr r1, =cblock2
-                ldr r2, =0x10e
+                ldr r2, =0x270
                 str r2, [r1]
-                ldr r2, =0x15e
+                ldr r2, =0x150
                 str r2, [r1, #4]
 
                 ldr r1, =cblock3
-                ldr r2, =0x302
+                ldr r2, =0x770
                 str r2, [r1]
-                ldr r2, =0x15e
+                ldr r2, =0x150
                 str r2, [r1, #4]
 
                 ldr r1, =pipe1
@@ -199,7 +204,12 @@ PauseMenu:
                 ldr r1, =topFlag
                 mov r2, #0
                 str r2, [r1]
-
+                ldr r1, =state4
+                mov r2, #1
+                str r2, [r1]
+                ldr r1, =state5
+                mov r2, #1
+                str r2, [r1]
         select1:
                 ldr r1, =playingstatus
                 mov r2, #1

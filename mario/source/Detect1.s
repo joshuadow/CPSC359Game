@@ -59,13 +59,7 @@ MK:
 	pop {r4-r10, lr}
 	mov pc, lr
 
-//What must be true if mario is colliding with the sides??
-//Right side MUST be at least at 610, if not further
-//Either his head is above 400 and feet below 445, or head is above 400 feet above 445, and finally
-//head below 400 feet below 445 
-//collision happens at 605 and 755 respectively
 
-//          NOTE THAT THESE TESTS DONT FULLY WORK YET, IT STILL CUTS OFF CORNERS
 
 Block1:
     ldr r0, =mario
@@ -193,13 +187,13 @@ Block2:
     ldr r5, [r0,#4]
     add r6, r4, #41
     add r7, r5, #70
-    add r10, r4, #20
+    add r10, r4, #22
     ldr r0, =0x28F //Left side of block
     cmp r6, r0      
     blt Block1
-    ldr r0, =0x2BC
-    cmp r4, r0
-    bgt Block3
+    ldr r0, =0x2B7
+    cmp r10, r0
+    bge Block3
     ldr r0, =state2
     ldrb r0, [r0]
     cmp r0, #0
@@ -209,8 +203,8 @@ Block2:
     bge B2Head
 
 B2Head:
-    ldr r0, =0x2BC
-    cmp r6, r0
+    ldr r0, =0x2B7
+    cmp r10, r0
     bge Block3
     ldr r0, =0x1BD
     cmp r5, r0
@@ -269,9 +263,18 @@ B2SideR:
     ldr r0, =mario
     ldr r1, =0x2BE
     str r1, [r0]
-    ldr r1, =0x262
-    ldr r2, =0x190
-    bl drawBlock
+    ldr r0, =state2
+    ldr r0, [r0]
+    cmp r0, #2
+    ldreq r0, =0x28F
+    ldreq r1, =0x190
+    bleq drawCoinBlock
+    ldr r0, =state2
+    ldr r0, [r0]
+    cmp r0, #1
+    ldreq r0, =0x28F
+    ldreq r1, =0x190
+    bleq drawBlock
     b s1done
 
 b2c:
@@ -495,5 +498,9 @@ state1: .int 1
 state2: .int 2
 .globl state3
 state3: .int 1
+.globl state4
+state4: .int 1
+.globl state5
+state5: .int 1
 .globl floor
 floor:  .int 487

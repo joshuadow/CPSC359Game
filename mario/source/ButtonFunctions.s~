@@ -79,15 +79,11 @@ jumpup:
     cmp r1, #2
     bleq Detect2
     
+    cmp r1, #3
+    bleq Detect3
     bl drawMario
 
 
-
-
-    //ldr r1, =screenNumber
-    //ldr r1, [r1]
-    //cmp r1, #3
-    //bl Detect3
 
     bl _ReadSNES
     ldr r9, =buttons
@@ -133,8 +129,8 @@ UdrawR:
     bleq Detect1
     cmp r1, #2
     bleq Detect2
-    //cmp r1, #3
-    //bl Detect3
+    cmp r1, #3
+    bleq Detect3
     bl drawMario
     b UdoneR
 UscreenR:
@@ -169,8 +165,8 @@ UdrawL:
     bleq Detect1
     cmp r1, #2
     bleq Detect2
-    //cmp r1, #3
-    //bl Detect3
+    cmp r1, #3
+    bleq Detect3
     bl drawMario
     b Udonel
 UscreenL:
@@ -206,6 +202,8 @@ drawL:
     bleq Detect1
     cmp r1, #2
     bleq Detect2
+    cmp r1, #3
+    bleq Detect3
     bl drawMario
     b donel
 screenL:
@@ -245,7 +243,9 @@ drawR:
     cmp r1, #1
     bleq Detect1
     cmp r1, #2
-    bleq Detect2
+    bleq Detect2    
+    cmp r1, #3
+    bleq Detect3
     bl drawMario
     b doneR
 screenR:

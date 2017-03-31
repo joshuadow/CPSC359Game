@@ -264,7 +264,10 @@ doneR:
 APress:
 .globl XPress
 XPress:
+    b doneR
 .globl LBPress
 LBPress:
+    b doneR
 .globl RBPress
 RBPress:
+    b doneR

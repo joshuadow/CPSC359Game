@@ -212,6 +212,9 @@ Block5Under:
     ldrb r0, [r10]
     cmp r0, #0
     beq Block5down
+    ldr r0, =0x12F
+    cmp r4, r0
+    bge Bowser
     ldr r0, =0x1AB
     cmp r5, r0
     beq undernext5
@@ -241,6 +244,9 @@ Block5down:
     b d3done
 
 Bowser:
+    ldr r0, =floor
+    ldr r1, =0x1E7
+    str r1, [r0]
     ldr r0, =mario
     ldr r4, [r0]
     ldr r5, [r0,#4]
@@ -249,7 +255,7 @@ Bowser:
     add r10, r4, #20    
     ldr r8, =bowser
     ldr r10, [r8,#8]
-    cmp r8, #0
+    cmp r10, #1
     beq d3done
     ldr r9, [r8, #4]
     ldr r8, [r8]    
@@ -258,7 +264,7 @@ Bowser:
     add r8, r8, #69
     cmp r4, r8
     bgt Castle
-    ldr r0, =0x1AB
+    ldr r0, =0x1B8
     cmp r7, r0
     ble MB
     ldr r1, =lives
@@ -267,7 +273,7 @@ Bowser:
 	str r0, [r1]
 	b restart
 MB:
-    ldr r0, =0x1AB
+    ldr r0, =0x1A9
     cmp r7, r0
     blt d3done
     ldr r0, =bowser
@@ -290,10 +296,7 @@ Castle:
     add r7, r5, #70
     add r10, r4, #20  
     ldr r0, =0x29A
-    ldr r1, =0xC7
-    bl drawCastle
-    ldr r0, =0x2E4
-    cmp r10, r0
+    cmp r6, r0
     blt d3done
     b restart
 

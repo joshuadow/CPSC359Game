@@ -32,8 +32,8 @@ gravityloop:
     cmp r1, #2
     bleq Detect2
     bl drawMario
-    //cmp r1, #3
-    //bl Detect3
+    cmp r1, #3
+    bleq Detect3
     ldr r9, =buttons
     ldrb r10, [r9, #7]
     cmp r10, #0

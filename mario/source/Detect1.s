@@ -80,9 +80,9 @@ Block1:
     ldr r0, =0x263
     cmp r4, r0
     bge b1c
-    ldr r0, =0x28F
-    cmp r4, r0
-    b
+//    ldr r0, =0x28F
+//    cmp r4, r0
+//    b
     ldr r0, =state1
     ldrb r0, [r0]
     cmp r0, #0
@@ -102,6 +102,7 @@ B1SideL:
     ldr r0, =mario
     ldr r1, =0x23A
     str r1, [r0]
+
     ldr r1, =0x262
     ldr r2, =0x190
     bl drawBlock

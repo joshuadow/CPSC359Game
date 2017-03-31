@@ -190,6 +190,15 @@ PauseMenu:
                 ldr r1, =state3
                 mov r2, #1
                 str r2, [r1]
+                ldr r1, =coin1State
+                mov r2, #2
+                str r2, [r1]
+                ldr r1, =coin2State
+                mov r2, #2
+                str r2, [r1]
+                ldr r1, =topFlag
+                mov r2, #0
+                str r2, [r1]
 
         select1:
                 ldr r1, =playingstatus

@@ -77,16 +77,14 @@ Block1:
     ldr r0, =0x262 
     cmp r6, r0
     ble b1c
-    ldr r0, =0x263
-    cmp r4, r0
-    bge b1c
-//    ldr r0, =0x28F
-//    cmp r4, r0
-//    b
     ldr r0, =state1
     ldrb r0, [r0]
     cmp r0, #0
-    beq Block1down
+    beq B2Head
+    ldr r0, =0x263
+    cmp r4, r0
+    bge B1Head
+
 B1Head:
     ldr r0, =0x1BD
     cmp r5, r0
@@ -99,22 +97,42 @@ B1SideL:
     ldr r0, =0x14B
     cmp r5, r0
     beq b1c
-    ldr r0, =mario
-    ldr r1, =0x23A
-    str r1, [r0]
+    ldr r0, =0x280
+    cmp r4, r0
+    bge B1SideR
 
+    ldr r0, =mario
+    ldr r1, =0x238
+    str r1, [r0]
     ldr r1, =0x262
     ldr r2, =0x190
     bl drawBlock
-
+    b b1c
 B1SideR:
+    ldr r0, =state1
+    ldrb r0, [r0]
+    cmp r0, #0
+    beq Block1down
+    ldr r0, =0x28F
+    cmp r4, r0
+    bgt b1c
+    ldr r0, =0x14B
+    cmp r5, r0
+    ble b1c
+    ldr r0, =mario
+    ldr r1, =0x290
+    str r1, [r0]
+    ldr r1, =0x262
+    ldr r2, =0x190
+    bl drawBlock
+    b s1done
 b1c:
     ldr r0, =0x262 
     cmp r6, r0      
     blt Block1down
     ldr r0, =0x28F
     cmp r10, r0
-    bgt Block2
+    bge Block2
     ldr r0, =state1
     ldrb r0, [r0]
     cmp r0, #1
@@ -177,11 +195,89 @@ Block2:
     add r7, r5, #70
     add r10, r4, #20
     ldr r0, =0x28F //Left side of block
-    cmp r10, r0      
+    cmp r6, r0      
     blt Block1
     ldr r0, =0x2BC
-    cmp r10, r0
+    cmp r4, r0
     bgt Block3
+    ldr r0, =state2
+    ldrb r0, [r0]
+    cmp r0, #0
+    beq Block2down
+    ldr r0, =0x290
+    cmp r4, r0
+    bge B2Head
+
+B2Head:
+    ldr r0, =0x1BD
+    cmp r5, r0
+    bge b2c
+B2Feet:
+    ldr r0, =0x190
+    cmp r7, r0
+    ble b2c
+B2SideL:
+    ldr r0, =state2
+    ldrb r0, [r0]
+    cmp r0, #0
+    beq Block2down
+    ldr r0, =0x292
+    cmp r6, r0
+    blt Block2down
+    ldr r0, =0x2BC
+    cmp r4, r0
+    bgt Block2down
+    ldr r0, =0x14B
+    cmp r5, r0
+    beq Block2Above
+    ldr r0, =0x290
+    cmp r4, r0
+    bge B2SideR
+
+    ldr r0, =mario
+    ldr r1, =0x267
+    str r1, [r0]
+    ldr r1, =0x28F
+    ldr r2, =0x190
+    ldr r0, =state2
+    ldr r0, [r0]
+    cmp r0, #2
+    ldreq r0, =0x28F
+    ldreq r1, =0x190
+    bleq drawCoinBlock
+    ldr r0, =state2
+    ldr r0, [r0]
+    cmp r0, #1
+    ldreq r0, =0x28F
+    ldreq r1, =0x190
+    bleq drawBlock
+    b b2c
+B2SideR:
+    ldr r0, =state2
+    ldrb r0, [r0]
+    cmp r0, #0
+    beq Block2down
+    ldr r0, =0x2BC
+    cmp r4, r0
+    bgt Block2down
+    ldr r0, =0x14B
+    cmp r5, r0
+    ble Block3
+    ldr r0, =mario
+    ldr r1, =0x2BE
+    str r1, [r0]
+    ldr r1, =0x262
+    ldr r2, =0x190
+    bl drawBlock
+    b s1done
+
+b2c:
+    ldr r0, =0x28F 
+    cmp r6, r0      
+    blt Block2down
+    ldr r0, =0x2BC
+    cmp r10, r0
+    bge Block3
     ldr r0, =state2
     ldrb r0, [r0]
     cmp r0, #0

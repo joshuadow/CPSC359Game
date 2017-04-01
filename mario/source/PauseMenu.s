@@ -89,6 +89,10 @@ PauseMenu:
                 str r2, [r1]
                 ldr r2, =0x1f1
                 str r2, [r1, #4]
+                mov r2, #0
+                str r2, [r1, #8]
+                mov r2, #0
+                str r2, [r1, #12]
 
                 ldr r1, =floor
                 ldr r2, =0x1E7

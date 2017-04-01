@@ -293,9 +293,9 @@ MB:
 	bl clearBowser
 	ldr r1, =score
 	ldr r0, [r1]
-	add r0, r0, #100
+	add r0, r0, #50
 	str r0, [r1]
-
+  bl updateScore
 Castle:
     ldr r0, =mario
     ldr r4, [r0]

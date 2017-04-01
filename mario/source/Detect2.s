@@ -10,6 +10,7 @@ Detect2:
         bl testPipe2
         bl testCoin1
         bl testCoin2
+        bl Dragon
         pop {r4-r10, lr}
         mov pc, lr
 
@@ -225,7 +226,7 @@ testCoin1:
           cmp r0, #0
           beq noCollideCoin1
 
-          ldr r0, =0xDA //bottom of coin
+          ldr r0, =0xDE //bottom of coin
           cmp r5, r0
           bgt noCollideCoin1
 
@@ -243,10 +244,6 @@ secondHit:
             ldr r0, =coin1State
             mov r1, #0
             str r1, [r0]
-            ldr r0, =score
-            ldr r1, [r0]
-            add r1, r1, #50
-            str r1, [r0]
             ldr r0, =gravflag
             mov r1, #1
             str r1, [r0]
@@ -263,6 +260,7 @@ firstHit:
             ldr r1, [r0]
             add r1, r1, #50
             str r1, [r0]
+            bl updateScore
             ldr r0, =gravflag
             mov r1, #1
             str r1, [r0]
@@ -295,7 +293,7 @@ testCoin2:
           cmp r0, #0
           beq noCollideCoin2
 
-          ldr r0, =0xDA //bottom of coin
+          ldr r0, =0xDE //bottom of coin
           cmp r5, r0
           bgt noCollideCoin2
 
@@ -313,10 +311,6 @@ secondHit2:
             ldr r0, =coin2State
             mov r1, #0
             str r1, [r0]
-            ldr r0, =score
-            ldr r1, [r0]
-            add r1, r1, #50
-            str r1, [r0]
             ldr r0, =gravflag
             mov r1, #1
             str r1, [r0]
@@ -333,12 +327,73 @@ firstHit2:
             ldr r1, [r0]
             add r1, r1, #50
             str r1, [r0]
+            bl updateScore
             ldr r0, =gravflag
             mov r1, #1
             str r1, [r0]
             b noCollideCoin2
 
 noCollideCoin2:
+                pop {r4-r10, lr}
+                mov pc, lr
+
+Dragon:
+        push {r4-r10, lr}
+
+        ldr r0, =mario
+        ldr r4, [r0]
+        ldr r5, [r0,#4]
+        add r6, r4, #41
+        add r7, r5, #70
+        add r10, r4, #20
+
+        ldr r0, =dragonEnemy
+        ldr r0, [r0, #12]
+        cmp r0, #1
+        beq noCollideDragon
+      	ldr r0, =dragonEnemy
+      	ldr r8, [r0]
+      	ldr r9, [r0,#4]
+        sub r8, r8, #2
+      	add r9, r9, #2
+      	add r1, r8, #39
+      	add r2, r9, #61
+      	cmp r6, r8
+      	blt noCollideDragon
+      	cmp r4, r1
+      	bgt noCollideDragon
+      	cmp r7, r9
+      	ble killTest
+      	ldr r1, =lives
+      	ldr r0, [r1]
+      	sub r0, r0, #1
+      	str r0, [r1]
+      	cmp r0, #0
+      	beq gameOverScreen
+      	b restart
+killTest:
+          ldr r0, =mario
+          ldr r4, [r0]
+          ldr r5, [r0,#4]
+          add r6, r4, #41
+          add r7, r5, #70
+          ldr r0, =0x1EA
+        	cmp r7, r0
+        	blt noCollideDragon
+          ldr r0, =dragonEnemy
+          mov r1, #1
+          str r1, [r0,#12]
+        	ldr r0, =dragonEnemy
+        	ldr r1, [r0, #4]
+        	ldr r0, [r0]
+        	bl clearDragon
+        	ldr r1, =score
+        	ldr r0, [r1]
+        	add r0, r0, #50
+        	str r0, [r1]
+        	bl updateScore
+
+noCollideDragon:
                 pop {r4-r10, lr}
                 mov pc, lr
 

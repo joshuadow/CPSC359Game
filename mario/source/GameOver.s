@@ -105,6 +105,10 @@ gameOverRestart:
       str r2, [r1]
       ldr r2, =0x1f1
       str r2, [r1, #4]
+      mov r2, #0
+      str r2, [r1, #8]
+      mov r2, #0
+      str r2, [r1, #12]
 
       ldr r1, =shellEnemy
       ldr r2, =0x25d
@@ -149,15 +153,15 @@ gameOverRestart:
       str r2, [r1, #4]
 
       ldr r1, =cblock2
-      ldr r2, =0x10e
+      ldr r2, =0x10E
       str r2, [r1]
-      ldr r2, =0x15e
+      ldr r2, =0x96
       str r2, [r1, #4]
 
       ldr r1, =cblock3
       ldr r2, =0x302
       str r2, [r1]
-      ldr r2, =0x15e
+      ldr r2, =0x96
       str r2, [r1, #4]
 
       ldr r1, =pipe1

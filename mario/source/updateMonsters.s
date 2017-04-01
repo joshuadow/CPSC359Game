@@ -40,39 +40,36 @@ drawL:
     ldr r1, =shellEnemy
     ldr r1, [r1,#4]
     bl clearShell
-    ldr r7, =mario
-    ldr r3, [r7,#4]
-    ldr r7, [r7]
-    ldr r0, =shellEnemy
-    ldr r0, [r0]
-    ldr r1, =shellEnemy
-    ldr r1, [r1,#4]
 
-    add r3, r3, #70
-    cmp r3, r1
-    blt drawLc
-
-    add r7, r7, #41
-    cmp r7, r0
-    blt drawLc
-
-    add r0, r0, #50
-    sub r7, r7, #41
-    cmp r7, r0
-    bgt drawLc
-
-    ldr r1, =lives
-	ldr r0, [r1]
-	sub r0, r0, #1
-	str r0, [r1]
-	b restart    
-
-drawLc:
-    ldr r0, =shellEnemy
-    ldr r0, [r0]
-    ldr r1, =shellEnemy
-    ldr r1, [r1,#4]
+    ldr r7, =mario		    
+    ldr r3, [r7,#4]		
+    ldr r7, [r7]		
+    ldr r0, =shellEnemy		
+    ldr r0, [r0]		
+    ldr r1, =shellEnemy		
+    ldr r1, [r1,#4]		
+    add r3, r3, #70		
+    cmp r3, r1		
+    blt drawLc		
+    add r7, r7, #41		
+    cmp r7, r0		
+    blt drawLc		
+    add r0, r0, #50		
+    sub r7, r7, #41		
+    cmp r7, r0		
+    bgt drawLc		
+    ldr r1, =lives		
+    ldr r0, [r1]		
+    sub r0, r0, #1		
+    str r0, [r1]		
+    b restart    		
+drawLc:		
+    ldr r0, =shellEnemy		
+    ldr r0, [r0]		
+    ldr r1, =shellEnemy		
+    ldr r1, [r1,#4]		
     str r6, [r8]
+
     ldr r0, =shellEnemy
     ldr r0, [r0]
     ldr r1, =shellEnemy
@@ -131,10 +128,6 @@ drawL2:
     ldr r0, [r0]
     ldr r1, =dragonEnemy
     ldr r1, [r1,#4]
-    ldr r2, =dragonEnemy
-    ldr r2, [r2,#8]
-    cmp r2, #1
-    beq donel2
     bl drawDragon
 donel2:
     pop {r4-r10, lr}

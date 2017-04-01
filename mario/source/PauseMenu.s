@@ -38,6 +38,9 @@ PauseMenu:
                           ldr r9, =buttons
                           ldrb r10, [r9, #8]
                           cmp r10, #0
+                          ldreq r1, =lives
+                          moveq r2, #3
+                          streq r2, [r1]
                           beq restart
 
                           ldrb r10, [r9, #1]
@@ -78,12 +81,8 @@ PauseMenu:
                 ldr r1, =mario
                 mov r2, #75
                 str r2, [r1]
-                ldr r2, =0x1E7
+                ldr r2, =0x1e7
                 str r2, [r1, #4]
-                
-                ldr r1, =floor
-                ldr r2, =0x1E7
-                str r2, [r1]
 
                 ldr r1, =dragonEnemy
                 mov r2, #500
@@ -91,6 +90,9 @@ PauseMenu:
                 ldr r2, =0x1f1
                 str r2, [r1, #4]
 
+                ldr r1, =floor
+                ldr r2, =0x1E7
+                str r2, [r1]
 
                 ldr r1, =shellEnemy
                 ldr r2, =0x25d
@@ -135,15 +137,15 @@ PauseMenu:
                 str r2, [r1, #4]
 
                 ldr r1, =cblock2
-                ldr r2, =0x270
+                ldr r2, =0x10E
                 str r2, [r1]
-                ldr r2, =0x150
+                ldr r2, =0x96
                 str r2, [r1, #4]
 
                 ldr r1, =cblock3
-                ldr r2, =0x770
+                ldr r2, =0x302
                 str r2, [r1]
-                ldr r2, =0x150
+                ldr r2, =0x96
                 str r2, [r1, #4]
 
                 ldr r1, =pipe1
@@ -178,9 +180,9 @@ PauseMenu:
 
 
 
-                ldr r1, =lives
-                mov r2, #3
-                str r2, [r1]
+                @ldr r1, =lives
+                @mov r2, #3
+                @str r2, [r1]
 
                 ldr r1, =score
                 mov r2, #0
@@ -195,7 +197,8 @@ PauseMenu:
                 ldr r1, =state3
                 mov r2, #1
                 str r2, [r1]
-                ldr r1, =coin1State
+
+		ldr r1, =coin1State
                 mov r2, #2
                 str r2, [r1]
                 ldr r1, =coin2State
@@ -210,6 +213,8 @@ PauseMenu:
                 ldr r1, =state5
                 mov r2, #1
                 str r2, [r1]
+
+
         select1:
                 ldr r1, =playingstatus
                 mov r2, #1

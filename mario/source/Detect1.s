@@ -12,30 +12,32 @@ Detect1:
     ldr r5, [r0,#4]
     add r6, r4, #41
     add r7, r5, #70
-    add r10, r4, #20    
+    add r10, r4, #20
 Enemy:
     ldr r0, =shellEnemy
     ldr r0, [r0, #8]
     cmp r0, #1
     beq Block1
-	ldr r0, =shellEnemy
-	ldr r8, [r0]
-	ldr r9, [r0,#4]
+  	ldr r0, =shellEnemy
+  	ldr r8, [r0]
+  	ldr r9, [r0,#4]
     sub r8, r8, #2
-	add r9, r9, #2
-	add r1, r8, #31
-	add r2, r9, #52 
-	cmp r6, r8
-	blt s1done
-	cmp r4, r1
-	bgt Block1
-	cmp r7, r9
-	ble MK
-	ldr r1, =lives
-	ldr r0, [r1]
-	sub r0, r0, #1
-	str r0, [r1]
-	b restart
+  	add r9, r9, #2
+  	add r1, r8, #31
+  	add r2, r9, #52
+  	cmp r6, r8
+  	blt s1done
+  	cmp r4, r1
+  	bgt Block1
+  	cmp r7, r9
+  	ble MK
+  	ldr r1, =lives
+  	ldr r0, [r1]
+  	sub r0, r0, #1
+  	str r0, [r1]
+  	cmp r0, #0
+  	beq gameOverScreen
+  	b restart
 MK:
     ldr r0, =mario
     ldr r4, [r0]
@@ -43,21 +45,22 @@ MK:
     add r6, r4, #41
     add r7, r5, #70
     ldr r0, =0x1F1
-	cmp r7, r0
-	blt Block1
+  	cmp r7, r0
+  	blt Block1
     ldr r0, =shellEnemy
     mov r1, #1
     str r1, [r0,#8]
-	ldr r0, =shellEnemy
-	ldr r1, [r0, #4]
-	ldr r0, [r0]
-	bl clearShell
-	ldr r1, =score
-	ldr r0, [r1]
-	add r0, r0, #100
-	str r0, [r1]
-	pop {r4-r10, lr}
-	mov pc, lr
+  	ldr r0, =shellEnemy
+  	ldr r1, [r0, #4]
+  	ldr r0, [r0]
+  	bl clearShell
+  	ldr r1, =score
+  	ldr r0, [r1]
+  	add r0, r0, #50
+  	str r0, [r1]
+  	bl updateScore
+  	pop {r4-r10, lr}
+  	mov pc, lr
 
 
 
@@ -68,7 +71,7 @@ Block1:
     add r6, r4, #41
     add r7, r5, #70
     add r10, r4, #20
-    ldr r0, =0x262 
+    ldr r0, =0x262
     cmp r6, r0
     ble b1c
     ldr r0, =state1
@@ -121,8 +124,8 @@ B1SideR:
     bl drawBlock
     b s1done
 b1c:
-    ldr r0, =0x262 
-    cmp r6, r0      
+    ldr r0, =0x262
+    cmp r6, r0
     blt Block1down
     ldr r0, =0x28F
     cmp r10, r0
@@ -151,7 +154,7 @@ Block1Above:
     ldr r1, =0x14B
     str r1, [r0]
     b s1done
-    
+
 Block1Under:
 
     ldr r10, =state1
@@ -162,7 +165,7 @@ Block1Under:
     cmp r5, r0
     beq undernext
     pop {r4-r10, lr}
-    mov pc, lr       
+    mov pc, lr
 
 undernext:
     ldr r0, =0x262
@@ -170,10 +173,6 @@ undernext:
     bl clearBox
     ldr r0, =state1
     mov r1, #0
-    str r1, [r0]
-    ldr r0, =score
-    ldr r1, [r0]
-    add r1, r1, #50
     str r1, [r0]
     ldr r0, =gravflag
     mov r1, #1
@@ -189,7 +188,7 @@ Block2:
     add r7, r5, #70
     add r10, r4, #22
     ldr r0, =0x28F //Left side of block
-    cmp r6, r0      
+    cmp r6, r0
     blt Block1
     ldr r0, =0x2B7
     cmp r10, r0
@@ -278,8 +277,8 @@ B2SideR:
     b s1done
 
 b2c:
-    ldr r0, =0x28F 
-    cmp r6, r0      
+    ldr r0, =0x28F
+    cmp r6, r0
     blt Block2down
     ldr r0, =0x2BC
     cmp r10, r0
@@ -307,7 +306,7 @@ Block2Above:
     ldr r1, =0x14B
     str r1, [r0]
     b s1done
-    
+
 Block2Under:
 
     ldr r10, =state2
@@ -322,7 +321,7 @@ Block2Under:
     cmp r0, #1
     beq undernext2
     cmp r0, #2
-    beq undernext22   
+    beq undernext22
 
 undernext2:
     ldr r0, =0x28F
@@ -335,6 +334,7 @@ undernext2:
     ldr r1, [r0]
     add r1, r1, #50
     str r1, [r0]
+    bl updateScore
     ldr r0, =gravflag
     mov r1, #1
     str r1, [r0]
@@ -347,15 +347,10 @@ undernext22:
     ldr r0, =state2
     mov r1, #1
     str r1, [r0]
-    ldr r0, =score
-    ldr r1, [r0]
-    add r1, r1, #50
-    str r1, [r0]
     ldr r0, =gravflag
     mov r1, #1
     str r1, [r0]
     b Block2down
-
 
 Block3:
     ldr r0, =mario
@@ -365,7 +360,7 @@ Block3:
     add r7, r5, #70
     add r10, r4, #20
     ldr r0, =0x2BC //Left side of block
-    cmp r6, r0      
+    cmp r6, r0
     blt Block2
     ldr r0, =0x2E9
     cmp r4, r0
@@ -421,8 +416,8 @@ B3SideR:
     b s1done
 
 b3c:
-    ldr r0, =0x2BC 
-    cmp r6, r0      
+    ldr r0, =0x2BC
+    cmp r6, r0
     blt Block3down
     ldr r0, =0x2E9
     cmp r10, r0
@@ -452,7 +447,7 @@ Block3Above:
     ldr r1, =0x14B
     str r1, [r0]
     b s1done
-    
+
 Block3Under:
 
     ldr r10, =state3
@@ -463,7 +458,7 @@ Block3Under:
     cmp r5, r0
     beq undernext3
     pop {r4-r10, lr}
-    mov pc, lr       
+    mov pc, lr
 
 undernext3:
     ldr r0, =0x2BC
@@ -471,10 +466,6 @@ undernext3:
     bl clearBox
     ldr r0, =state3
     mov r1, #0
-    str r1, [r0]
-    ldr r0, =score
-    ldr r1, [r0]
-    add r1, r1, #50
     str r1, [r0]
     ldr r0, =gravflag
     mov r1, #1
@@ -485,10 +476,10 @@ undernext3:
 
 s1done:
     pop {r4-r10, lr}
-    mov pc, lr 
+    mov pc, lr
 
 
-      
+
 .section .data
 .align 4
 

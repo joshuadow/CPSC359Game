@@ -11,7 +11,7 @@ Detect3:
     ldr r5, [r0,#4]
     add r6, r4, #41
     add r7, r5, #70
-    add r10, r4, #20    
+    add r10, r4, #20
 
 Pit:
     ldr r0, =0xC8
@@ -22,7 +22,7 @@ Pit:
     bgt Block4
     ldr r0, =0x1E7
     cmp r5, r0
-    blt Block4 
+    blt Block4
     mov r0, #2000
     bl WaitLong
     ldr r0, =floor
@@ -32,6 +32,12 @@ Pit:
     mov r1, #1
     str r1, [r0]
     bl Grav
+    ldr r1, =lives
+    ldr r0, [r1]
+    sub r0, r0, #1
+    str r0, [r1]
+    cmp r0, #0
+    beq gameOverScreen
     b restart
 
 
@@ -50,7 +56,7 @@ Block4:
     cmp r6, r0
     bge Block4Left
     b Block4Right
-    
+
 
 Block4Left:
     ldr r0, =0x1BB
@@ -93,7 +99,7 @@ Block4Right:
     ldr r1, =0x697
     str r1, [r0]
     b d3done
-    
+
 Block4Under:
     ldr r10, =state4
     ldrb r0, [r10]
@@ -103,7 +109,7 @@ Block4Under:
     cmp r5, r0
     bge undernext4
     pop {r4-r10, lr}
-    mov pc, lr       
+    mov pc, lr
 
 undernext4:
     ldr r0, =0xBE
@@ -142,7 +148,7 @@ Block4Above:
 Block5:
     ldr r0, =0x104
     cmp r6, r0
-    blt Block4 
+    blt Block4
     ldr r0, =0x186
     cmp r7, r0
     ble Block5Above
@@ -195,7 +201,7 @@ Block5Right:
     ldr r0, =state5
     ldrb r0, [r0]
     cmp r0, #0
-    beq Block5down  
+    beq Block5down
     ldr r0, =0x12F
     cmp r4, r0
     bgt Bowser
@@ -219,7 +225,7 @@ Block5Under:
     cmp r5, r0
     beq undernext5
     pop {r4-r10, lr}
-    mov pc, lr       
+    mov pc, lr
 
 undernext5:
     ldr r0, =0x104
@@ -252,13 +258,13 @@ Bowser:
     ldr r5, [r0,#4]
     add r6, r4, #41
     add r7, r5, #70
-    add r10, r4, #20    
+    add r10, r4, #20
     ldr r8, =bowser
     ldr r10, [r8,#8]
     cmp r10, #1
     beq Castle
     ldr r9, [r8, #4]
-    ldr r8, [r8]    
+    ldr r8, [r8]
     cmp r6, r8
     blt d3done
     add r8, r8, #69
@@ -268,10 +274,12 @@ Bowser:
     cmp r7, r0
     ble MB
     ldr r1, =lives
-	ldr r0, [r1]
-	sub r0, r0, #1
-	str r0, [r1]
-	b restart
+    ldr r0, [r1]
+    sub r0, r0, #1
+    str r0, [r1]
+    cmp r0, #0
+    beq gameOverScreen
+	  b restart
 MB:
     ldr r0, =0x1A9
     cmp r7, r0
@@ -294,11 +302,11 @@ Castle:
     ldr r5, [r0,#4]
     add r6, r4, #41
     add r7, r5, #70
-    add r10, r4, #20  
+    add r10, r4, #20
     ldr r0, =0x29A
     cmp r6, r0
     blt d3done
-    b restart
+    b WinScreen
 
 
 

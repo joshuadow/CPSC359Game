@@ -83,8 +83,6 @@ jumpup:
     bleq Detect3
     bl drawMario
 
-
-
     bl _ReadSNES
     ldr r9, =buttons
     ldrb r10, [r9, #7]
@@ -202,7 +200,7 @@ drawL:
     bleq Detect1
     cmp r1, #2
     bleq Detect2
-    cmp r1, #3
+    cmp r1, #3		
     bleq Detect3
     bl drawMario
     b donel
@@ -243,8 +241,8 @@ drawR:
     cmp r1, #1
     bleq Detect1
     cmp r1, #2
-    bleq Detect2    
-    cmp r1, #3
+    bleq Detect2
+    cmp r1, #3		
     bleq Detect3
     bl drawMario
     b doneR
@@ -264,10 +262,10 @@ doneR:
 APress:
 .globl XPress
 XPress:
-    b doneR
+ b doneR
 .globl LBPress
 LBPress:
-    b doneR
+ b doneR
 .globl RBPress
 RBPress:
-    b doneR
+ b doneR

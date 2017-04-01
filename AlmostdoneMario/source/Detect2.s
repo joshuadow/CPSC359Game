@@ -1,0 +1,443 @@
+.section        .init
+
+.globl  Detect2
+
+.section        .text
+
+Detect2:
+        push {r4-r10, lr}
+        bl testPipe1
+        bl testPipe2
+        bl testCoin1
+        bl testCoin2
+        bl Dragon
+        pop {r4-r10, lr}
+        mov pc, lr
+
+
+//ValuePack2:
+//    ldr r0, =valuePack
+//    ldr r0, [r0]
+//    cmp r0, #1
+//    beq Enemy
+//    ldr r0, =valuePack
+//    ldr r1, [r0]
+//    ldr r2, [r0,#4]
+//    add r0, r1, #40 //some width of value pack
+//    add r3, r2, #40 //to reach bottom of value pack image
+//    cmp r4, r0
+//    bgt Enemy
+//    cmp r6, r1
+//   blt Enemy
+//    cmp r5, r3
+//    bgt Enemy
+//    ldr r0, =valuePack
+//    ldr r1, [r0,#4]
+//    ldr r0, [r0]
+//   bl clearPack
+//    //
+//    //
+//    // Whatever we want to do for a power up here
+//    //
+//    //
+
+testPipe1:
+              push {r4-r10, lr}
+
+              ldr r0, =mario
+              ldr r4, [r0]
+              ldr r5, [r0,#4]
+              add r6, r4, #41
+              add r7, r5, #70
+
+
+              cmp r6, #250 //compare mario far right to the pipe left
+              blt noCollidePipe1
+              ldr r5, =0x14D //load right hand side of pipe (250 +83)
+              cmp r4, r5 //compare mario left hand side to pipe right hand side
+              bgt noCollidePipe1
+
+              ldr r0, =topFlag  //make it so that we don't reset floor when looking at pipe 2
+              mov r1, #1
+              str r1, [r0]
+
+              sub r10, r7, #30
+              ldr r9, =0x1D8
+              cmp r10, r9
+              blt collideTop
+              b SideCollision
+
+collideTop:
+            ldr r0, =mario
+            ldr r5, [r0,#4]
+            add r7, r5, #70
+            ldr r1, =0x1D8
+            ldr r2, =0x192
+            cmp r7, r1
+            strge r2, [r0, #4]
+
+            ldr r0, =floor
+            ldr r1, =0x192
+            str r1, [r0]
+            b done1
+
+SideCollision:
+              ldr r0, =mario
+              ldr r5, [r0,#4]
+              add r7, r5, #70
+              ldr r10, =0x192
+              cmp r7, r10
+              ble done1
+
+              //compare mario x value with the halfway point of the pipe
+              ldr r10, =0x123
+              cmp r4, r10
+              blt comeFromLeft       //if less than halfway, he collided from left hand side (draw on left)
+
+              ldr r0, =mario
+              ldr r5, [r0,#4]
+              add r7, r5, #70
+              ldr r8, =0x1D8
+              cmp r7, r8 //compare mario feet value to highest pipe value
+              blt collideTop
+
+              ldr r0, =mario
+              ldr r9, =0x14D
+              str r9, [r0]   //update mario's x value, so that he doesn't collide with side
+              b done1
+
+comeFromLeft:
+              ldr r0, =mario
+              ldr r5, [r0,#4]
+              add r7, r5, #70
+              ldr r8, =0x1D8
+              cmp r7, r8 //compare mario feet value to highest pipe value
+              blt collideTop
+
+              ldr r0, =mario
+              ldr r9, =0xCF
+              str r9, [r0]  //update mario's x value, so that he doesnt collide with side
+              b done1
+
+
+
+noCollidePipe1:
+
+                ldr r0, =topFlag  //reset the topflag
+                mov r1, #0
+                str r1, [r0]
+
+                ldr r0, =floor
+                ldr r1, =0x1E7
+                str r1, [r0]
+                b done1
+
+done1:
+          pop {r4-r10, lr}
+          mov pc, lr
+
+
+
+testPipe2:
+              push {r4-r10, lr}
+
+              ldr r0, =mario
+              ldr r4, [r0]
+              ldr r5, [r0,#4]
+              add r6, r4, #41
+              add r7, r5, #70
+
+
+              ldr r9, =0x2EE //compare mario far right to the pipe left (750)
+              cmp r6, r9
+              blt noCollidePipe2
+              ldr r5, =0x341 //load right hand side of pipe (750 +83)
+              cmp r4, r5 //compare mario left hand side to pipe right hand side
+              bgt noCollidePipe2
+
+              sub r10, r7, #30
+              ldr r9, =0x1D8
+              cmp r10, r9
+              blt collideTop2
+              b SideCollision2
+
+collideTop2:
+            ldr r0, =mario
+            ldr r5, [r0,#4]
+            add r7, r5, #70
+            ldr r1, =0x1D8
+            ldr r2, =0x192
+            cmp r7, r1
+            strge r2, [r0, #4]
+
+            ldr r0, =floor
+            ldr r1, =0x192
+            str r1, [r0]
+            b done2
+
+SideCollision2:
+              ldr r0, =mario
+              ldr r5, [r0,#4]
+              add r7, r5, #70
+              ldr r10, =0x192
+              cmp r7, r10
+              ble done2
+
+              //compare mario x value with the halfway point of the pipe
+              ldr r10, =0x317
+              cmp r4, r10
+              blt comeFromLeft2       //if less than halfway, he collided from left hand side (draw on left)
+
+              ldr r0, =mario
+              ldr r5, [r0,#4]
+              add r7, r5, #70
+              ldr r8, =0x1D8
+              cmp r7, r8 //compare mario feet value to highest pipe value
+              blt collideTop2
+
+              ldr r0, =mario
+              ldr r9, =0x341
+              str r9, [r0]   //update mario's x value, so that he doesn't collide with side
+              b done2
+
+comeFromLeft2:
+              ldr r0, =mario
+              ldr r5, [r0,#4]
+              add r7, r5, #70
+              ldr r8, =0x1D8
+              cmp r7, r8 //compare mario feet value to highest pipe value
+              blt collideTop2
+
+              ldr r0, =mario
+              ldr r9, =0x2C5
+              str r9, [r0]  //update mario's x value, so that he doesnt collide with side
+              b done2
+
+noCollidePipe2:
+                ldr r2, =topFlag  //make it so that we don't reset floor if we are currently colliding with block 1
+                ldr r2, [r2]
+                mov r3, #1
+                cmp r2, r3
+                beq done2
+
+                ldr r0, =floor
+                ldr r1, =0x1E7
+                str r1, [r0]
+                b done2
+
+done2:
+          pop {r4-r10, lr}
+          mov pc, lr
+
+
+testCoin1:
+          push {r4-r10, lr}
+
+          ldr r0, =mario
+          ldr r4, [r0]
+          ldr r5, [r0,#4]
+          add r6, r4, #41
+          add r7, r5, #70
+
+          ldr r8, =0x10E
+          cmp r6, r8
+          blt noCollideCoin1
+
+          ldr r8, =0x13B
+          cmp r4, r8
+          bgt noCollideCoin1
+
+          ldr r10, =coin1State
+          ldrb r0, [r10]
+          cmp r0, #0
+          beq noCollideCoin1
+
+          ldr r0, =0xDE //bottom of coin
+          cmp r5, r0
+          bgt noCollideCoin1
+
+          ldr r0, =coin1State
+          ldrb r0, [r0]
+          cmp r0, #1
+          beq secondHit
+          cmp r0, #2
+          beq firstHit
+
+secondHit:
+            ldr r0, =0x10E
+            ldr r1, =0x96
+            bl clearBox
+            ldr r0, =coin1State
+            mov r1, #0
+            str r1, [r0]
+            ldr r0, =gravflag
+            mov r1, #1
+            str r1, [r0]
+            b noCollideCoin1
+
+firstHit:
+            ldr r0, =0x10E
+            ldr r1, =0x96
+            bl drawBlock
+            ldr r0, =coin1State
+            mov r1, #1
+            str r1, [r0]
+            ldr r0, =score
+            ldr r1, [r0]
+            add r1, r1, #50
+            str r1, [r0]
+            bl updateScore
+            ldr r0, =gravflag
+            mov r1, #1
+            str r1, [r0]
+            b noCollideCoin1
+
+noCollideCoin1:
+                pop {r4-r10, lr}
+                mov pc, lr
+
+
+testCoin2:
+          push {r4-r10, lr}
+
+          ldr r0, =mario
+          ldr r4, [r0]
+          ldr r5, [r0,#4]
+          add r6, r4, #41
+          add r7, r5, #70
+
+          ldr r8, =0x302
+          cmp r6, r8
+          blt noCollideCoin2
+
+          ldr r8, =0x32F
+          cmp r4, r8
+          bgt noCollideCoin2
+
+          ldr r10, =coin2State
+          ldrb r0, [r10]
+          cmp r0, #0
+          beq noCollideCoin2
+
+          ldr r0, =0xDE //bottom of coin
+          cmp r5, r0
+          bgt noCollideCoin2
+
+          ldr r0, =coin2State
+          ldrb r0, [r0]
+          cmp r0, #1
+          beq secondHit2
+          cmp r0, #2
+          beq firstHit2
+
+secondHit2:
+            ldr r0, =0x302
+            ldr r1, =0x96
+            bl clearBox
+            ldr r0, =coin2State
+            mov r1, #0
+            str r1, [r0]
+            ldr r0, =gravflag
+            mov r1, #1
+            str r1, [r0]
+            b noCollideCoin2
+
+firstHit2:
+            ldr r0, =0x302
+            ldr r1, =0x96
+            bl drawBlock
+            ldr r0, =coin2State
+            mov r1, #1
+            str r1, [r0]
+            ldr r0, =score
+            ldr r1, [r0]
+            add r1, r1, #50
+            str r1, [r0]
+            bl updateScore
+            ldr r0, =gravflag
+            mov r1, #1
+            str r1, [r0]
+            b noCollideCoin2
+
+noCollideCoin2:
+                pop {r4-r10, lr}
+                mov pc, lr
+
+Dragon:
+        push {r4-r10, lr}
+
+        ldr r0, =mario
+        ldr r4, [r0]
+        ldr r5, [r0,#4]
+        add r6, r4, #41
+        add r7, r5, #70
+        add r10, r4, #20
+
+        ldr r0, =dragonEnemy
+        ldr r0, [r0, #12]
+        cmp r0, #1
+        beq noCollideDragon
+      	ldr r0, =dragonEnemy
+      	ldr r8, [r0]
+      	ldr r9, [r0,#4]
+        sub r8, r8, #2
+      	add r9, r9, #2
+      	add r1, r8, #39
+      	add r2, r9, #61
+      	cmp r6, r8
+      	blt noCollideDragon
+      	cmp r4, r1
+      	bgt noCollideDragon
+      	cmp r7, r9
+      	ble killTest
+      	ldr r1, =lives
+      	ldr r0, [r1]
+      	sub r0, r0, #1
+      	str r0, [r1]
+      	cmp r0, #0
+      	beq gameOverScreen
+      	b restart
+killTest:
+          ldr r0, =mario
+          ldr r4, [r0]
+          ldr r5, [r0,#4]
+          add r6, r4, #41
+          add r7, r5, #70
+          ldr r0, =0x1EA
+        	cmp r7, r0
+        	blt noCollideDragon
+          ldr r0, =dragonEnemy
+          mov r1, #1
+          str r1, [r0,#12]
+        	ldr r0, =dragonEnemy
+        	ldr r1, [r0, #4]
+        	ldr r0, [r0]
+        	bl clearDragon
+        	ldr r1, =score
+        	ldr r0, [r1]
+        	add r0, r0, #50
+        	str r0, [r1]
+        	bl updateScore
+
+noCollideDragon:
+                pop {r4-r10, lr}
+                mov pc, lr
+
+
+
+
+
+
+
+
+
+.section    .data
+
+.globl topFlag
+topFlag:   .int 0
+
+.globl coin1State
+coin1State: .int 2
+
+.globl coin2State
+coin2State: .int 2

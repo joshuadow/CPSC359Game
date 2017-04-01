@@ -1,0 +1,317 @@
+.section        .init
+
+.globl  Detect3
+
+.section        .text
+
+Detect3:
+    push {r4-r10, lr}
+    ldr r0, =mario
+    ldr r4, [r0]
+    ldr r5, [r0,#4]
+    add r6, r4, #41
+    add r7, r5, #70
+    add r10, r4, #20
+
+Pit:
+    ldr r0, =0xC8
+    cmp r4, r0
+    blt Block4
+    ldr r0, =0x146
+    cmp r6, r0
+    bgt Block4
+    ldr r0, =0x1E7
+    cmp r5, r0
+    blt Block4
+    mov r0, #2000
+    bl WaitLong
+    ldr r0, =floor
+    ldr r1, =0x2B9
+    str r1, [r0]
+    ldr r0, =gravflag
+    mov r1, #1
+    str r1, [r0]
+    bl Grav
+    ldr r1, =lives
+    ldr r0, [r1]
+    sub r0, r0, #1
+    str r0, [r1]
+    cmp r0, #0
+    beq gameOverScreen
+    b restart
+
+
+
+Block4:
+    ldr r0, =0xE1
+    cmp r4, r0
+    bgt Block5
+    ldr r0, =0xBE
+    cmp r6, r0
+    blt Block4down
+    ldr r0, =0x1B8
+    cmp r7, r0
+    ble Block4Above
+    ldr r0, =0xBE
+    cmp r6, r0
+    bge Block4Left
+    b Block4Right
+
+
+Block4Left:
+    ldr r0, =0x1BB
+    cmp r5, r0
+    bgt Block4Under
+    ldr r0, =0x1B8
+    cmp r7, r0
+    ble Block4Above
+    ldr r0, =0xD7
+    cmp r6, r0
+    bgt Block4Right
+    ldr r0, =state4
+    ldrb r0, [r0]
+    cmp r0, #0
+    beq Block4down
+    ldr r0, =mario
+    ldr r1, =0x94
+    str r1, [r0]
+    ldr r0, =0xBE
+    ldr r1, =0x1B8
+    bl drawBlock
+    b d3done
+
+
+Block4Right:
+    ldr r0, =0xF0
+    cmp r4, r0
+    bgt Block5
+    ldr r0, =state4
+    ldrb r0, [r0]
+    cmp r0, #0
+    beq Block4down
+    ldr r0, =mario
+    ldr r1, =0xEC
+    str r1, [r0]
+    ldr r0, =0xBE
+    ldr r1, =0x1B8
+    bl drawBlock
+    ldr r0, =floor
+    ldr r1, =0x697
+    str r1, [r0]
+    b d3done
+
+Block4Under:
+    ldr r10, =state4
+    ldrb r0, [r10]
+    cmp r0, #0
+    beq Block4down
+    ldr r0, =0x1C7
+    cmp r5, r0
+    bge undernext4
+    pop {r4-r10, lr}
+    mov pc, lr
+
+undernext4:
+    ldr r0, =0xBE
+    ldr r1, =0x1B8
+    bl clearBox
+    ldr r0, =state4
+    mov r1, #0
+    str r1, [r0]
+    ldr r0, =score
+    ldr r1, [r0]
+    add r1, r1, #50
+    str r1, [r0]
+    ldr r0, =gravflag
+    mov r1, #1
+    str r1, [r0]
+    b Block4down
+
+Block4down:
+    ldr r0, =floor
+    ldr r1, =0x1E7
+    str r1, [r0]
+    b d3done
+Block4Above:
+
+    ldr r0, =state4
+    ldrb r0, [r0]
+    cmp r0, #1
+    bne Block4down
+    ldr r0, =floor
+    ldr r1, =0x172
+    str r1, [r0]
+    ldr r0, =0xE1
+    cmp r4, r0
+    bgt Block5
+    b d3done
+Block5:
+    ldr r0, =0x104
+    cmp r6, r0
+    blt Block4
+    ldr r0, =0x186
+    cmp r7, r0
+    ble Block5Above
+    ldr r0, =0x130
+    cmp r4, r0
+    bge Block5Right
+    ldr r0, =0x104
+    cmp r6, r0
+    bge Block5Left
+
+Block5Left:
+    ldr r0, =state5
+    ldrb r0, [r0]
+    cmp r0, #0
+    beq Block5down
+    ldr r0, =0x1A9
+    cmp r5, r0
+    bge Block5Under
+    ldr r0, =0x186
+    cmp r7, r0
+    ble Block5Above
+    ldr r0, =0x11D
+    cmp r4, r0
+    bge Block5Right
+    beq Block5down
+    ldr r0, =mario
+    ldr r1, =0xDA
+    str r1, [r0]
+    ldr r0, =0x104
+    ldr r1, =0x186
+    bl drawBlock
+    b d3done
+
+Block5Above:
+
+    ldr r0, =state5
+    ldrb r0, [r0]
+    cmp r0, #1
+    bne Block5down
+    ldr r0, =floor
+    ldr r1, =0x140
+    str r1, [r0]
+    ldr r0, =0x12E
+    cmp r4, r0
+    bgt Block5Right
+    b d3done
+
+Block5Right:
+    ldr r0, =0x11D
+    cmp r4, r0
+    blt Block5
+    ldr r0, =state5
+    ldrb r0, [r0]
+    cmp r0, #0
+    beq Block5down
+    ldr r0, =0x132
+    cmp r4, r0
+    bge Bowser
+    ldr r0, =mario
+    ldr r1, =0x132
+    str r1, [r0]
+    ldr r0, =0xBE
+    ldr r1, =0x1B8
+    bl drawBlock
+    b Block5down
+
+Block5Under:
+    ldr r10, =state5
+    ldrb r0, [r10]
+    cmp r0, #0
+    beq Block5down
+    ldr r0, =0x12F
+    cmp r4, r0
+    bge Bowser
+    ldr r0, =0x1AB
+    cmp r5, r0
+    beq undernext5
+    pop {r4-r10, lr}
+    mov pc, lr
+
+undernext5:
+    ldr r0, =0x104
+    ldr r1, =0x186
+    bl clearBox
+    ldr r0, =state5
+    mov r1, #0
+    str r1, [r0]
+    ldr r0, =score
+    ldr r1, [r0]
+    add r1, r1, #50
+    str r1, [r0]
+    ldr r0, =gravflag
+    mov r1, #1
+    str r1, [r0]
+    b Block4down
+
+Block5down:
+    ldr r0, =floor
+    ldr r1, =0x1E7
+    str r1, [r0]
+    b d3done
+
+Bowser:
+    ldr r0, =floor
+    ldr r1, =0x1E7
+    str r1, [r0]
+    ldr r0, =mario
+    ldr r4, [r0]
+    ldr r5, [r0,#4]
+    add r6, r4, #41
+    add r7, r5, #70
+    add r10, r4, #20
+    ldr r8, =bowser
+    ldr r10, [r8,#8]
+    cmp r10, #1
+    beq Castle
+    ldr r9, [r8, #4]
+    ldr r8, [r8]
+    cmp r6, r8
+    blt d3done
+    add r8, r8, #69
+    cmp r4, r8
+    bgt Castle
+    ldr r0, =0x1B8
+    cmp r7, r0
+    ble MB
+    ldr r1, =lives
+    ldr r0, [r1]
+    sub r0, r0, #1
+    str r0, [r1]
+    cmp r0, #0
+    beq gameOverScreen
+	  b restart
+MB:
+    ldr r0, =0x1A9
+    cmp r7, r0
+    blt d3done
+    ldr r0, =bowser
+    mov r1, #1
+    str r1, [r0,#8]
+	ldr r0, =bowser
+	ldr r1, [r0, #4]
+	ldr r0, [r0]
+	bl clearBowser
+	ldr r1, =score
+	ldr r0, [r1]
+	add r0, r0, #50
+	str r0, [r1]
+  bl updateScore
+Castle:
+    ldr r0, =mario
+    ldr r4, [r0]
+    ldr r5, [r0,#4]
+    add r6, r4, #41
+    add r7, r5, #70
+    add r10, r4, #20
+    ldr r0, =0x29A
+    cmp r6, r0
+    blt d3done
+    b WinScreen
+
+
+
+d3done:
+    pop {r4-r10, lr}
+    mov pc, lr
